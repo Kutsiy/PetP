@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+body[data-theme="light"] {
+  --text-color: black;
+  --background-color: white;
+}
+body[data-theme="dark"] {
+  --text-color: white;
+  --background-color: black;
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--background-color);
+  margin: 0;
+}

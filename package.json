@@ -7,6 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "dev:ssr": "ng run PetPn:serve-ssr",
     "serve:ssr:PetPn": "node dist/pet-pn/server/server.mjs"
   },
   "private": true,
