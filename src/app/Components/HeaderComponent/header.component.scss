@@ -7,12 +7,14 @@
   box-shadow: 2px 5px 5px var(--shadow-head);
   position: relative;
   background-color: var(--head-back);
+  position: fixed;
+  user-select: none;
 
   &__logo {
     cursor: pointer;
     font-size: 25px;
     padding-bottom: 3px;
-    transition: 1s;
+    font-weight: 700;
   }
   &__routes {
     display: flex;
@@ -44,11 +46,15 @@
 
   &__mobile-toogle-menu {
     display: none;
+    transition: 1s;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 720px) {
     &__routes {
       width: 221px;
+    }
+    &__logo {
+      font-size: 35px;
     }
     &__mobile-toogle-menu {
       display: block;
@@ -60,13 +66,20 @@
     &__theme {
       display: none;
     }
+    mat-icon {
+      transform: scale(2);
+    }
+
+    &__mobile-theme > mat-icon {
+      transform: scale(2);
+    }
   }
   &__mobile-menu {
     position: absolute;
     right: 0;
-    top: 0;
-    width: 150px;
-    height: 100vh;
+    top: 70px;
+    width: 100vw;
+    height: 100%;
     z-index: 5;
     background-color: var(--background-color);
     box-shadow: 1px 2px 5px var(--shadow-head);
@@ -74,8 +87,10 @@
     gap: 10px;
     flex-direction: column;
     align-items: center;
-    font-size: 25px;
+    font-size: 45px;
     display: none;
+    overflow: hidden;
+    position: fixed;
   }
 
   &__mobile-menu.show {
@@ -105,7 +120,8 @@
   &__mobile-theme {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 15px;
+    transition: 1s;
   }
 
   @media (min-width: 700px) {
@@ -122,4 +138,8 @@
       transform: translateX(2px);
     }
   }
+}
+
+mat-icon {
+  transform: scale(1.4);
 }
