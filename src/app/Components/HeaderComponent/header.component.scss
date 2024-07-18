@@ -1,0 +1,125 @@
+.header {
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 2px 5px 5px var(--shadow-head);
+  position: relative;
+  background-color: var(--head-back);
+
+  &__logo {
+    cursor: pointer;
+    font-size: 25px;
+    padding-bottom: 3px;
+    transition: 1s;
+  }
+  &__routes {
+    display: flex;
+    max-width: 300px;
+    width: 300px;
+    min-width: 221px;
+    justify-content: space-between;
+  }
+
+  &__menu {
+    display: flex;
+    gap: 30px;
+  }
+
+  &__routes > div {
+    transition: 1s;
+    cursor: pointer;
+  }
+
+  &__routes > div:hover {
+    color: gray;
+    transition: 1s;
+  }
+
+  &__theme {
+    cursor: pointer;
+    transition: 1s;
+  }
+
+  &__mobile-toogle-menu {
+    display: none;
+  }
+
+  @media (max-width: 700px) {
+    &__routes {
+      width: 221px;
+    }
+    &__mobile-toogle-menu {
+      display: block;
+      font-size: 40px;
+    }
+    &__routes {
+      display: none;
+    }
+    &__theme {
+      display: none;
+    }
+  }
+  &__mobile-menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 150px;
+    height: 100vh;
+    z-index: 5;
+    background-color: var(--background-color);
+    box-shadow: 1px 2px 5px var(--shadow-head);
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
+    font-size: 25px;
+    display: none;
+  }
+
+  &__mobile-menu.show {
+    display: block;
+    animation: menu 0.5s;
+  }
+
+  &__mobile-routes {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 25px;
+  }
+
+  &__mobile-routes > div {
+    transition: 1s;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__mobile-routes > div:hover {
+    color: gray;
+    transition: 1s;
+  }
+
+  &__mobile-theme {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  @media (min-width: 700px) {
+    &__mobile-menu.show {
+      display: none;
+    }
+  }
+
+  @keyframes menu {
+    from {
+      transform: translateX(300px);
+    }
+    to {
+      transform: translateX(2px);
+    }
+  }
+}
