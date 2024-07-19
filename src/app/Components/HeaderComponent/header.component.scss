@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  box-shadow: 2px 5px 5px var(--shadow-head);
+  box-shadow: 0px 2px 5px var(--shadow-head);
   position: relative;
   background-color: var(--head-back);
   position: fixed;
@@ -22,6 +22,7 @@
     width: 300px;
     min-width: 221px;
     justify-content: space-between;
+    color: var(--header-text-color);
   }
 
   &__menu {
@@ -35,7 +36,7 @@
   }
 
   &__routes > div:hover {
-    color: gray;
+    color: rgb(255, 255, 255);
     transition: 1s;
   }
 
@@ -77,12 +78,11 @@
   &__mobile-menu {
     position: absolute;
     right: 0;
-    top: 70px;
+    top: 73px;
     width: 100vw;
     height: 100%;
     z-index: 5;
     background-color: var(--background-color);
-    box-shadow: 1px 2px 5px var(--shadow-head);
     display: flex;
     gap: 10px;
     flex-direction: column;
@@ -91,6 +91,7 @@
     display: none;
     overflow: hidden;
     position: fixed;
+    color: var(--header-text-color);
   }
 
   &__mobile-menu.show {
@@ -113,7 +114,7 @@
   }
 
   &__mobile-routes > div:hover {
-    color: gray;
+    color: var(--text-color);
     transition: 1s;
   }
 
@@ -122,6 +123,7 @@
     justify-content: center;
     margin-top: 15px;
     transition: 1s;
+    color: var(--text-color);
   }
 
   @media (min-width: 700px) {

@@ -31,6 +31,7 @@ $PetPn-theme: mat.define-theme(
   --background-color: white;
   --shadow-head: gray;
   --head-back: rgba(255, 255, 255, 0.8);
+  --header-text-color: rgb(74, 74, 74);
 }
 
 // Comment out the line below if you want to use the pre-defined typography utility classes.
@@ -44,12 +45,14 @@ body[data-theme="light"] {
   --background-color: white;
   --shadow-head: gray;
   --head-back: rgba(255, 255, 255, 0.8);
+  --header-text-color: rgb(74, 74, 74);
 }
 body[data-theme="dark"] {
   --text-color: white;
   --background-color: black;
   --shadow-head: gray;
   --head-back: rgba(0, 0, 0, 0.9);
+  --header-text-color: rgb(74, 74, 74);
 }
 
 body {
