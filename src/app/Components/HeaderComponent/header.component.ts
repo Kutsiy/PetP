@@ -14,17 +14,23 @@ import {
 })
 export class HeaderComponent implements OnInit {
   isMenuClose = true;
-
+  isHeaderWatched = false;
+  position = 0;
+  headerElement: HTMLElement;
+  themeMode: string | null = 'light';
   constructor(
     @Inject(DOCUMENT) private document: Document,
     @Inject(PLATFORM_ID) private platformId: Object,
     private elementRef: ElementRef
-  ) {}
+  ) {
+    this.headerElement = this.elementRef.nativeElement.querySelector('.header');
+  }
 
   themeToggle() {
     if (isPlatformBrowser(this.platformId)) {
       this.document.body.dataset['theme'] =
         this.document.body.dataset['theme'] === 'light' ? 'dark' : 'light';
+      this.themeMode = this.document.body.dataset['theme'];
       localStorage.setItem('theme', this.document.body.dataset['theme']);
     }
   }
@@ -42,10 +48,28 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      let localTheme = localStorage.getItem('theme');
-      if (localTheme) {
-        this.document.body.dataset['theme'] = localTheme;
+      this.themeMode = localStorage.getItem('theme');
+      if (this.themeMode) {
+        this.document.body.dataset['theme'] = this.themeMode;
       }
+      this.document.addEventListener('scroll', () => {
+        if (window.scrollY <= 50) {
+          this.headerElement.style.position = 'static';
+          this.headerElement.classList.remove('hide-header');
+          this.headerElement.classList.remove('show-header');
+        } else {
+          if (this.position < window.scrollY) {
+            this.headerElement.classList.remove('show-header');
+            this.headerElement.classList.add('hide-header');
+            this.position = window.scrollY;
+          } else {
+            this.headerElement.style.position = 'fixed';
+            this.headerElement.classList.add('show-header');
+            this.headerElement.classList.remove('hide-header');
+            this.position = window.scrollY;
+          }
+        }
+      });
     }
   }
 }

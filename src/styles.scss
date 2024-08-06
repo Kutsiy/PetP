@@ -27,11 +27,33 @@ $PetPn-theme: mat.define-theme(
 // that you are using.
 :root {
   @include mat.all-component-themes($PetPn-theme);
-  --text-color: black;
-  --background-color: white;
+  --text-color: white;
+  --background-color: #7e64a3;
   --shadow-head: gray;
-  --head-back: rgba(255, 255, 255, 0.8);
+  --head-back: rgba(160, 110, 226, 0.9);
   --header-text-color: rgb(74, 74, 74);
+  --text-gradient: -webkit-linear-gradient(1800deg, #320f85 20%, #5e2e8c 70%);
+  --gradient: linear-gradient(90deg, #4215ab 20%, #763cac 70%);
+  --main-gradient-back: #7e64a3;
+  --main-gradient: linear-gradient(
+    360deg,
+    rgba(50, 15, 133, 1) 2%,
+    #9766d7e6 40%
+  );
+  --line-gradient: linear-gradient(
+    to right,
+    white 40%,
+    transparent 40%,
+    transparent 60%,
+    white 60%
+  );
+  --mask-gradient: linear-gradient(
+    to right,
+    transparent,
+    white 20%,
+    white 80%,
+    transparent
+  );
 }
 
 // Comment out the line below if you want to use the pre-defined typography utility classes.
@@ -41,34 +63,76 @@ $PetPn-theme: mat.define-theme(
 // Comment out the line below if you want to use the deprecated `color` inputs.
 // @include mat.color-variants-backwards-compatibility($PetPn-theme);
 body[data-theme="light"] {
-  --text-color: black;
-  --background-color: white;
-  --shadow-head: gray;
-  --head-back: rgba(255, 255, 255, 0.8);
+  --text-color: white;
+  --background-color: #9766d7e6;
+  --shadow-head: rgb(71, 71, 71);
+  --head-back: rgba(160, 110, 226, 0.9);
+  --text-gradient: -webkit-linear-gradient(1800deg, #320f85 20%, #501d80 70%);
   --header-text-color: rgb(74, 74, 74);
+  --gradient: linear-gradient(90deg, #4215ab 20%, #763cac 70%);
+  --line-gradient: linear-gradient(
+    to right,
+    black 40%,
+    transparent 40%,
+    transparent 60%,
+    black 60%
+  );
+  --mask-gradient: linear-gradient(
+    to right,
+    transparent,
+    black 20%,
+    black 80%,
+    transparent
+  );
 }
 body[data-theme="dark"] {
   --text-color: white;
-  --background-color: black;
-  --shadow-head: gray;
-  --head-back: rgba(0, 0, 0, 0.9);
-  --header-text-color: rgb(74, 74, 74);
+  --background-color: #11071f;
+  --shadow-head: rgb(74, 1, 98);
+  --head-back: rgb(26, 11, 46, 0.9);
+  --header-text-color: rgb(184, 184, 184);
+  --text-gradient: -webkit-linear-gradient(1800deg, #763cac 20%, #320f85 70%);
+  --gradient: linear-gradient(90deg, #763cac 20%, #320f85 70%);
+  --main-gradient-back: rgb(50, 15, 133);
+  --main-gradient: linear-gradient(
+    360deg,
+    rgba(50, 15, 133, 1) 2%,
+    rgba(17, 7, 31, 1) 40%
+  );
+  --line-gradient: linear-gradient(
+    to right,
+    white 40%,
+    transparent 40%,
+    transparent 60%,
+    white 60%
+  );
+  --mask-gradient: linear-gradient(
+    to right,
+    transparent,
+    white 20%,
+    white 80%,
+    transparent
+  );
 }
 
 body {
   color: var(--text-color);
   background-color: var(--background-color);
   margin: 0;
+  transition: 0.5s;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  user-select: none;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
 }
 
 html,
 body {
   height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  font-size: 20px;
 }
 
 * {

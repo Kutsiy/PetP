@@ -1,21 +1,56 @@
 .header {
   width: 100%;
-  height: 70px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  box-shadow: 0px 2px 5px var(--shadow-head);
   position: relative;
-  background-color: var(--head-back);
-  position: fixed;
   user-select: none;
+  background-color: var(--head-back);
+  transition: 0.5s;
+  border-bottom: 1px solid var(--shadow-head);
+  z-index: 100;
+
+  &.show-header {
+    // transform: translateY(1px);
+    transition: 0.5s 0.1s;
+    box-shadow: 0px 2px 5px var(--shadow-head);
+  }
+
+  &.hide-header {
+    transform: translateY(-90px);
+    transition: 0.5s 0.1s;
+  }
+
+  &-block {
+    width: 100%;
+    height: 64px;
+    background-color: var(--background-color);
+    transition: 0.5s;
+  }
 
   &__logo {
     cursor: pointer;
     font-size: 25px;
     padding-bottom: 3px;
     font-weight: 700;
+    transition: 0.1s 0s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   }
+
+  &__logo-title {
+    background: rgb(131, 58, 180);
+    background: var(--gradient);
+    padding: 6px;
+    border-radius: 15%;
+    margin-right: 3px;
+    color: var(--head-back);
+  }
+
   &__routes {
     display: flex;
     max-width: 300px;
@@ -31,31 +66,27 @@
   }
 
   &__routes > div {
-    transition: 1s;
+    transition: 0.5s;
     cursor: pointer;
   }
 
   &__routes > div:hover {
-    color: rgb(255, 255, 255);
+    color: var(--text-color);
     transition: 1s;
   }
 
   &__theme {
     cursor: pointer;
-    transition: 1s;
   }
 
   &__mobile-toogle-menu {
     display: none;
-    transition: 1s;
+    transition: 0.5s;
   }
 
   @media (max-width: 720px) {
     &__routes {
       width: 221px;
-    }
-    &__logo {
-      font-size: 35px;
     }
     &__mobile-toogle-menu {
       display: block;
@@ -78,10 +109,11 @@
   &__mobile-menu {
     position: absolute;
     right: 0;
-    top: 73px;
+    top: 67px;
     width: 100vw;
-    height: 100%;
+    height: 100vh;
     z-index: 5;
+    user-select: none;
     background-color: var(--background-color);
     display: flex;
     gap: 10px;
@@ -91,6 +123,7 @@
     display: none;
     overflow: hidden;
     position: fixed;
+    transition: 0.5s;
     color: var(--header-text-color);
   }
 
@@ -107,7 +140,7 @@
   }
 
   &__mobile-routes > div {
-    transition: 1s;
+    transition: 0.5s;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -115,14 +148,14 @@
 
   &__mobile-routes > div:hover {
     color: var(--text-color);
-    transition: 1s;
+    transition: 0.5s;
   }
 
   &__mobile-theme {
     display: flex;
     justify-content: center;
     margin-top: 15px;
-    transition: 1s;
+    // transition: 0.5s;
     color: var(--text-color);
   }
 
