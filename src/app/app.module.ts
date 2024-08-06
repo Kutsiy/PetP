@@ -12,9 +12,10 @@ import { HeaderComponent } from './Components/HeaderComponent/header.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MainComponent } from './Components/MainComponents/main/main.component';
+import { BulbComponent } from './Components/CanvasComponents/bulb/bulb.component';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, HeaderComponent, MainComponent],
+  declarations: [AppComponent, FooterComponent, HeaderComponent, MainComponent, BulbComponent],
   imports: [BrowserModule, AppRoutingModule, MatIconModule, RouterModule],
   providers: [provideClientHydration(), provideHttpClient(withFetch())],
   bootstrap: [AppComponent],
