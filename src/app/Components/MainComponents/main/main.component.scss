@@ -9,7 +9,7 @@
   box-sizing: border-box;
   transition: 0.5s;
 
-  &__conteiner {
+  &__container {
     display: flex;
     justify-content: space-between;
     max-width: 1050px;
@@ -131,7 +131,7 @@
 
 @media (max-width: 1200px) {
   .main {
-    &__conteiner {
+    &__container {
       flex-direction: column;
     }
     padding-top: 40px;
@@ -144,6 +144,23 @@
     &__text-block {
       margin: 0 auto;
       margin-bottom: 10px;
+      max-width: 740px;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .main {
+    &__text-block {
+      max-width: 600px;
+    }
+  }
+}
+
+@media (max-width: 780px) {
+  .main {
+    &__text-block {
+      max-width: 550px;
     }
   }
 }

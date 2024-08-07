@@ -27,7 +27,7 @@
     transition: 0.5s;
   }
 
-  &__conteiner {
+  &__container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -94,7 +94,7 @@
   }
 
   @media (max-width: 1200px) {
-    &__conteiner {
+    &__container {
       justify-content: space-around;
     }
   }
@@ -125,7 +125,8 @@
     position: absolute;
     right: 0;
     top: 66px;
-    max-width: 100vw;
+    max-width: 100%;
+    width: 100%;
     min-width: 320px;
     height: 100%;
     z-index: 5;

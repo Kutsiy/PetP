@@ -13,9 +13,12 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MainComponent } from './Components/MainComponents/main/main.component';
 import { BulbComponent } from './Components/CanvasComponents/bulb/bulb.component';
+import { HomewrapperComponent } from './Components/MainComponents/wrappers/homewrapper/homewrapper.component';
+import { ContactsComponent } from './Components/MainComponents/contacts/contacts.component';
+import { CardComponent } from './Components/UI/card/card.component';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, HeaderComponent, MainComponent, BulbComponent],
+  declarations: [AppComponent, FooterComponent, HeaderComponent, MainComponent, BulbComponent, HomewrapperComponent, ContactsComponent, CardComponent],
   imports: [BrowserModule, AppRoutingModule, MatIconModule, RouterModule],
   providers: [provideClientHydration(), provideHttpClient(withFetch())],
   bootstrap: [AppComponent],
