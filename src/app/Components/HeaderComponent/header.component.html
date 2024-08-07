@@ -14,9 +14,9 @@
         </div>
       </div>
       <div class="header__theme" (click)="themeToggle()">
-        @if (themeMode === 'light') {
+        @if (themeModeForSite === 'light') {
         <mat-icon>sunny</mat-icon>
-        } @else {
+        } @else if(themeModeForSite === 'dark') {
         <mat-icon style="color: gray">dark_mode</mat-icon>
         }
       </div>
@@ -35,7 +35,7 @@
         <div class="header__mobile-about-us-button">About us</div>
       </div>
       <div class="header__mobile-theme" (click)="themeToggle()">
-        @if (themeMode === 'light') {
+        @if (themeModeForSite === 'light') {
         <mat-icon>sunny</mat-icon>
         } @else {
         <mat-icon>dark_mode</mat-icon>

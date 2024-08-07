@@ -29,11 +29,16 @@ $PetPn-theme: mat.define-theme(
   @include mat.all-component-themes($PetPn-theme);
   --text-color: white;
   --background-color: #7e64a3;
-  --shadow-head: gray;
+  --shadow-head: #5e2e8c;
   --head-back: rgba(160, 110, 226, 0.9);
   --header-text-color: rgb(74, 74, 74);
   --text-gradient: -webkit-linear-gradient(1800deg, #320f85 20%, #5e2e8c 70%);
   --gradient: linear-gradient(90deg, #4215ab 20%, #763cac 70%);
+  --shadow-for-main: linear-gradient(
+    180deg,
+    rgba(50, 15, 133, 1) 40%,
+    #a270e2e6 70%
+  );
   --main-gradient-back: #7e64a3;
   --main-gradient: linear-gradient(
     360deg,
@@ -65,11 +70,16 @@ $PetPn-theme: mat.define-theme(
 body[data-theme="light"] {
   --text-color: white;
   --background-color: #9766d7e6;
-  --shadow-head: rgb(71, 71, 71);
+  --shadow-head: #5e2e8c;
   --head-back: rgba(160, 110, 226, 0.9);
   --text-gradient: -webkit-linear-gradient(1800deg, #320f85 20%, #501d80 70%);
   --header-text-color: rgb(74, 74, 74);
   --gradient: linear-gradient(90deg, #4215ab 20%, #763cac 70%);
+  --shadow-for-main: linear-gradient(
+    180deg,
+    rgba(50, 15, 133, 1) 40%,
+    #a270e2e6 70%
+  );
   --line-gradient: linear-gradient(
     to right,
     black 40%,
@@ -99,6 +109,11 @@ body[data-theme="dark"] {
     rgba(50, 15, 133, 1) 2%,
     rgba(17, 7, 31, 1) 40%
   );
+  --shadow-for-main: linear-gradient(
+    180deg,
+    rgba(50, 15, 133, 1) 40%,
+    rgba(17, 7, 31, 1) 70%
+  );
   --line-gradient: linear-gradient(
     to right,
     white 40%,
@@ -119,7 +134,7 @@ body {
   color: var(--text-color);
   background-color: var(--background-color);
   margin: 0;
-  transition: 0.5s;
+  // transition: 0.5s;
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size: 20px;
