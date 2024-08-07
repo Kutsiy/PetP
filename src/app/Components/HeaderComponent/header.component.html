@@ -1,45 +1,49 @@
 <div class="header-block">
   <div class="header">
-    <div class="header__logo">
-      <span class="header__logo-title"> NE </span>
-    </div>
-    <div class="header__menu">
-      <div class="header__routes">
-        <div class="header__main-button header__buttons"><span>Main</span></div>
-        <div class="header__articles-button header__buttons">
-          <span>Articles</span>
+    <div class="header__conteiner">
+      <div class="header__logo">
+        <span class="header__logo-title"> NE </span>
+      </div>
+      <div class="header__menu">
+        <div class="header__routes">
+          <div class="header__main-button header__buttons">
+            <span>Main</span>
+          </div>
+          <div class="header__articles-button header__buttons">
+            <span>Articles</span>
+          </div>
+          <div class="header__about-us-button header__buttons">
+            <span>About us</span>
+          </div>
         </div>
-        <div class="header__about-us-button header__buttons">
-          <span>About us</span>
+        <div class="header__theme" (click)="themeToggle()">
+          @if (themeModeForSite === 'light') {
+          <mat-icon>sunny</mat-icon>
+          } @else if(themeModeForSite === 'dark') {
+          <mat-icon style="color: gray">dark_mode</mat-icon>
+          }
+        </div>
+        <div class="header__mobile-toogle-menu" (click)="mobileMenuToggle()">
+          @if (isMenuClose) {
+          <mat-icon>menu</mat-icon>
+          } @else {
+          <mat-icon>close</mat-icon>
+          }
         </div>
       </div>
-      <div class="header__theme" (click)="themeToggle()">
-        @if (themeModeForSite === 'light') {
-        <mat-icon>sunny</mat-icon>
-        } @else if(themeModeForSite === 'dark') {
-        <mat-icon style="color: gray">dark_mode</mat-icon>
-        }
-      </div>
-      <div class="header__mobile-toogle-menu" (click)="mobileMenuToggle()">
-        @if (isMenuClose) {
-        <mat-icon>menu</mat-icon>
-        } @else {
-        <mat-icon>close</mat-icon>
-        }
-      </div>
-    </div>
-    <div class="header__mobile-menu">
-      <div class="header__mobile-routes">
-        <div class="header__mobile-main-button">Main</div>
-        <div class="header__mobile-articles-button">Articles</div>
-        <div class="header__mobile-about-us-button">About us</div>
-      </div>
-      <div class="header__mobile-theme" (click)="themeToggle()">
-        @if (themeModeForSite === 'light') {
-        <mat-icon>sunny</mat-icon>
-        } @else {
-        <mat-icon>dark_mode</mat-icon>
-        }
+      <div class="header__mobile-menu">
+        <div class="header__mobile-routes">
+          <div class="header__mobile-main-button">Main</div>
+          <div class="header__mobile-articles-button">Articles</div>
+          <div class="header__mobile-about-us-button">About us</div>
+        </div>
+        <div class="header__mobile-theme" (click)="themeToggle()">
+          @if (themeModeForSite === 'light') {
+          <mat-icon>sunny</mat-icon>
+          } @else if(themeModeForSite === 'dark') {
+          <mat-icon style="color: gray">dark_mode</mat-icon>
+          }
+        </div>
       </div>
     </div>
   </div>

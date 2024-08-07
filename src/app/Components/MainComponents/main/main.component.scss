@@ -1,7 +1,6 @@
 .main {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
+  max-width: 100%;
+  min-width: 320px;
   position: relative;
   height: 500px;
   padding-top: 130px;
@@ -9,6 +8,14 @@
   background: var(--main-gradient);
   box-sizing: border-box;
   transition: 0.5s;
+
+  &__conteiner {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1050px;
+    min-width: 320px;
+    margin: 0 auto;
+  }
 
   &::after {
     content: "";
@@ -23,8 +30,6 @@
   &__image-element {
     position: relative;
     top: -20px;
-    max-width: 500px;
-    width: 100%;
     height: 300px;
     z-index: 50;
   }
@@ -51,7 +56,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 15px;
   }
 
   &__text {
@@ -126,8 +131,9 @@
 
 @media (max-width: 1200px) {
   .main {
-    flex-direction: column;
-    justify-content: none;
+    &__conteiner {
+      flex-direction: column;
+    }
     padding-top: 40px;
     height: 700px;
 

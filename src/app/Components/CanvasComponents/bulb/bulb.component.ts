@@ -25,7 +25,7 @@ export class BulbComponent implements OnInit {
       }
 
       const canvasSizes = {
-        width: 500,
+        width: 300,
         height: 300,
       };
 

@@ -30,7 +30,7 @@ $PetPn-theme: mat.define-theme(
   --text-color: white;
   --background-color: #7e64a3;
   --shadow-head: #5e2e8c;
-  --head-back: rgba(160, 110, 226, 0.9);
+  --head-back: #a06ee2e6;
   --header-text-color: rgb(74, 74, 74);
   --text-gradient: -webkit-linear-gradient(1800deg, #320f85 20%, #5e2e8c 70%);
   --gradient: linear-gradient(90deg, #4215ab 20%, #763cac 70%);
@@ -43,7 +43,8 @@ $PetPn-theme: mat.define-theme(
   --main-gradient: linear-gradient(
     360deg,
     rgba(50, 15, 133, 1) 2%,
-    #9766d7e6 40%
+    #9766d7e6 40%,
+    #a06ee2e6 90%
   );
   --line-gradient: linear-gradient(
     to right,
@@ -68,13 +69,13 @@ $PetPn-theme: mat.define-theme(
 // Comment out the line below if you want to use the deprecated `color` inputs.
 // @include mat.color-variants-backwards-compatibility($PetPn-theme);
 body[data-theme="light"] {
-  --text-color: white;
-  --background-color: #9766d7e6;
+  --text-color: #333333;
+  --background-color: #9766d7;
   --shadow-head: #5e2e8c;
   --head-back: rgba(160, 110, 226, 0.9);
-  --text-gradient: -webkit-linear-gradient(1800deg, #320f85 20%, #501d80 70%);
-  --header-text-color: rgb(74, 74, 74);
-  --gradient: linear-gradient(90deg, #4215ab 20%, #763cac 70%);
+  --text-gradient: -webkit-linear-gradient(1800deg, #4615b9 20%, #61259a 70%);
+  --header-text-color: rgb(79, 79, 79);
+  --gradient: linear-gradient(90deg, #4215ab 10%, #763cac 70%, #9154e1e6 99%);
   --shadow-for-main: linear-gradient(
     180deg,
     rgba(50, 15, 133, 1) 40%,
