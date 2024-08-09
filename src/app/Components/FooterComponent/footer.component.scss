@@ -2,8 +2,9 @@
   max-width: 100%;
   width: 100%;
   min-width: 320px;
-  height: 190px;
-  background: var(--footer-gradient);
+  height: 140px;
+  // background: var(--footer-gradient);
+  border-top: 0.5px solid var(--shadow-head);
 
   &__container {
     max-width: 1050px;
@@ -40,7 +41,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 300px;
+    width: 340px;
   }
 
   &__list {
@@ -59,16 +60,33 @@
   &__list-item {
     font-size: 18px;
     cursor: pointer;
+    color: var(--header-text-color);
   }
 
   &__list-item:hover {
-    text-shadow: -2px 2px 3px gray;
+    color: var(--text-color);
     transition: 0.5s;
   }
 
   @media (max-width: 1200px) {
     &__container {
       justify-content: space-around;
+    }
+    &__lists {
+      justify-content: space-around;
+      width: 343px;
+    }
+  }
+
+  @media (max-width: 800px) {
+    &__lists {
+      width: 250px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    &__lists {
+      width: 200px;
     }
   }
 }

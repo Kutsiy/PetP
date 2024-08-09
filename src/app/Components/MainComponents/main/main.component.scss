@@ -2,7 +2,7 @@
   max-width: 100%;
   min-width: 320px;
   position: relative;
-  height: 670px;
+  height: 700px;
   padding-top: 130px;
   background: var(--main-gradient-back);
   background: var(--main-gradient);
@@ -134,14 +134,16 @@
 
 @media (max-width: 1200px) {
   .main {
+    padding-top: 40px;
+    height: 810px;
+
     &__container {
       flex-direction: column;
     }
-    padding-top: 40px;
-    height: 700px;
 
     &__image-element {
       margin: 0 auto;
+      margin-top: 70px;
     }
 
     &__text-block {
