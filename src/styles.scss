@@ -69,6 +69,11 @@ $PetPn-theme: mat.define-theme(
     rgb(56, 2, 131) 80%
   );
   --card-shadow: rgb(91, 0, 203);
+  --footer-gradient: linear-gradient(
+    360deg,
+    rgba(50, 15, 133, 1) 2%,
+    #9766d7e6 40%
+  );
 }
 
 // Comment out the line below if you want to use the pre-defined typography utility classes.
@@ -87,6 +92,12 @@ body[data-theme="light"] {
   --header-text-color: rgb(79, 79, 79);
   --gradient: linear-gradient(90deg, #4215ab 10%, #763cac 70%, #9154e1e6 99%);
   --circle: radial-gradient(circle, rgb(49, 0, 96) 20%, rgba(29, 1, 55, 0) 70%);
+  --main-gradient: linear-gradient(
+    360deg,
+    rgba(50, 15, 133, 1) 2%,
+    #9766d7e6 40%,
+    #a06ee2e6 90%
+  );
   --shadow-for-main: linear-gradient(
     180deg,
     rgba(50, 15, 133, 1) 40%,
@@ -113,6 +124,11 @@ body[data-theme="light"] {
     rgb(56, 2, 131) 80%
   );
   --card-shadow: #320f85;
+  --footer-gradient: linear-gradient(
+    360deg,
+    rgba(50, 15, 133, 1) 10%,
+    #9766d7e6 50%
+  );
 }
 body[data-theme="dark"] {
   --text-color: white;
@@ -160,6 +176,11 @@ body[data-theme="dark"] {
     rgba(56, 18, 109, 1) 80%
   );
   --card-shadow: rgb(149, 0, 255);
+  --footer-gradient: linear-gradient(
+    360deg,
+    rgba(50, 15, 133, 1) 10%,
+    rgba(17, 7, 31, 1) 50%
+  );
 }
 
 body {
@@ -171,6 +192,7 @@ body {
   font-size: 20px;
   user-select: none;
   box-sizing: border-box;
+  overflow: auto;
 }
 html {
   scroll-behavior: smooth;
@@ -184,6 +206,10 @@ body {
 * {
   margin: 0;
   padding: 0;
+}
+
+li {
+  list-style-type: none;
 }
 
 /* width */
@@ -203,4 +229,9 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #280c6a;
+}
+
+a {
+  color: white;
+  text-decoration: none;
 }

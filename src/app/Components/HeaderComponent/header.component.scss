@@ -40,7 +40,7 @@
   &__logo {
     cursor: pointer;
     font-size: 25px;
-    padding-bottom: 3px;
+    // padding-bottom: 3px;
     font-weight: 700;
     transition: 0.1s 0s;
     display: flex;
@@ -55,7 +55,6 @@
     background: var(--gradient);
     padding: 6px;
     border-radius: 15%;
-    margin-right: 3px;
     color: var(--head-back);
   }
 

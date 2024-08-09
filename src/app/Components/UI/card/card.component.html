@@ -1,9 +1,9 @@
 <div class="card">
   <div class="card__image-block">
-    <div class="card__image"></div>
+    <img class="card__image" [src]="image" />
   </div>
   <div class="card__text-block">
-    <div class="card__title">Github</div>
-    <div class="card__link">Link</div>
+    <div class="card__title">{{ title }}</div>
+    <a [href]="link" class="card__link">Link</a>
   </div>
 </div>

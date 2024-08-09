@@ -2,7 +2,7 @@
   max-width: 100%;
   min-width: 320px;
   position: relative;
-  height: 500px;
+  height: 670px;
   padding-top: 130px;
   background: var(--main-gradient-back);
   background: var(--main-gradient);
@@ -49,6 +49,9 @@
     background: var(--text-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    text-transform: capitalize;
   }
 
   &__block {
