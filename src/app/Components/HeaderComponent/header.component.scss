@@ -83,8 +83,18 @@
     transition: 1s;
   }
 
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
   &__theme {
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__mobile-toogle-menu {
@@ -95,6 +105,26 @@
   @media (max-width: 1200px) {
     &__container {
       justify-content: space-around;
+    }
+  }
+
+  @media (max-width: 700px) {
+    &__container {
+      justify-content: space-between;
+      padding: 0 50px;
+    }
+    &__mobile-toogle-menu {
+      padding-right: 6px;
+    }
+  }
+
+  @media (max-width: 450px) {
+    &__container {
+      justify-content: space-around;
+      padding: 0;
+    }
+    &__mobile-toogle-menu {
+      padding-right: 0;
     }
   }
 

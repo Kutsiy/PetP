@@ -16,9 +16,10 @@ import { BulbComponent } from './Components/CanvasComponents/bulb/bulb.component
 import { HomewrapperComponent } from './Components/MainComponents/wrappers/homewrapper/homewrapper.component';
 import { ContactsComponent } from './Components/MainComponents/contacts/contacts.component';
 import { CardComponent } from './Components/UI/card/card.component';
+import { StackComponent } from './Components/MainComponents/stack/stack.component';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, HeaderComponent, MainComponent, BulbComponent, HomewrapperComponent, ContactsComponent, CardComponent],
+  declarations: [AppComponent, FooterComponent, HeaderComponent, MainComponent, BulbComponent, HomewrapperComponent, ContactsComponent, CardComponent, StackComponent],
   imports: [BrowserModule, AppRoutingModule, MatIconModule, RouterModule],
   providers: [provideClientHydration(), provideHttpClient(withFetch())],
   bootstrap: [AppComponent],
