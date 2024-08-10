@@ -31,15 +31,19 @@ export class BulbComponent implements OnInit {
 
       const scene = new THREE.Scene();
 
-      const material = new THREE.MeshToonMaterial();
+      const color = new THREE.Color('rgba(56, 18, 109, 1)');
+
+      const material = new THREE.MeshToonMaterial({
+        color: color,
+      });
 
       const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
       scene.add(ambientLight);
 
-      const pointLight = new THREE.PointLight(0xffffff, 0.5);
-      pointLight.position.x = 2;
-      pointLight.position.y = 2;
-      pointLight.position.z = 2;
+      const pointLight = new THREE.PointLight(0xffffff, 2);
+      pointLight.position.x = 0;
+      pointLight.position.y = 5;
+      pointLight.position.z = 0;
       scene.add(pointLight);
 
       const box = new THREE.Mesh(
@@ -47,12 +51,12 @@ export class BulbComponent implements OnInit {
         material
       );
 
-      const torus = new THREE.Mesh(
-        new THREE.TorusGeometry(15, 3.5, 16, 100),
-        material
-      );
+      // const torus = new THREE.Mesh(
+      //   new THREE.TorusGeometry(15, 3.5, 16, 100),
+      //   material
+      // );
 
-      scene.add(torus, box);
+      scene.add(box);
 
       const camera = new THREE.PerspectiveCamera(
         75,
@@ -60,7 +64,7 @@ export class BulbComponent implements OnInit {
         0.001,
         1000
       );
-      camera.position.z = 30;
+      camera.position.z = 10;
       scene.add(camera);
 
       // Создаем рендер с параметром alpha: true
@@ -85,11 +89,11 @@ export class BulbComponent implements OnInit {
       const clock = new THREE.Clock();
 
       const animateGeometry = () => {
-        // const elapsedTime = clock.getElapsedTime();
+        const elapsedTime = clock.getElapsedTime();
 
-        // box.rotation.x = elapsedTime;
-        // box.rotation.y = elapsedTime;
-        // box.rotation.z = elapsedTime;
+        box.rotation.x = elapsedTime;
+        box.rotation.y = elapsedTime;
+        box.rotation.z = elapsedTime;
 
         // torus.rotation.x = -elapsedTime;
         // torus.rotation.y = -elapsedTime;
