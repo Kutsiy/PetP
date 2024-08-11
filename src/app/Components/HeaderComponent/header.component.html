@@ -6,7 +6,7 @@
       </div>
       <div class="header__menu">
         <div class="header__routes">
-          <div class="header__main-button header__buttons">
+          <div class="header__main-button header__buttons" [routerLink]="['/']">
             <mat-icon
               style="
                 font-size: 19px;
@@ -18,7 +18,10 @@
             >
             <span>Main</span>
           </div>
-          <div class="header__articles-button header__buttons">
+          <div
+            class="header__articles-button header__buttons"
+            [routerLink]="['/articles']"
+          >
             <mat-icon
               style="
                 font-size: 19px;
@@ -43,13 +46,13 @@
             <span>About</span>
           </div>
         </div>
-        <div class="header__theme" (click)="themeToggle()">
+        <!-- <div class="header__theme" (click)="themeToggle()">
           @if (themeModeForSite === 'light') {
           <mat-icon>sunny</mat-icon>
           } @else if(themeModeForSite === 'dark') {
           <mat-icon style="color: gray">dark_mode</mat-icon>
           }
-        </div>
+        </div> -->
         <div class="header__mobile-toogle-menu" (click)="mobileMenuToggle()">
           @if (isMenuClose) {
           <mat-icon>menu</mat-icon>
@@ -64,13 +67,13 @@
           <div class="header__mobile-articles-button">Articles</div>
           <div class="header__mobile-about-us-button">About</div>
         </div>
-        <div class="header__mobile-theme" (click)="themeToggle()">
+        <!-- <div class="header__mobile-theme" (click)="themeToggle()">
           @if (themeModeForSite === 'light') {
           <mat-icon>sunny</mat-icon>
           } @else if(themeModeForSite === 'dark') {
           <mat-icon style="color: gray">dark_mode</mat-icon>
           }
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
