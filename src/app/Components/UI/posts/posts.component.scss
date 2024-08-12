@@ -1,0 +1,11 @@
+.posts {
+  max-width: 100%;
+  min-width: 100px;
+  margin-right: 16px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

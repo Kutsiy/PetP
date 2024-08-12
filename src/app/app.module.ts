@@ -18,9 +18,26 @@ import { ContactsComponent } from './Components/MainComponents/contacts/contacts
 import { CardComponent } from './Components/UI/card/card.component';
 import { StackComponent } from './Components/MainComponents/stack/stack.component';
 import { ArticleswrapperComponent } from './Components/MainComponents/wrappers/articleswrapper/articleswrapper.component';
+import { PostComponent } from './Components/UI/post/post.component';
+import { PostsComponent } from './Components/UI/posts/posts.component';
+import { SideMenuComponent } from './Components/MainComponents/side-menu/side-menu.component';
 
 @NgModule({
-  declarations: [AppComponent, FooterComponent, HeaderComponent, MainComponent, BulbComponent, HomewrapperComponent, ContactsComponent, CardComponent, StackComponent, ArticleswrapperComponent],
+  declarations: [
+    AppComponent,
+    FooterComponent,
+    HeaderComponent,
+    MainComponent,
+    BulbComponent,
+    HomewrapperComponent,
+    ContactsComponent,
+    CardComponent,
+    StackComponent,
+    ArticleswrapperComponent,
+    PostComponent,
+    PostsComponent,
+    SideMenuComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, MatIconModule, RouterModule],
   providers: [provideClientHydration(), provideHttpClient(withFetch())],
   bootstrap: [AppComponent],
