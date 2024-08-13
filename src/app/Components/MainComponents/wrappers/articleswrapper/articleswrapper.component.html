@@ -1,6 +1,15 @@
 <div class="articles-wrapper">
   <div class="articles-wrapper__container">
-    <app-posts></app-posts>
-    <app-side-menu></app-side-menu>
+    <div class="articles-wrapper__search">
+      <span>Search:</span>
+      <div class="articles-wrapper__search-block">
+        <input type="text" placeholder="Search..." />
+        <mat-icon class="articles-wrapper__search-icon">search</mat-icon>
+      </div>
+    </div>
+    <div class="articles-wrapper__block">
+      <app-posts style="flex: 1"></app-posts>
+      <app-side-menu></app-side-menu>
+    </div>
   </div>
 </div>

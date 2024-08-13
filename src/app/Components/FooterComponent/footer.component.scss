@@ -70,7 +70,7 @@
 
   @media (max-width: 1200px) {
     &__container {
-      justify-content: space-around;
+      max-width: 700px;
     }
     &__lists {
       justify-content: space-around;
@@ -79,6 +79,9 @@
   }
 
   @media (max-width: 800px) {
+    &__container {
+      justify-content: space-around;
+    }
     &__lists {
       width: 250px;
     }

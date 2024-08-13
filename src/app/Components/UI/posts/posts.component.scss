@@ -1,11 +1,24 @@
 .posts {
-  max-width: 100%;
-  min-width: 100px;
   margin-right: 16px;
 
   &__container {
     display: flex;
     flex-direction: column;
+    min-width: 320px;
     gap: 10px;
+  }
+  @media (max-width: 1200px) {
+    & {
+      margin: 0;
+    }
+  }
+  &__loading {
+    width: 100%;
+    font-size: 60px;
+    background-color: rgba(50, 15, 133, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
   }
 }

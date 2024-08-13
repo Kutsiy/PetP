@@ -63,18 +63,15 @@
       justify-content: center;
     }
     &__cards {
-      margin-right: 162px;
-      margin-left: 162px;
+      // margin-right: 162px;
+      // margin-left: 162px;
       grid-template-columns: repeat(1, auto);
     }
-  }
-  @media (max-width: 900px) {
-    &__cards {
-      margin-right: 124px;
-      margin-left: 124px;
+    &__container {
+      max-width: 700px;
     }
   }
-  @media (max-width: 500px) {
+  @media (max-width: 700px) {
     &__cards {
       margin-right: 20px;
       margin-left: 20px;

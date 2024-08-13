@@ -104,11 +104,11 @@
 
   @media (max-width: 1200px) {
     &__container {
-      justify-content: space-around;
+      max-width: 700px;
     }
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 720px) {
     &__container {
       justify-content: space-between;
       padding: 0 50px;

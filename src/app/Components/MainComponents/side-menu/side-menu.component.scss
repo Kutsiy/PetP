@@ -1,7 +1,7 @@
 .side-menu {
   max-width: 300px;
   min-width: 100px;
-  width: 300px;
+  width: 600px;
   height: 100%;
 
   &__container {
@@ -12,7 +12,7 @@
     background-color: var(--head-back);
   }
 
-  @media (max-width: 1100px) {
+  @media (max-width: 1200px) {
     & {
       display: none;
     }

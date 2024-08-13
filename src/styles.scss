@@ -193,6 +193,7 @@ body {
   user-select: none;
   box-sizing: border-box;
   overflow: auto;
+  overflow-x: hidden;
 }
 html {
   scroll-behavior: smooth;

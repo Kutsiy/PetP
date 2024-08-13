@@ -1,7 +1,9 @@
 <div class="posts">
   <div class="posts__container">
-    <app-post></app-post>
-    <app-post></app-post>
-    <app-post></app-post>
+    @for (item of data; track item.id) {
+    <app-post [post]="item"></app-post>
+    } @empty {
+    <div class="posts__loading">Loading...</div>
+    }
   </div>
 </div>
