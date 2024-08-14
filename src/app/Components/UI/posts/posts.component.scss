@@ -21,4 +21,18 @@
     align-items: center;
     border-radius: 15px;
   }
+  &__pagination {
+    display: flex;
+    max-width: 100%;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(50, 15, 133, 0.8);
+    padding: 5px;
+    padding-left: 20px;
+    height: 40px;
+    border-radius: 15px;
+  }
+  &__pagination-button {
+    cursor: pointer;
+  }
 }

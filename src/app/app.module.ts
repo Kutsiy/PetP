@@ -21,6 +21,7 @@ import { ArticleswrapperComponent } from './Components/MainComponents/wrappers/a
 import { PostComponent } from './Components/UI/post/post.component';
 import { PostsComponent } from './Components/UI/posts/posts.component';
 import { SideMenuComponent } from './Components/MainComponents/side-menu/side-menu.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,13 @@ import { SideMenuComponent } from './Components/MainComponents/side-menu/side-me
     PostsComponent,
     SideMenuComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, MatIconModule, RouterModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    MatIconModule,
+    RouterModule,
+    FormsModule,
+  ],
   providers: [provideClientHydration(), provideHttpClient(withFetch())],
   bootstrap: [AppComponent],
 })
