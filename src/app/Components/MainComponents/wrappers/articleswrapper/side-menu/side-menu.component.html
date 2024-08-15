@@ -1,0 +1,25 @@
+<div
+  class="side-menu"
+  [ngClass]="{
+    vertical: selected === 'vertically',
+    horizontal: selected === 'horizontally'
+  }"
+>
+  <div class="side-menu__container">
+    <div class="side-menu__title">filter</div>
+    <div class="side-menu__select">
+      <h4 class="side-menu__select-title">Select filter display</h4>
+      <mat-form-field>
+        <mat-label>filter display</mat-label>
+        <mat-select
+          [(value)]="selected"
+          (selectionChange)="onSelectionChange($event)"
+        >
+          @for (filter of filterDisplay; track filter) {
+          <mat-option [value]="filter.value">{{ filter.viewValue }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</div>

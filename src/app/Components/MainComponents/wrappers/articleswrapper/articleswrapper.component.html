@@ -7,9 +7,22 @@
         <mat-icon class="articles-wrapper__search-icon">search</mat-icon>
       </div>
     </div>
-    <div class="articles-wrapper__block">
-      <app-posts style="flex: 1" [(searchString)]="searchString"></app-posts>
-      <app-side-menu></app-side-menu>
+    <div
+      class="articles-wrapper__block"
+      [ngClass]="{
+        vertical: message === 'vertically',
+        horizontal: message === 'horizontally'
+      }"
+    >
+      <app-posts
+        style="flex: 1"
+        [(searchString)]="searchString"
+        class="first-item"
+      ></app-posts>
+      <app-side-menu
+        (notify)="handleNotification($event)"
+        class="second-item"
+      ></app-side-menu>
     </div>
   </div>
 </div>

@@ -10,6 +10,7 @@
     flex-direction: column;
     position: relative;
   }
+
   @media (max-width: 1200px) {
     &__container {
       max-width: 700px;
@@ -19,6 +20,24 @@
 
   &__block {
     display: flex;
+    gap: 16px;
+  }
+
+  &__block.vertical {
+    flex-direction: row;
+  }
+
+  &__block.horizontal {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  &__block.horizontal .first-item {
+    order: 2;
+  }
+
+  &__block.horizontal .second-item {
+    order: 1;
   }
 
   &__search {

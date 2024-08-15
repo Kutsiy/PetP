@@ -7,4 +7,11 @@ import { Component, SimpleChanges } from '@angular/core';
 })
 export class ArticleswrapperComponent {
   searchString: string | null = null;
+
+  message: string = 'vertically';
+
+  handleNotification(message: string) {
+    console.log('message: ', message);
+    this.message = message;
+  }
 }
