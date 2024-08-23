@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './Components/FooterComponent/footer.component';
 import { HeaderComponent } from './Components/HeaderComponent/header.component';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideHttpClient, withFetch, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MainComponent } from './Components/MainComponents/wrappers/homewrapper/main/main.component';
 import { BulbComponent } from './Components/CanvasComponents/bulb/bulb.component';
@@ -27,6 +27,7 @@ import { SideMenuComponent } from './Components/MainComponents/wrappers/articles
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostPageComponent } from './Components/MainComponents/wrappers/articleswrapper/post-page/post-page.component';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,8 @@ import { PostPageComponent } from './Components/MainComponents/wrappers/articles
     MatSelectModule,
     MatInputModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    GraphQLModule,
   ],
   providers: [provideClientHydration(), provideHttpClient(withFetch())],
   bootstrap: [AppComponent],
