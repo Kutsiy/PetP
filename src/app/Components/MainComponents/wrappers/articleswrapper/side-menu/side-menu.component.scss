@@ -31,12 +31,21 @@
     position: static;
     align-items: start;
     padding: 25px;
+    flex-direction: row;
+    gap: 20px;
   }
 
   &__title {
     font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-transform: capitalize;
   }
+
+  // &.horizontal &__title {
+  //   height: 100%;
+  // }
 
   &__select {
     margin-top: 10px;

@@ -10,13 +10,26 @@
     <div class="side-menu__select">
       <h4 class="side-menu__select-title">Select filter display</h4>
       <mat-form-field>
-        <mat-label>filter display</mat-label>
+        <mat-label>Filter display</mat-label>
         <mat-select
           [(value)]="selected"
           (selectionChange)="onSelectionChange($event)"
         >
           @for (filter of filterDisplay; track filter) {
           <mat-option [value]="filter.value">{{ filter.viewValue }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="side-menu__select">
+      <h4 class="side-menu__select-title">Select a category</h4>
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select>
+          @for (category of categories; track category) {
+          <mat-option [value]="category.value">{{
+            category.viewValue
+          }}</mat-option>
           }
         </mat-select>
       </mat-form-field>

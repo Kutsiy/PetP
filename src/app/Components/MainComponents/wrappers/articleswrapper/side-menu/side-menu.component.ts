@@ -12,9 +12,14 @@ export class SideMenuComponent {
     this.notify.emit(message);
   }
 
+  categories = [
+    { value: 'About me', viewValue: 'About me' },
+    { value: 'News about programming', viewValue: 'News about programming' },
+  ];
+
   filterDisplay = [
-    { value: 'vertically', viewValue: 'vertically' },
-    { value: 'horizontally', viewValue: 'horizontally' },
+    { value: 'Vertically', viewValue: 'Vertically' },
+    { value: 'Horizontally', viewValue: 'Horizontally' },
   ];
   selected: string = this.filterDisplay[0].value;
   onSelectionChange(event: any): void {

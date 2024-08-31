@@ -1,20 +1,22 @@
 <div class="footer">
   <div class="footer__container">
-    <div class="footer__logo">
+    <div class="footer__logo" [routerLink]="['/']">
       <span class="footer__logo-title"> NE </span>
     </div>
     <div class="footer__lists">
       <ul class="footer__list">
         <div class="footer__list-title">Main</div>
-        <li class="footer__list-item">Main Page</li>
+        <li class="footer__list-item" [routerLink]="['/']">Main Page</li>
+      </ul>
+      <ul class="footer__list">
+        <div class="footer__list-title">Articles</div>
+        <li class="footer__list-item" [routerLink]="['/articles']">
+          Articles Page
+        </li>
       </ul>
       <ul class="footer__list">
         <div class="footer__list-title">About</div>
         <li class="footer__list-item">About Page</li>
-      </ul>
-      <ul class="footer__list">
-        <div class="footer__list-title">Articles</div>
-        <li class="footer__list-item">Articles Page</li>
       </ul>
     </div>
   </div>

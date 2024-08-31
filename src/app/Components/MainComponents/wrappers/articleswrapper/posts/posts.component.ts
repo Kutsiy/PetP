@@ -11,6 +11,7 @@ import {
   PLATFORM_ID,
   SimpleChanges,
 } from '@angular/core';
+import { PostsService } from '../../../../../Services/posts.service';
 
 @Component({
   selector: 'app-posts',
@@ -30,7 +31,8 @@ export class PostsComponent implements OnInit, OnChanges {
   @Output() searchStringChange = new EventEmitter<string | null>();
   constructor(
     @Inject(HttpClient) private httpClient: HttpClient,
-    @Inject(PLATFORM_ID) private platformId: Object
+    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(PostsService) private postService: PostsService
   ) {}
   ngOnInit(): void {
     this.loadPosts(this.currentPage, this.pageLimit);
@@ -61,35 +63,45 @@ export class PostsComponent implements OnInit, OnChanges {
     scrollTo({ top: 0 });
   }
 
-  loadPosts(page = 1, limit = 10) {
+  async loadPosts(page = 1, limit = 10) {
     if (isPlatformBrowser(this.platformId)) {
       this.isLoading = true;
-      this.httpClient
-        .get(
-          `https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${limit}`,
-          {
-            observe: 'response',
-          }
-        )
-        .subscribe(
-          (response: HttpResponse<any>) => {
-            this.data = response.body;
-            this.searchData = [...response.body];
-            if (!this.totalCount) {
-              this.totalCount = response.headers.get('x-total-count');
-              if (this.totalCount && this.pageCountArray.length === 0) {
-                this.pageCount = Math.ceil(+this.totalCount / this.pageLimit);
-                for (let i = 0; i < this.pageCount; i++) {
-                  this.pageCountArray.push(i + 1);
-                }
-              }
-            }
-            this.isLoading = false;
-          },
-          (error) => {
-            console.error(error);
-          }
-        );
+      // this.httpClient
+      //   .get(
+      //     `https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${limit}`,
+      //     {
+      //       observe: 'response',
+      //     }
+      //   )
+      //   .subscribe(
+      //     (response: HttpResponse<any>) => {
+      //       this.data = response.body;
+      //       this.searchData = [...response.body];
+      //       if (!this.totalCount) {
+      //         this.totalCount = response.headers.get('x-total-count');
+      //         if (this.totalCount && this.pageCountArray.length === 0) {
+      //           this.pageCount = Math.ceil(+this.totalCount / this.pageLimit);
+      //           for (let i = 0; i < this.pageCount; i++) {
+      //             this.pageCountArray.push(i + 1);
+      //           }
+      //         }
+      //       }
+      //       this.isLoading = false;
+      //     },
+      //     (error) => {
+      //       console.error(error);
+      //     }
+      //   );
+      this.postService.start()?.subscribe(
+        (data) => {
+          this.data = data;
+          this.searchData = [...data];
+          this.isLoading = false;
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
     }
   }
 }

@@ -1,13 +1,16 @@
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
-import { Subscription } from 'rxjs';
+import { map, Subscription } from 'rxjs';
 
 const GET_POSTS = gql`
   query GetPosts {
-    posts {
-      id
-      title
-      body
+    Posts {
+      posts {
+        id
+        title
+        body
+      }
     }
   }
 `;
@@ -19,21 +22,19 @@ export class PostsService {
   loading: boolean = false;
   posts: any;
 
-  private querySubscription: Subscription | undefined = undefined;
-
-  constructor(private readonly apollo: Apollo) {}
+  constructor(
+    private readonly apollo: Apollo,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   start() {
-    this.querySubscription = this.apollo
-      .watchQuery<any>({
-        query: GET_POSTS,
-      })
-      .valueChanges.subscribe(({ data, loading }) => {
-        this.loading = loading;
-        this.posts = data.posts;
-      });
-  }
-  stop() {
-    this.querySubscription?.unsubscribe();
+    if (isPlatformBrowser(this.platformId)) {
+      return this.apollo
+        .watchQuery<any>({
+          query: GET_POSTS,
+        })
+        .valueChanges.pipe(map((data) => data.data.Posts.posts));
+    }
+    return null;
   }
 }
