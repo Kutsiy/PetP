@@ -4,13 +4,16 @@ import { Apollo, gql } from 'apollo-angular';
 import { map, Subscription } from 'rxjs';
 
 const GET_POSTS = gql`
-  query GetPosts {
-    Posts {
+  query GetPosts($page: Int, $take: Int) {
+    Posts(page: $page, take: $take) {
       posts {
         id
         title
         body
       }
+      totalCount
+      pageCount
+      currentPage
     }
   }
 `;
@@ -19,21 +22,22 @@ const GET_POSTS = gql`
   providedIn: 'root',
 })
 export class PostsService {
-  loading: boolean = false;
-  posts: any;
-
   constructor(
     private readonly apollo: Apollo,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
-  start() {
+  start(page: number, take: number) {
     if (isPlatformBrowser(this.platformId)) {
       return this.apollo
         .watchQuery<any>({
           query: GET_POSTS,
+          variables: {
+            page,
+            take,
+          },
         })
-        .valueChanges.pipe(map((data) => data.data.Posts.posts));
+        .valueChanges.pipe(map((data) => data.data.Posts));
     }
     return null;
   }

@@ -6,8 +6,4 @@ import { PostsService } from './Services/posts.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  constructor(private postsService: PostsService) {
-    this.postsService.start();
-  }
-}
+export class AppComponent {}

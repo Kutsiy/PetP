@@ -63,39 +63,24 @@ export class PostsComponent implements OnInit, OnChanges {
     scrollTo({ top: 0 });
   }
 
-  async loadPosts(page = 1, limit = 10) {
+  async loadPosts(pageNumber: number = 1, limit: number = 10) {
     if (isPlatformBrowser(this.platformId)) {
       this.isLoading = true;
-      // this.httpClient
-      //   .get(
-      //     `https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=${limit}`,
-      //     {
-      //       observe: 'response',
-      //     }
-      //   )
-      //   .subscribe(
-      //     (response: HttpResponse<any>) => {
-      //       this.data = response.body;
-      //       this.searchData = [...response.body];
-      //       if (!this.totalCount) {
-      //         this.totalCount = response.headers.get('x-total-count');
-      //         if (this.totalCount && this.pageCountArray.length === 0) {
-      //           this.pageCount = Math.ceil(+this.totalCount / this.pageLimit);
-      //           for (let i = 0; i < this.pageCount; i++) {
-      //             this.pageCountArray.push(i + 1);
-      //           }
-      //         }
-      //       }
-      //       this.isLoading = false;
-      //     },
-      //     (error) => {
-      //       console.error(error);
-      //     }
-      //   );
-      this.postService.start()?.subscribe(
+
+      this.postService.start(pageNumber, limit)?.subscribe(
         (data) => {
-          this.data = data;
-          this.searchData = [...data];
+          if (data) {
+            this.data = data.posts;
+            this.searchData = [...data.posts];
+            this.totalCount = data.totalCount;
+            this.pageCount = data.pageCount;
+            if (this.pageCount) {
+              this.pageCountArray = Array.from(
+                { length: this.pageCount },
+                (_, i) => i + 1
+              );
+            }
+          }
           this.isLoading = false;
         },
         (error) => {
