@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { map, Subscription } from 'rxjs';
 
@@ -22,6 +22,7 @@ const GET_POSTS = gql`
   providedIn: 'root',
 })
 export class PostsService {
+  private pageOnSite = signal(1);
   constructor(
     private readonly apollo: Apollo,
     @Inject(PLATFORM_ID) private platformId: Object
@@ -40,5 +41,13 @@ export class PostsService {
         .valueChanges.pipe(map((data) => data.data.Posts));
     }
     return null;
+  }
+
+  getPage() {
+    return this.pageOnSite();
+  }
+
+  setPage(page: number) {
+    this.pageOnSite.set(page);
   }
 }

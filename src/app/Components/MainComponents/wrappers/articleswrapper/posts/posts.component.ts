@@ -35,7 +35,7 @@ export class PostsComponent implements OnInit, OnChanges {
     @Inject(PostsService) private postService: PostsService
   ) {}
   ngOnInit(): void {
-    this.loadPosts(this.currentPage, this.pageLimit);
+    this.loadPosts(this.postService.getPage(), this.pageLimit);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -57,6 +57,7 @@ export class PostsComponent implements OnInit, OnChanges {
   }
 
   clickOnPageNumber(pageNumber: number) {
+    this.postService.setPage(pageNumber);
     this.searchStringChange.emit('');
     this.loadPosts(pageNumber, this.pageLimit);
     this.onSearch();
