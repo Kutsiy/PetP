@@ -4,8 +4,8 @@ import { Apollo, gql } from 'apollo-angular';
 import { map, Subscription } from 'rxjs';
 
 const GET_POSTS = gql`
-  query GetPosts($page: Int, $take: Int) {
-    Posts(page: $page, take: $take) {
+  query GetPosts($searchString: String, $page: Int, $take: Int) {
+    Posts(searchString: $searchString, page: $page, take: $take) {
       posts {
         id
         title
@@ -23,17 +23,19 @@ const GET_POSTS = gql`
 })
 export class PostsService {
   private pageOnSite = signal(1);
+  private searchString = signal('');
   constructor(
     private readonly apollo: Apollo,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
-  start(page: number, take: number) {
+  start(searchString: string = '', page: number, take: number) {
     if (isPlatformBrowser(this.platformId)) {
       return this.apollo
         .watchQuery<any>({
           query: GET_POSTS,
           variables: {
+            searchString,
             page,
             take,
           },
@@ -49,5 +51,11 @@ export class PostsService {
 
   setPage(page: number) {
     this.pageOnSite.set(page);
+  }
+  setSearchString(searchString: string) {
+    this.searchString.set(searchString);
+  }
+  getSearchString() {
+    return this.searchString();
   }
 }

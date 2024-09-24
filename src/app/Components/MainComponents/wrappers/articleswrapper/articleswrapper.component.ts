@@ -11,8 +11,6 @@ export class ArticleswrapperComponent {
   message: string = 'vertically';
 
   handleNotification(message: string) {
-    console.log('message: ', message);
     this.message = message;
-    console.log(this.message);
   }
 }

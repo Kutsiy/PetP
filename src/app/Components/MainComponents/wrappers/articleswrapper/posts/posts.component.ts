@@ -20,7 +20,6 @@ import { PostsService } from '../../../../../Services/posts.service';
 })
 export class PostsComponent implements OnInit, OnChanges {
   data: any[] | null = null;
-  searchData: any[] | null = null;
   totalCount: string | null = null;
   currentPage = 1;
   pageLimit = 10;
@@ -35,7 +34,8 @@ export class PostsComponent implements OnInit, OnChanges {
     @Inject(PostsService) private postService: PostsService
   ) {}
   ngOnInit(): void {
-    this.loadPosts(this.postService.getPage(), this.pageLimit);
+    this.postService.setSearchString('');
+    this.loadPosts('', this.postService.getPage(), this.pageLimit);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -47,32 +47,34 @@ export class PostsComponent implements OnInit, OnChanges {
 
   onSearch(value: string = '') {
     if (!this.data) return;
-    if (value === '') {
-      this.searchData = [...this.data];
+    if (value === '' || value === undefined || value === null) {
+      this.postService.setSearchString(value);
+      this.loadPosts('');
     } else {
-      this.searchData = this.data.filter((val: any) =>
-        val.title.toLowerCase().includes(value.toLowerCase())
-      );
+      this.postService.setSearchString(value);
+      this.loadPosts(value);
     }
   }
 
   clickOnPageNumber(pageNumber: number) {
     this.postService.setPage(pageNumber);
     this.searchStringChange.emit('');
-    this.loadPosts(pageNumber, this.pageLimit);
-    this.onSearch();
+    this.loadPosts(
+      this.postService.getSearchString(),
+      pageNumber,
+      this.pageLimit
+    );
     scrollTo({ top: 0 });
   }
 
-  async loadPosts(pageNumber: number = 1, limit: number = 10) {
+  async loadPosts(value = '', pageNumber: number = 1, limit: number = 10) {
     if (isPlatformBrowser(this.platformId)) {
       this.isLoading = true;
 
-      this.postService.start(pageNumber, limit)?.subscribe(
+      this.postService.start(value, pageNumber, limit)?.subscribe(
         (data) => {
           if (data) {
             this.data = data.posts;
-            this.searchData = [...data.posts];
             this.totalCount = data.totalCount;
             this.pageCount = data.pageCount;
             if (this.pageCount) {
