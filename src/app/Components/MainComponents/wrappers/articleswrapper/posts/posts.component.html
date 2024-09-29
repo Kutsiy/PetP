@@ -2,11 +2,11 @@
   <div class="posts__container">
     @if(isLoading) {
     <div class="posts__loading">Loading...</div>
+    } @else { @if (isEmpty === true) {
+    <div class="posts__loading">Empty</div>
     } @else { @for (item of data; track item.id) {
     <app-post [post]="item"></app-post>
-    } } @if(!isLoading && data && data.length === 0) {
-    <div class="posts__loading">Empty</div>
-    } @if(pageCountArray.length > 0) {
+    } } @if(pageCountArray.length > 1) {
     <div class="posts__pagination">
       @for (item of pageCountArray; track item) {
       <div class="posts__pagination-button" (click)="clickOnPageNumber(item)">
@@ -14,6 +14,6 @@
       </div>
       }
     </div>
-    }
+    }}
   </div>
 </div>

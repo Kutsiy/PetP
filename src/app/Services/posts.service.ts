@@ -14,6 +14,7 @@ const GET_POSTS = gql`
       totalCount
       pageCount
       currentPage
+      isEmpty
     }
   }
 `;

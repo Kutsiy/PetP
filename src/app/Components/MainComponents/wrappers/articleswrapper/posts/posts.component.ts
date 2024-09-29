@@ -26,6 +26,7 @@ export class PostsComponent implements OnInit, OnChanges {
   pageCount: number | null = null;
   pageCountArray: number[] = [];
   isLoading: boolean = false;
+  isEmpty: boolean = false;
   @Input() searchString: string | null = null;
   @Output() searchStringChange = new EventEmitter<string | null>();
   constructor(
@@ -58,7 +59,7 @@ export class PostsComponent implements OnInit, OnChanges {
 
   clickOnPageNumber(pageNumber: number) {
     this.postService.setPage(pageNumber);
-    this.searchStringChange.emit('');
+    this.searchStringChange.emit(this.postService.getSearchString());
     this.loadPosts(
       this.postService.getSearchString(),
       pageNumber,
@@ -72,11 +73,12 @@ export class PostsComponent implements OnInit, OnChanges {
       this.isLoading = true;
 
       this.postService.start(value, pageNumber, limit)?.subscribe(
-        (data) => {
+        (data: any) => {
           if (data) {
             this.data = data.posts;
             this.totalCount = data.totalCount;
             this.pageCount = data.pageCount;
+            this.isEmpty = data.isEmpty;
             if (this.pageCount) {
               this.pageCountArray = Array.from(
                 { length: this.pageCount },
