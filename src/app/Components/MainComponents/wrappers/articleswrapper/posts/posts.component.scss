@@ -32,5 +32,8 @@
   }
   &__pagination-button {
     cursor: pointer;
+    &.active {
+      color: var(--card-shadow);
+    }
   }
 }

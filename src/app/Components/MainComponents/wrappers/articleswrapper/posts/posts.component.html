@@ -8,10 +8,22 @@
     <app-post [post]="item"></app-post>
     } } @if(pageCountArray.length > 1) {
     <div class="posts__pagination">
-      @for (item of pageCountArray; track item) {
-      <div class="posts__pagination-button" (click)="clickOnPageNumber(item)">
+      @if (rangePage?.firstPage) {
+      <span>First page</span>
+      } @if (rangePage?.leftDots) {
+      <span>...</span>
+      } @for (item of rangePage?.rangeWithDots; track item) {
+      <div
+        class="posts__pagination-button"
+        (click)="clickOnPageNumber($event, item)"
+        [class.active]="currentPage === item"
+      >
         {{ item }}
       </div>
+      } @if (rangePage?.rightDots) {
+      <span>...</span>
+      } @if (rangePage?.lastPage) {
+      <span>Last page</span>
       }
     </div>
     }}
