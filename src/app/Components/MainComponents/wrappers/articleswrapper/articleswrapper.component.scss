@@ -58,9 +58,14 @@
     border-radius: 15px;
   }
 
+  &__search > span {
+    font-size: 30px;
+  }
+
   &__search-block {
     width: 50%;
     height: 50%;
+    top: 3px;
     position: relative;
     background-color: white;
     border-radius: 15px;
@@ -71,7 +76,6 @@
     top: 1px;
     z-index: 5;
     color: black;
-    cursor: pointer;
   }
 
   &__search input {
@@ -85,8 +89,6 @@
     box-sizing: border-box;
     padding: 10px;
     border: none;
-    // background-color: black;
-    // margin: 5px;
   }
 
   &__search input:focus {

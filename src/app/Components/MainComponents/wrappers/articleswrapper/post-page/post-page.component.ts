@@ -1,7 +1,13 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PostsService } from '../../../../../Services/posts.service';
 
+type PostData = {
+  __typename: string;
+  id: string;
+  title: string;
+  body: string;
+};
 @Component({
   selector: 'app-post-page',
   templateUrl: './post-page.component.html',
@@ -9,13 +15,22 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PostPageComponent implements OnInit {
   postId: string | null = null;
-  data: object = {};
+  data: PostData | null = null;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+  constructor(
+    private route: ActivatedRoute,
+    @Inject(PostsService) private postService: PostsService
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.postId = params.get('id');
     });
+    const result = this.postService.findPost(`${this.postId}`);
+    if (result !== null) {
+      result.subscribe((result) => {
+        this.data = { ...result };
+      });
+    }
   }
 }

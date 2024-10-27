@@ -32,8 +32,23 @@
   }
   &__pagination-button {
     cursor: pointer;
+    transition: 0.25s;
     &.active {
+      transition: 0.25s;
       color: var(--card-shadow);
+    }
+    &.active:hover {
+      transition: 0.25s;
+      color: rgb(97, 1, 188);
+    }
+  }
+  &__pagination-button:hover {
+    transition: 0.25s;
+    color: gray;
+  }
+  @media (max-width: 1200px) {
+    &__pagination-button {
+      font-size: 35px;
     }
   }
 }

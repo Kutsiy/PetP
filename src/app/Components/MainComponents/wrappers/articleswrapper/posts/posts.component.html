@@ -9,21 +9,35 @@
     } } @if(pageCountArray.length > 1) {
     <div class="posts__pagination">
       @if (rangePage?.firstPage) {
-      <span>First page</span>
+      <span (click)="clickOnPageNumber(1)" class="posts__pagination-button"
+        >First page</span
+      >
       } @if (rangePage?.leftDots) {
-      <span>...</span>
+      <span
+        (click)="clickOnPageNumber(leftNumber - 1)"
+        class="posts__pagination-button"
+        >...</span
+      >
       } @for (item of rangePage?.rangeWithDots; track item) {
       <div
         class="posts__pagination-button"
-        (click)="clickOnPageNumber($event, item)"
+        (click)="clickOnPageNumber(item)"
         [class.active]="currentPage === item"
       >
         {{ item }}
       </div>
       } @if (rangePage?.rightDots) {
-      <span>...</span>
+      <span
+        (click)="clickOnPageNumber(rightNumber + 1)"
+        class="posts__pagination-button"
+        >...</span
+      >
       } @if (rangePage?.lastPage) {
-      <span>Last page</span>
+      <span
+        (click)="clickOnPageNumber(pageCount)"
+        class="posts__pagination-button"
+        >Last page</span
+      >
       }
     </div>
     }}

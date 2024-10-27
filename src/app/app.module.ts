@@ -12,7 +12,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './Components/FooterComponent/footer.component';
 import { HeaderComponent } from './Components/HeaderComponent/header.component';
-import { provideHttpClient, withFetch, HttpClientModule } from '@angular/common/http';
+import {
+  provideHttpClient,
+  withFetch,
+  HttpClientModule,
+} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MainComponent } from './Components/MainComponents/wrappers/homewrapper/main/main.component';
 import { BulbComponent } from './Components/CanvasComponents/bulb/bulb.component';
@@ -28,6 +32,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostPageComponent } from './Components/MainComponents/wrappers/articleswrapper/post-page/post-page.component';
 import { GraphQLModule } from './graphql.module';
+import { AccountwrapperComponent } from './Components/MainComponents/wrappers/accountwrapper/accountwrapper.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +50,7 @@ import { GraphQLModule } from './graphql.module';
     PostsComponent,
     SideMenuComponent,
     PostPageComponent,
+    AccountwrapperComponent,
   ],
   imports: [
     BrowserModule,

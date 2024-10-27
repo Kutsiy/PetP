@@ -33,11 +33,13 @@ export class PostsComponent implements OnInit, OnChanges {
   totalCount: string | null = null;
   currentPage = 1;
   pageLimit = 10;
-  pageCount: number | null = null;
+  pageCount: number = 1;
   pageCountArray: number[] = [];
   isLoading: boolean = false;
   isEmpty: boolean = false;
   rangePage: range | null = null;
+  leftNumber: number = 0;
+  rightNumber: number = 0;
   @Input() searchString: string | null = null;
   @Output() searchStringChange = new EventEmitter<string | null>();
   constructor(
@@ -47,6 +49,7 @@ export class PostsComponent implements OnInit, OnChanges {
   ) {}
   ngOnInit(): void {
     this.postService.setSearchString('');
+    this.currentPage = this.postService.getPage();
     this.loadPosts('', this.postService.getPage(), this.pageLimit);
   }
 
@@ -68,7 +71,7 @@ export class PostsComponent implements OnInit, OnChanges {
     }
   }
 
-  async clickOnPageNumber(event: MouseEvent, pageNumber: number | string) {
+  async clickOnPageNumber(pageNumber: number | string) {
     if (typeof pageNumber === 'number') {
       this.currentPage = pageNumber;
       this.postService.setPage(pageNumber);
@@ -102,6 +105,10 @@ export class PostsComponent implements OnInit, OnChanges {
                 this.pageCount,
                 pageNumber
               );
+              if (this.rangePage !== null) {
+                this.leftNumber = this.rangePage.left;
+                this.rightNumber = this.rangePage.right;
+              }
             }
           }
           this.isLoading = false;
@@ -117,16 +124,19 @@ export class PostsComponent implements OnInit, OnChanges {
     const total = pageCount;
     const current = currentPage;
     const delta = currentPage === 1 ? 2 : currentPage === pageCount ? 2 : 1;
-    let left = Math.max(1, current - delta);
     if (
       typeof currentPage === 'number' &&
       typeof pageCount === 'number' &&
       typeof total === 'number'
     ) {
+      let left = Math.max(1, current - delta);
       let right = Math.min(
         currentPage >= pageCount - 1 ? pageCount : total - 1,
         current + delta
       );
+      if (total === 3) {
+        right = 3;
+      }
       const range: range = {
         firstPage: false,
         leftDots: false,

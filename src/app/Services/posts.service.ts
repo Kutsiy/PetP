@@ -19,6 +19,16 @@ const GET_POSTS = gql`
   }
 `;
 
+const GET_POST = gql`
+  query GetPost($id: String) {
+    Post(id: $id) {
+      id
+      title
+      body
+    }
+  }
+`;
+
 @Injectable({
   providedIn: 'root',
 })
@@ -42,6 +52,20 @@ export class PostsService {
           },
         })
         .valueChanges.pipe(map((data) => data.data.Posts));
+    }
+    return null;
+  }
+
+  findPost(id: string = '1') {
+    if (isPlatformBrowser(this.platformId)) {
+      return this.apollo
+        .watchQuery<any>({
+          query: GET_POST,
+          variables: {
+            id,
+          },
+        })
+        .valueChanges.pipe(map((data) => data.data.Post));
     }
     return null;
   }

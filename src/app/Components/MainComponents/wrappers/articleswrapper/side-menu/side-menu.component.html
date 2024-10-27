@@ -6,6 +6,7 @@
   }"
 >
   <div class="side-menu__container">
+    @if (isSmallScreen === false) {
     <div class="side-menu__title">filter</div>
     <div class="side-menu__select">
       <h4 class="side-menu__select-title">Select filter display</h4>
@@ -21,6 +22,7 @@
         </mat-select>
       </mat-form-field>
     </div>
+    }
     <div class="side-menu__select">
       <h4 class="side-menu__select-title">Select a category</h4>
       <mat-form-field>
