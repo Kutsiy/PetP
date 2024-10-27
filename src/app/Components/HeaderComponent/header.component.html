@@ -33,7 +33,7 @@
             >
             <span>Articles</span>
           </div>
-          <div class="header__about-us-button header__buttons">
+          <div class="header__about-us-button header__buttons account_button">
             <mat-icon
               style="
                 font-size: 19px;
@@ -44,6 +44,12 @@
               >person</mat-icon
             >
             <span>Account</span>
+            <div
+              class="account_button__menu"
+              (click)="$event.stopPropagation()"
+            >
+              <div>Log In</div>
+            </div>
           </div>
         </div>
         <!-- <div class="header__theme" (click)="themeToggle()">
@@ -77,7 +83,15 @@
           >
             Articles
           </div>
-          <div class="header__mobile-about-us-button">Account</div>
+          <div
+            class="header__mobile-about-us-button mobile_account_button"
+            (click)="openMobileAccountMenu()"
+          >
+            Account
+            <div class="mobile_account_button__menu">
+              <div>Log In</div>
+            </div>
+          </div>
         </div>
         <!-- <div class="header__mobile-theme" (click)="themeToggle()">
           @if (themeModeForSite === 'light') {

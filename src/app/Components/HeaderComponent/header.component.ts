@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   position = 0;
   headerElement: HTMLElement;
   themeModeForSite: string | null = null;
+  isMobileAccountMenuOpen = false;
   constructor(
     @Inject(DOCUMENT) private document: Document,
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -72,4 +73,18 @@ export class HeaderComponent implements OnInit {
       });
     }
   }
+
+  openMobileAccountMenu() {
+    this.isMobileAccountMenuOpen = !this.isMobileAccountMenuOpen;
+    const mobileAccountMenu: HTMLDivElement =
+      this.elementRef.nativeElement.querySelector(
+        '.mobile_account_button__menu'
+      );
+    mobileAccountMenu.classList.toggle('active');
+  }
+
+  // log(event: any) {
+  //   event.stopPropagation();
+  //   console.log(event.target.textContent);
+  // }
 }

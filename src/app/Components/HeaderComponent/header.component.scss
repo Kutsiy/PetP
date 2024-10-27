@@ -219,6 +219,72 @@
       transform: translateX(2px);
     }
   }
+
+  .account_button {
+    position: relative;
+
+    &__menu {
+      transition: 0.5s;
+      box-sizing: border-box;
+      position: absolute;
+      top: 32px;
+      right: 0px;
+      width: 100px;
+      background-color: var(--head-back);
+      border: 1px solid var(--card-shadow);
+      visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 3px;
+      padding-bottom: 5px;
+      opacity: 0;
+    }
+
+    &:hover > .account_button__menu {
+      transition: 0.5s;
+      opacity: 0.9;
+      visibility: visible;
+    }
+  }
+
+  .mobile_account_button {
+    position: relative;
+
+    &__menu {
+      position: absolute;
+      width: 200px;
+      top: 70px;
+      display: flex;
+      opacity: 0;
+      transition: 0.5s;
+      visibility: visible;
+      flex-direction: column;
+      align-items: center;
+      border: none;
+      background-color: var(--head-back);
+      padding-top: 3px;
+      padding-bottom: 5px;
+    }
+
+    &__menu > div {
+      color: gray;
+      transition: 0.5s;
+    }
+
+    &__menu > div:hover {
+      color: white;
+      cursor: pointer;
+      transition: 0.5s;
+    }
+
+    &__menu.active {
+      transition: 0.5s;
+      opacity: 1;
+      visibility: visible;
+      border: 1px solid var(--card-shadow);
+    }
+  }
 }
 
 mat-icon {
