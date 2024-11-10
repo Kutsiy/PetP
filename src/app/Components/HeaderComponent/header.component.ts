@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
   headerElement: HTMLElement;
   themeModeForSite: string | null = null;
   isMobileAccountMenuOpen = false;
+  isHaveAccount = false;
   constructor(
     @Inject(DOCUMENT) private document: Document,
     @Inject(PLATFORM_ID) private platformId: Object,

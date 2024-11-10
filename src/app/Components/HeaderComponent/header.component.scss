@@ -246,6 +246,17 @@
       opacity: 0.9;
       visibility: visible;
     }
+
+    &__menu > div {
+      color: gray;
+      transition: 0.5s;
+    }
+
+    &__menu > div:hover {
+      color: white;
+      cursor: pointer;
+      transition: 0.5s;
+    }
   }
 
   .mobile_account_button {

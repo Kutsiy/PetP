@@ -181,6 +181,12 @@ body[data-theme="dark"] {
     rgba(50, 15, 133, 1) 10%,
     rgba(17, 7, 31, 1) 50%
   );
+  --account-bar-back: linear-gradient(
+    100deg,
+    rgb(41, 3, 93) 6%,
+    rgb(60, 5, 136) 54%,
+    rgb(64, 4, 138) 80%
+  );
 }
 
 body {
