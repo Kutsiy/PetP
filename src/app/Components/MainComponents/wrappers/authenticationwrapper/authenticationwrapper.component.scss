@@ -1,0 +1,169 @@
+.auth {
+  &__wrapper {
+    max-width: 100%;
+    min-width: 320px;
+    height: 100%;
+  }
+
+  &__container {
+    max-width: 1050px;
+    min-width: 320px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__box {
+    margin: 25px 0;
+    width: 350px;
+    height: 450px;
+    border-radius: 5px;
+    background: var(--account-bar-back);
+    box-sizing: border-box;
+    border: 10px solid rgb(34, 0, 65);
+    box-shadow: inset 0 10px 30px 10px rgb(21, 0, 41);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    transition: 0.3s;
+  }
+
+  &__box.active {
+    transition: 0.5s;
+    height: 500px;
+  }
+
+  &__login {
+    transform: translateX(0);
+    transition: 0.5s;
+  }
+
+  &__box.active .auth__login {
+    transform: translateX(-350px);
+  }
+
+  &__sign-up {
+    transition: 0.5s;
+    position: absolute;
+    transform: translateX(350px);
+  }
+
+  &__box.active .auth__sign-up {
+    transform: translateX(0);
+  }
+
+  &__login_title {
+    font-size: 35px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  &__inputBox {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 35px 0;
+    margin-bottom: 20px;
+  }
+
+  &__inputBox > input {
+    padding: 15px 20px;
+    font-size: 1em;
+    outline: none;
+    border: 2px solid rgb(34, 0, 65);
+    border-radius: 30px;
+    color: white;
+    background-color: rgb(89, 0, 168);
+    box-shadow: inset 0 2px 10px rgb(0, 0, 0);
+  }
+
+  &__inputBox > label {
+    position: absolute;
+    left: 20px;
+    color: white;
+    font-size: 25px;
+    top: 50%;
+    transform: translateY(-42%);
+    transition: 0.25s;
+    font-weight: 500;
+    pointer-events: none;
+  }
+
+  &__inputBox input:focus + label,
+  &__inputBox input:valid + label {
+    transition: 0.25s;
+    font-size: 20px;
+    top: -15px;
+    left: 30px;
+  }
+
+  &__inputBox input:focus {
+    animation: inputAnimation 0.5s;
+  }
+
+  @keyframes inputAnimation {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  &__buttonBox > button {
+    border: 2px solid rgb(84, 1, 122);
+    box-shadow: inset 0 5px 10px rgb(67, 0, 129), -2px 2px 3px black;
+    width: 90px;
+    height: 45px;
+    font-size: 22px;
+    border-radius: 15px;
+    background-color: rgb(133, 18, 210);
+    color: white;
+    font-weight: 500;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+
+  &__buttonBox > button:hover {
+    transform: translateX(2px) translateY(-2px);
+    transition: 0.5s;
+  }
+
+  &__buttonBox > button:active {
+    transition: 0.2s;
+    transform: scale(0.95);
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    gap: 10px;
+  }
+
+  &__options > div {
+    cursor: pointer;
+    width: fit-content;
+    overflow: hidden;
+  }
+
+  &__options > div > div {
+    width: fit-content;
+    transform: translateX(-505px);
+    height: 1px;
+    border-bottom: 3px solid white;
+    transition: 0.5s;
+  }
+
+  &__options > div:hover > div {
+    transform: translateX(0px);
+    transition: 0.5s;
+  }
+}

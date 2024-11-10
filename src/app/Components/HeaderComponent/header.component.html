@@ -44,23 +44,17 @@
               >person</mat-icon
             >
             <span>Account</span>
-            @if(!isHaveAccount) {
             <div
               class="account_button__menu"
               (click)="$event.stopPropagation()"
             >
-              <div>Log In</div>
+              @if(!isHaveAccount) {
+              <div [routerLink]="['/auth']">Log In</div>
               <div>Sign Up</div>
+              } @if (isHaveAccount) {
+              <div [routerLink]="['/account']">Settings</div>
+              }
             </div>
-            } @if (isHaveAccount) {
-            <div
-              class="account_button__menu"
-              (click)="$event.stopPropagation()"
-              [routerLink]="['/account']"
-            >
-              <div>Settings</div>
-            </div>
-            }
           </div>
         </div>
         <!-- <div class="header__theme" (click)="themeToggle()">
@@ -98,23 +92,18 @@
             class="header__mobile-about-us-button mobile_account_button"
             (click)="openMobileAccountMenu()"
           >
-            Account @if (!isHaveAccount) {
+            Account
             <div
               class="mobile_account_button__menu"
               (click)="$event.stopPropagation()"
             >
+              @if (!isHaveAccount) {
               <div>Log In</div>
               <div>Sign Up</div>
+              } @if (isHaveAccount) {
+              <div [routerLink]="['/account']">Settings</div>
+              }
             </div>
-            } @if (isHaveAccount) {
-            <div
-              class="mobile_account_button__menu"
-              (click)="$event.stopPropagation()"
-              [routerLink]="['/account']"
-            >
-              <div>Settings</div>
-            </div>
-            }
           </div>
         </div>
         <!-- <div class="header__mobile-theme" (click)="themeToggle()">
