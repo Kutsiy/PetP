@@ -33,6 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostPageComponent } from './Components/MainComponents/wrappers/articleswrapper/post-page/post-page.component';
 import { GraphQLModule } from './graphql.module';
 import { AccountwrapperComponent } from './Components/MainComponents/wrappers/accountwrapper/accountwrapper.component';
+import { AuthenticationwrapperComponent } from './Components/MainComponents/wrappers/authenticationwrapper/authenticationwrapper.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { AccountwrapperComponent } from './Components/MainComponents/wrappers/ac
     SideMenuComponent,
     PostPageComponent,
     AccountwrapperComponent,
+    AuthenticationwrapperComponent,
   ],
   imports: [
     BrowserModule,
