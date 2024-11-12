@@ -29,17 +29,21 @@
     align-items: center;
     overflow: hidden;
     position: relative;
-    transition: 0.3s;
+    // transition: 0.3s;
+  }
+
+  &__time {
+    transition: 0.5s;
   }
 
   &__box.active {
-    transition: 0.5s;
+    // transition: 0.5s;
     height: 500px;
   }
 
   &__login {
     transform: translateX(0);
-    transition: 0.5s;
+    // transition: 0.5s;
   }
 
   &__box.active .auth__login {
@@ -47,7 +51,7 @@
   }
 
   &__sign-up {
-    transition: 0.5s;
+    // transition: 0.5s;
     position: absolute;
     transform: translateX(350px);
   }

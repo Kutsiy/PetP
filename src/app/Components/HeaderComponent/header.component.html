@@ -49,8 +49,18 @@
               (click)="$event.stopPropagation()"
             >
               @if(!isHaveAccount) {
-              <div [routerLink]="['/auth']">Log In</div>
-              <div>Sign Up</div>
+              <div
+                [routerLink]="['/auth']"
+                [queryParams]="{ authType: 'login' }"
+              >
+                Log In
+              </div>
+              <div
+                [routerLink]="['/auth']"
+                [queryParams]="{ authType: 'sign_up' }"
+              >
+                Sign Up
+              </div>
               } @if (isHaveAccount) {
               <div [routerLink]="['/account']">Settings</div>
               }
