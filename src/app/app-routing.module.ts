@@ -7,6 +7,7 @@ import { ArticleswrapperComponent } from './Components/MainComponents/wrappers/a
 import { PostPageComponent } from './Components/MainComponents/wrappers/articleswrapper/post-page/post-page.component';
 import { AccountwrapperComponent } from './Components/MainComponents/wrappers/accountwrapper/accountwrapper.component';
 import { AuthenticationwrapperComponent } from './Components/MainComponents/wrappers/authenticationwrapper/authenticationwrapper.component';
+import { NotFoundwrapperComponent } from './Components/MainComponents/wrappers/not-foundwrapper/not-foundwrapper.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'article/:id', component: PostPageComponent },
   { path: 'account', component: AccountwrapperComponent },
   { path: 'auth', component: AuthenticationwrapperComponent },
+  { path: '**', component: NotFoundwrapperComponent },
 ];
 
 @NgModule({

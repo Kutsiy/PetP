@@ -34,6 +34,7 @@ import { PostPageComponent } from './Components/MainComponents/wrappers/articles
 import { GraphQLModule } from './graphql.module';
 import { AccountwrapperComponent } from './Components/MainComponents/wrappers/accountwrapper/accountwrapper.component';
 import { AuthenticationwrapperComponent } from './Components/MainComponents/wrappers/authenticationwrapper/authenticationwrapper.component';
+import { NotFoundwrapperComponent } from './Components/MainComponents/wrappers/not-foundwrapper/not-foundwrapper.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { AuthenticationwrapperComponent } from './Components/MainComponents/wrap
     PostPageComponent,
     AccountwrapperComponent,
     AuthenticationwrapperComponent,
+    NotFoundwrapperComponent,
   ],
   imports: [
     BrowserModule,
