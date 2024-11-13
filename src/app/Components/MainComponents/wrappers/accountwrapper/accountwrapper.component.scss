@@ -9,7 +9,7 @@
     min-width: 320px;
     margin: 25px auto;
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 0.75fr 3fr;
     grid-auto-flow: column;
     position: relative;
     gap: 15px;
@@ -18,52 +18,68 @@
   &__sidebar {
     background: var(--account-bar-back);
     border-radius: 5px;
+
+    .sidebar__inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 10px 0;
+      gap: 10px;
+    }
+
+    .sidebar__button {
+      padding-left: 30px;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .sidebar__button:hover {
+      background: darkorchid;
+      transition: 0.2s;
+    }
   }
 
   &__main {
     background: var(--account-bar-back);
     border-radius: 5px;
-  }
-}
 
-.sidebar {
-  &__inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 15px 0px;
-  }
+    .main__inner {
+      box-sizing: border-box;
+      margin: 10px 20px;
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+    }
 
-  &__avatar {
-    width: 230px;
-    height: 230px;
-    border-radius: 50%;
-    background-color: black;
-  }
-}
+    .main__subtititle {
+      font-size: 35px;
+      font-weight: 700;
+      padding: 3px;
+      padding-top: 0px;
+      border-bottom: 2px solid rgb(164, 1, 209);
+    }
 
-.main {
-  &__inner {
-    padding: 15px;
-  }
+    .main__row {
+      font-size: 30px;
+      margin: 10px 0px;
+    }
 
-  &__username > div {
-    font-size: 40px;
-  }
+    .main__column-avatar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-  &__username {
-    font-size: 45px;
-  }
+    .main__row-avatar {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
 
-  &__roles {
-    margin-top: 10px;
-  }
-
-  &__roles_title {
-    font-size: 40px;
-  }
-
-  &__roles > div:not(:first-child) {
-    font-size: 30px;
+    .main__avatar {
+      width: 200px;
+      height: 200px;
+      background-color: black;
+      border-radius: 100%;
+    }
   }
 }
