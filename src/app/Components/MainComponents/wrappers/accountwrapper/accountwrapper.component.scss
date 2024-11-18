@@ -82,4 +82,27 @@
       border-radius: 100%;
     }
   }
+
+  @media (max-width: 1200px) {
+    &__sidebar {
+      .sidebar__inner {
+        margin: 10px 20px;
+      }
+
+      .sidebar__button {
+        padding-left: 10px;
+      }
+    }
+    &__main {
+      .main__inner {
+        display: flex;
+        gap: 30px;
+        flex-direction: column;
+      }
+
+      .main_column-characteristic {
+        order: 1;
+      }
+    }
+  }
 }

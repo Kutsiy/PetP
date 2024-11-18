@@ -9,7 +9,9 @@
     } } @if(pageCountArray.length > 1) {
     <div class="posts__pagination">
       @if (rangePage?.firstPage) {
-      <span (click)="clickOnPageNumber(1)" class="posts__pagination-button"
+      <span
+        (click)="clickOnPageNumber(1)"
+        class="posts__pagination-button fal-button"
         >First page</span
       >
       } @if (rangePage?.leftDots) {
@@ -35,7 +37,7 @@
       } @if (rangePage?.lastPage) {
       <span
         (click)="clickOnPageNumber(pageCount)"
-        class="posts__pagination-button"
+        class="posts__pagination-button fal-button"
         >Last page</span
       >
       }

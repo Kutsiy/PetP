@@ -47,8 +47,16 @@
     color: gray;
   }
   @media (max-width: 1200px) {
+    &__pagination {
+      padding: 5px;
+      justify-content: center;
+    }
     &__pagination-button {
-      font-size: 35px;
+      font-size: 25px;
+    }
+
+    & .fal-button {
+      font-size: 20px;
     }
   }
 }
