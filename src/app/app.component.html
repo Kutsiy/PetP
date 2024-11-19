@@ -1,7 +1,13 @@
 <div class="container">
   <app-header></app-header>
-  <main>
-    <router-outlet></router-outlet>
+  <main
+    [@routeAnimation]="prepareRoute(outlet)"
+    (@routeAnimation.start)="onStartAnimation()"
+    (@routeAnimation.done)="onDoneAnimation()"
+  >
+    <router-outlet #outlet="outlet"></router-outlet>
   </main>
+  @if(!isAnimating) {
   <app-footer></app-footer>
+  }
 </div>

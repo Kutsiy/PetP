@@ -13,12 +13,32 @@ const routes: Routes = [
   {
     path: '',
     component: HomewrapperComponent,
+    title: 'HomePage',
   },
-  { path: 'articles', component: ArticleswrapperComponent },
-  { path: 'article/:id', component: PostPageComponent },
-  { path: 'account', component: AccountwrapperComponent },
-  { path: 'auth', component: AuthenticationwrapperComponent },
-  { path: '**', component: NotFoundwrapperComponent },
+  {
+    path: 'articles',
+    component: ArticleswrapperComponent,
+    title: 'ArticlesPage',
+  },
+  {
+    path: 'article/:id',
+    component: PostPageComponent,
+  },
+  {
+    path: 'account',
+    component: AccountwrapperComponent,
+    title: 'AccountPage',
+    data: { animation: 'AccountPage' },
+  },
+  {
+    path: 'auth',
+    component: AuthenticationwrapperComponent,
+    title: 'AuthenticationPage',
+  },
+  {
+    path: '**',
+    component: NotFoundwrapperComponent,
+  },
 ];
 
 @NgModule({
