@@ -25,6 +25,14 @@ export const routeAnimation = trigger('routeAnimation', [
       ':enter',
       [
         animate(
+          '400ms ease-out',
+          style({
+            position: 'absolute',
+            opacity: 1,
+            transform: 'translateY(-40px)',
+          })
+        ),
+        animate(
           '300ms ease-out',
           style({
             position: 'absolute',
