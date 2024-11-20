@@ -16,7 +16,7 @@ export class AppComponent {
     return outlet.activatedRouteData;
   }
   onStartAnimation() {
-    if (this.nameOfPage !== 'AccountPage') this.isAnimating = true;
+    this.isAnimating = true;
   }
 
   onDoneAnimation() {

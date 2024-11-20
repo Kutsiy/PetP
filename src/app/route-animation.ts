@@ -16,7 +16,7 @@ export const routeAnimation = trigger('routeAnimation', [
           left: 0,
           width: '100%',
           opacity: 0,
-          transform: 'translateX(-100%)',
+          transform: 'translateY(100%)',
         }),
       ],
       { optional: true }
@@ -25,11 +25,11 @@ export const routeAnimation = trigger('routeAnimation', [
       ':enter',
       [
         animate(
-          '600ms ease-out',
+          '300ms ease-out',
           style({
             position: 'absolute',
             opacity: 1,
-            transform: 'translateX(0)',
+            transform: 'translateY(0)',
           })
         ),
       ],

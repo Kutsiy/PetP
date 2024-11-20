@@ -56,8 +56,24 @@ export class PostsComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['searchString']) {
       const value = changes['searchString'].currentValue;
-      this.onSearch(value ?? '');
+      const searchFunction = this.debounce(
+        () => this.onSearch(value ?? ''),
+        500
+      );
+      searchFunction();
     }
+  }
+
+  debounce(func: (...args: any[]) => any, timeout = 300): any {
+    let timer: any;
+    return (...args: any[]) => {
+      this.isLoading = true;
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        func.apply(this, args);
+        this.isLoading = false;
+      }, timeout);
+    };
   }
 
   onSearch(value: string = '') {
