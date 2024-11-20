@@ -12,6 +12,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { PostsService } from '../../../../../Services/posts.service';
+import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 
 type range = {
   firstPage: boolean;
@@ -40,6 +41,7 @@ export class PostsComponent implements OnInit, OnChanges {
   rangePage: range | null = null;
   leftNumber: number = 0;
   rightNumber: number = 0;
+  private searchSubject = new Subject<string>();
   @Input() searchString: string | null = null;
   @Output() searchStringChange = new EventEmitter<string | null>();
   constructor(
@@ -51,29 +53,18 @@ export class PostsComponent implements OnInit, OnChanges {
     this.postService.setSearchString('');
     this.currentPage = this.postService.getPage();
     this.loadPosts('', this.postService.getPage(), this.pageLimit);
+    this.searchSubject
+      .pipe(debounceTime(500), distinctUntilChanged())
+      .subscribe((searchValue: any) => {
+        this.onSearch(searchValue);
+      });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['searchString']) {
-      const value = changes['searchString'].currentValue;
-      const searchFunction = this.debounce(
-        () => this.onSearch(value ?? ''),
-        500
-      );
-      searchFunction();
+      const value = changes['searchString'].currentValue ?? '';
+      this.searchSubject.next(value);
     }
-  }
-
-  debounce(func: (...args: any[]) => any, timeout = 300): any {
-    let timer: any;
-    return (...args: any[]) => {
-      this.isLoading = true;
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        func.apply(this, args);
-        this.isLoading = false;
-      }, timeout);
-    };
   }
 
   onSearch(value: string = '') {
