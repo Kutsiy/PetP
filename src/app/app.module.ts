@@ -28,9 +28,9 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostPageComponent } from './Components/MainComponents/wrappers/articleswrapper/post-page/post-page.component';
 import { GraphQLModule } from './graphql.module';
-import { AccountwrapperComponent } from './Components/MainComponents/wrappers/accountwrapper/accountwrapper.component';
 import { AuthenticationwrapperComponent } from './Components/MainComponents/wrappers/authenticationwrapper/authenticationwrapper.component';
 import { NotFoundwrapperComponent } from './Components/MainComponents/wrappers/not-foundwrapper/not-foundwrapper.component';
+import { AccountwrapperModule } from './Components/MainComponents/wrappers/accountwrapper/accountwrapper.module';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,6 @@ import { NotFoundwrapperComponent } from './Components/MainComponents/wrappers/n
     PostsComponent,
     SideMenuComponent,
     PostPageComponent,
-    AccountwrapperComponent,
     AuthenticationwrapperComponent,
     NotFoundwrapperComponent,
   ],
@@ -63,6 +62,7 @@ import { NotFoundwrapperComponent } from './Components/MainComponents/wrappers/n
     MatInputModule,
     BrowserAnimationsModule,
     GraphQLModule,
+    AccountwrapperModule,
   ],
   providers: [provideClientHydration(), provideHttpClient(withFetch())],
   bootstrap: [AppComponent],

@@ -40,11 +40,13 @@
     &.active:hover {
       transition: 0.25s;
       color: rgb(97, 1, 188);
+      transform: scale(0.95);
     }
   }
   &__pagination-button:hover {
     transition: 0.25s;
     color: gray;
+    transform: scale(0.95);
   }
   @media (max-width: 1200px) {
     &__pagination {

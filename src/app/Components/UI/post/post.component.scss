@@ -35,6 +35,13 @@
 
   &__about {
     font-size: 1.5rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    line-height: 1.5em;
+    max-height: calc(1.5em * 3);
   }
 
   &__buttons {

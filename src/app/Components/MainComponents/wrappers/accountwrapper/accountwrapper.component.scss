@@ -48,39 +48,6 @@
     .main__inner {
       box-sizing: border-box;
       margin: 10px 20px;
-      display: grid;
-      grid-template-columns: 3fr 2fr;
-    }
-
-    .main__subtititle {
-      font-size: 35px;
-      font-weight: 700;
-      padding: 3px;
-      padding-top: 0px;
-      border-bottom: 2px solid rgb(164, 1, 209);
-    }
-
-    .main__row {
-      font-size: 30px;
-      margin: 10px 0px;
-    }
-
-    .main__column-avatar {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .main__row-avatar {
-      font-size: 30px;
-      margin-bottom: 10px;
-    }
-
-    .main__avatar {
-      width: 200px;
-      height: 200px;
-      background-color: black;
-      border-radius: 100%;
     }
   }
 
@@ -99,10 +66,6 @@
         display: flex;
         gap: 30px;
         flex-direction: column;
-      }
-
-      .main_column-characteristic {
-        order: 1;
       }
     }
   }

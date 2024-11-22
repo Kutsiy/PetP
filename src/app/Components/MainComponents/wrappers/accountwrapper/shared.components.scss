@@ -1,0 +1,37 @@
+.profile {
+  background: var(--account-bar-back);
+  border-radius: 5px;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+
+  &__subtititle {
+    font-size: 35px;
+    font-weight: 700;
+    padding: 3px;
+    padding-top: 0px;
+    border-bottom: 2px solid rgb(164, 1, 209);
+  }
+
+  &__row {
+    font-size: 30px;
+    margin: 10px 0px;
+  }
+
+  &__column-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__row-avatar {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+
+  &__avatar {
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    border-radius: 100%;
+  }
+}

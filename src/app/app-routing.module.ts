@@ -8,6 +8,7 @@ import { PostPageComponent } from './Components/MainComponents/wrappers/articles
 import { AccountwrapperComponent } from './Components/MainComponents/wrappers/accountwrapper/accountwrapper.component';
 import { AuthenticationwrapperComponent } from './Components/MainComponents/wrappers/authenticationwrapper/authenticationwrapper.component';
 import { NotFoundwrapperComponent } from './Components/MainComponents/wrappers/not-foundwrapper/not-foundwrapper.component';
+import { ProfileComponent } from './Components/MainComponents/wrappers/accountwrapper/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,16 @@ const routes: Routes = [
     component: AccountwrapperComponent,
     title: 'AccountPage',
     data: { animation: 'AccountPage' },
+    children: [
+      {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+      {
+        path: '**',
+        redirectTo: '/account/profile',
+      },
+    ],
   },
   {
     path: 'auth',
