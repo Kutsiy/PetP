@@ -23,6 +23,7 @@ export class PostPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.postService.getPage());
     this.route.paramMap.subscribe((params) => {
       this.postId = params.get('id');
     });
@@ -30,6 +31,7 @@ export class PostPageComponent implements OnInit {
     if (result !== null) {
       result.subscribe((result) => {
         this.data = { ...result };
+        console.log(this.data);
       });
     }
   }

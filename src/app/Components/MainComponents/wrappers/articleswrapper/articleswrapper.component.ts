@@ -1,4 +1,5 @@
-import { Component, SimpleChanges } from '@angular/core';
+import { Component, Inject, SimpleChanges } from '@angular/core';
+import { PostsService } from '../../../../Services/posts.service';
 
 @Component({
   selector: 'app-articleswrapper',
@@ -7,6 +8,10 @@ import { Component, SimpleChanges } from '@angular/core';
 })
 export class ArticleswrapperComponent {
   searchString: string | null = null;
+
+  constructor(@Inject(PostsService) private postService: PostsService) {
+    this.searchString = this.postService.getSearchString();
+  }
 
   message: string = 'vertically';
 

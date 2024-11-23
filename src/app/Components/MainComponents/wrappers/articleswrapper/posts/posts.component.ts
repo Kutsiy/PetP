@@ -1,5 +1,4 @@
 import { isPlatformBrowser } from '@angular/common';
-import { HttpClient, HttpResponse } from '@angular/common/http';
 import {
   Component,
   EventEmitter,
@@ -12,7 +11,6 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { PostsService } from '../../../../../Services/posts.service';
-import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
 
 type range = {
   firstPage: boolean;
@@ -41,36 +39,34 @@ export class PostsComponent implements OnInit, OnChanges {
   rangePage: range | null = null;
   leftNumber: number = 0;
   rightNumber: number = 0;
-  private searchSubject = new Subject<string>();
   @Input() searchString: string | null = null;
   @Output() searchStringChange = new EventEmitter<string | null>();
   constructor(
-    @Inject(HttpClient) private httpClient: HttpClient,
     @Inject(PLATFORM_ID) private platformId: Object,
     @Inject(PostsService) private postService: PostsService
   ) {}
   ngOnInit(): void {
-    this.postService.setSearchString('');
     this.currentPage = this.postService.getPage();
-    this.loadPosts('', this.postService.getPage(), this.pageLimit);
-    this.searchSubject
-      .pipe(debounceTime(500), distinctUntilChanged())
-      .subscribe((searchValue: any) => {
-        this.onSearch(searchValue);
-      });
+    this.loadPosts(
+      this.postService.getSearchString(),
+      this.currentPage,
+      this.pageLimit
+    );
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['searchString']) {
       const value = changes['searchString'].currentValue ?? '';
-      this.searchSubject.next(value);
+      this.onSearch(value);
     }
   }
 
   onSearch(value: string = '') {
     if (!this.data) return;
+    this.postService.setPage(1);
+    this.currentPage = this.postService.getPage();
     if (value === '' || value === undefined || value === null) {
-      this.postService.setSearchString(value);
+      this.postService.setSearchString('');
       this.loadPosts('');
     } else {
       this.postService.setSearchString(value);
@@ -78,12 +74,12 @@ export class PostsComponent implements OnInit, OnChanges {
     }
   }
 
-  async clickOnPageNumber(pageNumber: number | string) {
+  clickOnPageNumber(pageNumber: number | string) {
     if (typeof pageNumber === 'number') {
-      this.currentPage = pageNumber;
       this.postService.setPage(pageNumber);
+      this.currentPage = this.postService.getPage();
       this.searchStringChange.emit(this.postService.getSearchString());
-      await this.loadPosts(
+      this.loadPosts(
         this.postService.getSearchString(),
         pageNumber,
         this.pageLimit
