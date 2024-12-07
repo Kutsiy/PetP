@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PostsService } from '../../../../../Services/posts.service';
+import { PostsService } from '../../../../../Services/postService/posts.service';
 
 type PostData = {
   __typename: string;

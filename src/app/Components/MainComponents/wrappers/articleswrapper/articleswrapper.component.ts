@@ -1,5 +1,5 @@
 import { Component, Inject, SimpleChanges } from '@angular/core';
-import { PostsService } from '../../../../Services/posts.service';
+import { PostsService } from '../../../../Services/postService/posts.service';
 
 @Component({
   selector: 'app-articleswrapper',

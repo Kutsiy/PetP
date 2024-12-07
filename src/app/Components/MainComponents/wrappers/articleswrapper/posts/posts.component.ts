@@ -10,7 +10,7 @@ import {
   PLATFORM_ID,
   SimpleChanges,
 } from '@angular/core';
-import { PostsService } from '../../../../../Services/posts.service';
+import { PostsService } from '../../../../../Services/postService/posts.service';
 
 type range = {
   firstPage: boolean;
