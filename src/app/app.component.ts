@@ -12,8 +12,8 @@ export class AppComponent {
   isAnimating = false;
   nameOfPage = null;
   prepareRoute(outlet: RouterOutlet) {
-    this.nameOfPage = outlet.activatedRouteData['animation'] ?? null;
-    return outlet.activatedRouteData;
+    this.nameOfPage = outlet.activatedRouteData['animation'];
+    return outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
   onStartAnimation() {
     this.isAnimating = true;

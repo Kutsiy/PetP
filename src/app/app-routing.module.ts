@@ -15,15 +15,18 @@ const routes: Routes = [
     path: '',
     component: HomewrapperComponent,
     title: 'HomePage',
+    data: { animation: 'HomePage' },
   },
   {
     path: 'articles',
     component: ArticleswrapperComponent,
     title: 'ArticlesPage',
+    data: { animation: 'ArticlesPage' },
   },
   {
     path: 'article/:id',
     component: PostPageComponent,
+    data: { animation: 'SomePostPage' },
   },
   {
     path: 'account',
@@ -45,10 +48,13 @@ const routes: Routes = [
     path: 'auth',
     component: AuthenticationwrapperComponent,
     title: 'AuthenticationPage',
+    data: { animation: 'AuthenticationPage' },
   },
   {
     path: '**',
     component: NotFoundwrapperComponent,
+    title: 'PageNotFound',
+    data: { animation: 'PageNotFound' },
   },
 ];
 

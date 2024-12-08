@@ -31,7 +31,7 @@ export class PostPageComponent implements OnInit {
     if (result !== null) {
       result.subscribe((result) => {
         this.data = { ...result };
-        console.log(this.data);
+        // console.log(this.data);
       });
     }
   }

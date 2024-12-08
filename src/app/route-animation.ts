@@ -7,6 +7,7 @@ import {
 } from '@angular/animations';
 
 export const routeAnimation = trigger('routeAnimation', [
+  transition('* => SomePostPage', []),
   transition('* <=> *', [
     query(
       ':enter, :leave',
