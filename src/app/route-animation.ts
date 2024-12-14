@@ -8,6 +8,7 @@ import {
 
 export const routeAnimation = trigger('routeAnimation', [
   transition('* => SomePostPage', []),
+  transition('* => AuthenticationPage', []),
   transition('* <=> *', [
     query(
       ':enter, :leave',
