@@ -3,6 +3,7 @@
   max-width: 100%;
   min-width: 320px;
   position: relative;
+  transform: translateY(-100px);
   height: 64px;
   user-select: none;
   background-color: var(--head-back);
@@ -16,7 +17,7 @@
   }
 
   &.hide-header {
-    transform: translateY(-90px);
+    transform: translateY(-90px) !important;
     transition: 0.5s 0.1s;
   }
 

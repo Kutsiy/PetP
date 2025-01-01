@@ -50,7 +50,17 @@
     position: relative;
   }
 
-  &__cards app-card:hover {
+  .no-hover {
+    pointer-events: none;
+  }
+
+  // &__card-container-R,
+  // &__card-container-L {
+  //   pointer-events: none;
+  // }
+
+  &__card-container-R:hover,
+  &__card-container-L:hover {
     transition: 0.5s;
     transform: translateX(2px) translateY(2px);
   }

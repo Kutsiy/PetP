@@ -6,11 +6,13 @@ import {
   OnInit,
   PLATFORM_ID,
 } from '@angular/core';
+import { GsapService } from '../../Services/gsapService/gsap.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
+  providers: [GsapService],
 })
 export class HeaderComponent implements OnInit {
   isMenuClose = true;
@@ -23,9 +25,16 @@ export class HeaderComponent implements OnInit {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     @Inject(PLATFORM_ID) private platformId: Object,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    @Inject(GsapService) private gsapService: GsapService
   ) {
     this.headerElement = this.elementRef.nativeElement.querySelector('.header');
+    if (isPlatformBrowser(this.platformId)) {
+      this.gsapService.to('.header', {
+        y: 0,
+        duration: 0.2,
+      });
+    }
   }
 
   themeToggle() {

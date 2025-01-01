@@ -3,10 +3,34 @@
     <div class="contacts__circle"></div>
     <div class="contacts__title">Contacts</div>
     <div class="contacts__cards">
-      <app-card image="unnamed.png" title="Github"></app-card>
-      <app-card image="unnamed.png" title="Gmail"></app-card>
-      <app-card image="unnamed.png" title="Telegram"></app-card>
-      <app-card image="unnamed.png" title="Discord"></app-card>
+      <div class="contacts__card-container-L" #leftCards>
+        <app-card
+          image="unnamed.png"
+          class="contacts__card-L"
+          title="Gmail"
+        ></app-card>
+      </div>
+      <div class="contacts__card-container-R" #rightCards>
+        <app-card
+          image="unnamed.png"
+          class="contacts__card-R"
+          title="Github"
+        ></app-card>
+      </div>
+      <div class="contacts__card-container-L" #leftCards>
+        <app-card
+          image="unnamed.png"
+          class="contacts__card-L"
+          title="Discord"
+        ></app-card>
+      </div>
+      <div class="contacts__card-container-R" #rightCards>
+        <app-card
+          image="unnamed.png"
+          class="contacts__card-R"
+          title="Telegram"
+        ></app-card>
+      </div>
     </div>
   </div>
 </div>
