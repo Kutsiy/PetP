@@ -11,6 +11,7 @@ import {
   SimpleChanges,
 } from '@angular/core';
 import { PostsService } from '../../../../../Services/postService/posts.service';
+import { GsapService } from '../../../../../Services/gsapService/gsap.service';
 
 type range = {
   firstPage: boolean;
@@ -43,7 +44,8 @@ export class PostsComponent implements OnInit, OnChanges {
   @Output() searchStringChange = new EventEmitter<string | null>();
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    @Inject(PostsService) private postService: PostsService
+    @Inject(PostsService) private postService: PostsService,
+    @Inject(GsapService) private gsapService: GsapService
   ) {}
   ngOnInit(): void {
     this.currentPage = this.postService.getPage();

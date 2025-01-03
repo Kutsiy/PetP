@@ -35,4 +35,8 @@ export class GsapService {
   set(element: string | Element | Element[], vars: gsap.TweenVars) {
     return gsap.set(element, vars);
   }
+
+  refreshScrollTrigger() {
+    ScrollTrigger.refresh(true);
+  }
 }
