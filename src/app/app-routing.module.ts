@@ -4,9 +4,9 @@ import { HomewrapperComponent } from './Components/MainComponents/wrappers/homew
 import { ArticleswrapperComponent } from './Components/MainComponents/wrappers/articleswrapper/articleswrapper.component';
 import { PostPageComponent } from './Components/MainComponents/wrappers/articleswrapper/post-page/post-page.component';
 import { AccountwrapperComponent } from './Components/MainComponents/wrappers/accountwrapper/accountwrapper.component';
-import { AuthenticationwrapperComponent } from './Components/MainComponents/wrappers/authenticationwrapper/authenticationwrapper.component';
-import { NotFoundwrapperComponent } from './Components/MainComponents/wrappers/not-foundwrapper/not-foundwrapper.component';
+import { AuthComponent } from '../pages/auth/auth.component';
 import { ProfileComponent } from './Components/MainComponents/wrappers/accountwrapper/profile/profile.component';
+import { NotFoundPageComponent } from '../pages/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -44,13 +44,13 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    component: AuthenticationwrapperComponent,
+    component: AuthComponent,
     title: 'AuthenticationPage',
     data: { animation: 'AuthenticationPage' },
   },
   {
     path: '**',
-    component: NotFoundwrapperComponent,
+    component: NotFoundPageComponent,
     title: 'PageNotFound',
     data: { animation: 'PageNotFound' },
   },

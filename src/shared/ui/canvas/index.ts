@@ -1,1 +1,1 @@
-export * from './cube/cube.module';
+export * from './cube';
