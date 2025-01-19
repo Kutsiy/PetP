@@ -7,15 +7,11 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FooterComponent } from './Components/FooterComponent/footer.component';
-import { HeaderComponent } from './Components/HeaderComponent/header.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MainComponent } from './Components/MainComponents/wrappers/homewrapper/main/main.component';
-import { BulbComponent } from './Components/CanvasComponents/bulb/bulb.component';
 import { HomewrapperComponent } from './Components/MainComponents/wrappers/homewrapper/homewrapper.component';
 import { ContactsComponent } from './Components/MainComponents/wrappers/homewrapper/contacts/contacts.component';
 import { CardComponent } from './Components/UI/card/card.component';
@@ -31,14 +27,13 @@ import { GraphQLModule } from './graphql.module';
 import { AuthenticationwrapperComponent } from './Components/MainComponents/wrappers/authenticationwrapper/authenticationwrapper.component';
 import { NotFoundwrapperComponent } from './Components/MainComponents/wrappers/not-foundwrapper/not-foundwrapper.component';
 import { AccountwrapperModule } from './Components/MainComponents/wrappers/accountwrapper/accountwrapper.module';
+import { FooterWidgetModule, HeaderWidgetModule } from '../widgets';
+import { CubeUiModule } from '../shared/ui';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
-    HeaderComponent,
     MainComponent,
-    BulbComponent,
     HomewrapperComponent,
     ContactsComponent,
     CardComponent,
@@ -64,6 +59,9 @@ import { AccountwrapperModule } from './Components/MainComponents/wrappers/accou
     GraphQLModule,
     AccountwrapperModule,
     ReactiveFormsModule,
+    FooterWidgetModule,
+    HeaderWidgetModule,
+    CubeUiModule,
   ],
   providers: [provideClientHydration(), provideHttpClient(withFetch())],
   bootstrap: [AppComponent],

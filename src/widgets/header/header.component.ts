@@ -6,16 +6,16 @@ import {
   OnInit,
   PLATFORM_ID,
 } from '@angular/core';
-import { GsapService } from '../../Services/gsapService/gsap.service';
+import { GsapService } from '../../app/Services/gsapService/gsap.service';
 
 @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html',
-    styleUrl: './header.component.scss',
-    providers: [GsapService],
-    standalone: false
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.scss',
+  providers: [GsapService],
+  standalone: false,
 })
-export class HeaderComponent implements OnInit {
+export class HeaderWidgetComponent implements OnInit {
   isMenuClose = true;
   isHeaderWatched = false;
   position = 0;

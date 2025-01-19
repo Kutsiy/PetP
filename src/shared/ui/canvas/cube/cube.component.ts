@@ -9,12 +9,12 @@ import {
 import * as THREE from 'three';
 
 @Component({
-    selector: 'app-bulb',
-    templateUrl: './bulb.component.html',
-    styleUrl: './bulb.component.scss',
-    standalone: false
+  selector: 'app-cube',
+  templateUrl: './cube.component.html',
+  styleUrl: './cube.component.scss',
+  standalone: false,
 })
-export class BulbComponent implements OnInit, OnDestroy {
+export class CubeComponent implements OnInit, OnDestroy {
   private scene!: THREE.Scene;
   private camera!: THREE.PerspectiveCamera;
   private renderer!: THREE.WebGLRenderer;
