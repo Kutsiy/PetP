@@ -24,9 +24,10 @@ type range = {
 };
 
 @Component({
-  selector: 'app-posts',
-  templateUrl: './posts.component.html',
-  styleUrl: './posts.component.scss',
+    selector: 'app-posts',
+    templateUrl: './posts.component.html',
+    styleUrl: './posts.component.scss',
+    standalone: false
 })
 export class PostsComponent implements OnInit, OnChanges {
   data: any[] | null = null;

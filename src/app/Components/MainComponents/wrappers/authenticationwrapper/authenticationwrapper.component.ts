@@ -3,9 +3,10 @@ import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-authenticationwrapper',
-  templateUrl: './authenticationwrapper.component.html',
-  styleUrl: './authenticationwrapper.component.scss',
+    selector: 'app-authenticationwrapper',
+    templateUrl: './authenticationwrapper.component.html',
+    styleUrl: './authenticationwrapper.component.scss',
+    standalone: false
 })
 export class AuthenticationwrapperComponent implements OnInit {
   element: HTMLDivElement | null = null;

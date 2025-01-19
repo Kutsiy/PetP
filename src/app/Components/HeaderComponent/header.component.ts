@@ -9,10 +9,11 @@ import {
 import { GsapService } from '../../Services/gsapService/gsap.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
-  providers: [GsapService],
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.scss',
+    providers: [GsapService],
+    standalone: false
 })
 export class HeaderComponent implements OnInit {
   isMenuClose = true;

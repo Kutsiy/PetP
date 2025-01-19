@@ -2,10 +2,11 @@ import { AfterViewInit, Component, Inject, PLATFORM_ID } from '@angular/core';
 import { GsapService } from '../../../../../Services/gsapService/gsap.service';
 import { isPlatformBrowser } from '@angular/common';
 @Component({
-  selector: 'app-contacts',
-  templateUrl: './contacts.component.html',
-  styleUrl: './contacts.component.scss',
-  providers: [GsapService],
+    selector: 'app-contacts',
+    templateUrl: './contacts.component.html',
+    styleUrl: './contacts.component.scss',
+    providers: [GsapService],
+    standalone: false
 })
 export class ContactsComponent implements AfterViewInit {
   constructor(

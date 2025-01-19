@@ -2,9 +2,10 @@ import { Component, Inject, SimpleChanges } from '@angular/core';
 import { PostsService } from '../../../../Services/postService/posts.service';
 
 @Component({
-  selector: 'app-articleswrapper',
-  templateUrl: './articleswrapper.component.html',
-  styleUrl: './articleswrapper.component.scss',
+    selector: 'app-articleswrapper',
+    templateUrl: './articleswrapper.component.html',
+    styleUrl: './articleswrapper.component.scss',
+    standalone: false
 })
 export class ArticleswrapperComponent {
   searchString: string | null = null;

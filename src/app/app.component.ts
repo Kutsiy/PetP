@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { routeAnimation } from './route-animation';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  animations: [routeAnimation],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    animations: [routeAnimation],
+    standalone: false
 })
 export class AppComponent {
   isAnimating = false;

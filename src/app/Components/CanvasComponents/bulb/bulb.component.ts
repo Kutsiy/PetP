@@ -9,9 +9,10 @@ import {
 import * as THREE from 'three';
 
 @Component({
-  selector: 'app-bulb',
-  templateUrl: './bulb.component.html',
-  styleUrl: './bulb.component.scss',
+    selector: 'app-bulb',
+    templateUrl: './bulb.component.html',
+    styleUrl: './bulb.component.scss',
+    standalone: false
 })
 export class BulbComponent implements OnInit, OnDestroy {
   private scene!: THREE.Scene;

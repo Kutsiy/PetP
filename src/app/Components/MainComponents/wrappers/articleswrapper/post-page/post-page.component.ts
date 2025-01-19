@@ -9,9 +9,10 @@ type PostData = {
   body: string;
 };
 @Component({
-  selector: 'app-post-page',
-  templateUrl: './post-page.component.html',
-  styleUrl: './post-page.component.scss',
+    selector: 'app-post-page',
+    templateUrl: './post-page.component.html',
+    styleUrl: './post-page.component.scss',
+    standalone: false
 })
 export class PostPageComponent implements OnInit {
   postId: string | null = null;
