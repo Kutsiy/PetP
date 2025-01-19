@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -13,10 +14,12 @@ export class AuthenticationwrapperComponent implements OnInit {
   isLogin: boolean = true;
   addStyle: boolean = false;
   authType: string | null = null;
+
   constructor(
     private elementRef: ElementRef,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {

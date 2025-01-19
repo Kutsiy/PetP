@@ -24,7 +24,7 @@ import { ArticleswrapperComponent } from './Components/MainComponents/wrappers/a
 import { PostComponent } from './Components/UI/post/post.component';
 import { PostsComponent } from './Components/MainComponents/wrappers/articleswrapper/posts/posts.component';
 import { SideMenuComponent } from './Components/MainComponents/wrappers/articleswrapper/side-menu/side-menu.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostPageComponent } from './Components/MainComponents/wrappers/articleswrapper/post-page/post-page.component';
 import { GraphQLModule } from './graphql.module';
@@ -63,6 +63,7 @@ import { AccountwrapperModule } from './Components/MainComponents/wrappers/accou
     BrowserAnimationsModule,
     GraphQLModule,
     AccountwrapperModule,
+    ReactiveFormsModule,
   ],
   providers: [provideClientHydration(), provideHttpClient(withFetch())],
   bootstrap: [AppComponent],

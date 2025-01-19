@@ -107,25 +107,25 @@ export class BulbComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    cancelAnimationFrame(this.animationFrameId);
+    if (isPlatformBrowser(this.platformId)) {
+      cancelAnimationFrame(this.animationFrameId);
 
-    // window.removeEventListener('resize', this.onResize.bind(this));
-
-    this.renderer.dispose();
-    this.scene.traverse((object) => {
-      if (object instanceof THREE.Mesh) {
-        object.geometry.dispose();
-        if (Array.isArray(object.material)) {
-          object.material.forEach((mat) => mat.dispose());
-        } else {
-          object.material.dispose();
+      this.renderer.dispose();
+      this.scene.traverse((object) => {
+        if (object instanceof THREE.Mesh) {
+          object.geometry.dispose();
+          if (Array.isArray(object.material)) {
+            object.material.forEach((mat) => mat.dispose());
+          } else {
+            object.material.dispose();
+          }
         }
-      }
-    });
+      });
 
-    const canvas = this.renderer.domElement;
-    if (canvas.parentElement) {
-      canvas.parentElement.removeChild(canvas);
+      const canvas = this.renderer.domElement;
+      if (canvas.parentElement) {
+        canvas.parentElement.removeChild(canvas);
+      }
     }
   }
 }
