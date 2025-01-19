@@ -6,7 +6,8 @@
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-@include mat.core();
+@include mat.elevation-classes();
+@include mat.app-background();
 
 // Define the theme object.
 $PetPn-theme: mat.define-theme(
@@ -27,53 +28,59 @@ $PetPn-theme: mat.define-theme(
 // that you are using.
 :root {
   @include mat.all-component-themes($PetPn-theme);
-  --text-color: white;
-  --background-color: #7e64a3;
-  --shadow-head: #5e2e8c;
-  --head-back: #a06ee2e6;
-  --header-text-color: rgb(74, 74, 74);
-  --text-gradient: -webkit-linear-gradient(1800deg, #320f85 20%, #5e2e8c 70%);
-  --card-button: -webkit-linear-gradient(1800deg, #59208f 20%, #250d5f 70%);
-  --circle: radial-gradient(circle, rgb(76, 6, 141) 0%, rgba(25, 2, 58, 0) 70%);
-  --gradient: linear-gradient(90deg, #4215ab 20%, #763cac 70%);
-  --shadow-for-main: linear-gradient(
-    180deg,
-    rgba(50, 15, 133, 1) 40%,
-    #a270e2e6 70%
-  );
-  --main-gradient-back: #7e64a3;
-  --main-gradient: linear-gradient(
-    360deg,
-    rgba(50, 15, 133, 1) 2%,
-    #9766d7e6 40%,
-    #a06ee2e6 90%
-  );
-  --line-gradient: linear-gradient(
-    to right,
-    white 40%,
-    transparent 40%,
-    transparent 60%,
-    white 60%
-  );
-  --mask-gradient: linear-gradient(
-    to right,
-    transparent,
-    white 20%,
-    white 80%,
-    transparent
-  );
-  --card-back: linear-gradient(
-    100deg,
-    #8447d4e6 7%,
-    #7130ad 54%,
-    rgb(56, 2, 131) 80%
-  );
-  --card-shadow: rgb(91, 0, 203);
-  --footer-gradient: linear-gradient(
-    360deg,
-    rgba(50, 15, 133, 1) 2%,
-    #9766d7e6 40%
-  );
+  & {
+    --text-color: white;
+    --background-color: #7e64a3;
+    --shadow-head: #5e2e8c;
+    --head-back: #a06ee2e6;
+    --header-text-color: rgb(74, 74, 74);
+    --text-gradient: -webkit-linear-gradient(1800deg, #320f85 20%, #5e2e8c 70%);
+    --card-button: -webkit-linear-gradient(1800deg, #59208f 20%, #250d5f 70%);
+    --circle: radial-gradient(
+      circle,
+      rgb(76, 6, 141) 0%,
+      rgba(25, 2, 58, 0) 70%
+    );
+    --gradient: linear-gradient(90deg, #4215ab 20%, #763cac 70%);
+    --shadow-for-main: linear-gradient(
+      180deg,
+      rgba(50, 15, 133, 1) 40%,
+      #a270e2e6 70%
+    );
+    --main-gradient-back: #7e64a3;
+    --main-gradient: linear-gradient(
+      360deg,
+      rgba(50, 15, 133, 1) 2%,
+      #9766d7e6 40%,
+      #a06ee2e6 90%
+    );
+    --line-gradient: linear-gradient(
+      to right,
+      white 40%,
+      transparent 40%,
+      transparent 60%,
+      white 60%
+    );
+    --mask-gradient: linear-gradient(
+      to right,
+      transparent,
+      white 20%,
+      white 80%,
+      transparent
+    );
+    --card-back: linear-gradient(
+      100deg,
+      #8447d4e6 7%,
+      #7130ad 54%,
+      rgb(56, 2, 131) 80%
+    );
+    --card-shadow: rgb(91, 0, 203);
+    --footer-gradient: linear-gradient(
+      360deg,
+      rgba(50, 15, 133, 1) 2%,
+      #9766d7e6 40%
+    );
+  }
 }
 
 // Comment out the line below if you want to use the pre-defined typography utility classes.
