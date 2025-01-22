@@ -5,4 +5,4 @@ import { NgModule } from '@angular/core';
   imports: [],
   exports: [],
 })
-export class MainPageModule {}
+export class HomePageModule {}

@@ -31,9 +31,13 @@ export class HeaderWidgetComponent implements OnInit {
   ) {
     this.headerElement = this.elementRef.nativeElement.querySelector('.header');
     if (isPlatformBrowser(this.platformId)) {
+      const header = this.headerElement;
       this.gsapService.to('.header', {
         y: 0,
         duration: 0.2,
+        onComplete() {
+          header.classList.add('normal');
+        },
       });
     }
   }

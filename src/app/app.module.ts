@@ -23,8 +23,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PostPageComponent } from './Components/MainComponents/wrappers/articleswrapper/post-page/post-page.component';
 import { GraphQLModule } from './graphql.module';
 import { AccountwrapperModule } from './Components/MainComponents/wrappers/accountwrapper/accountwrapper.module';
-import { FooterWidgetModule, HeaderWidgetModule } from '../widgets';
-import { CardUiModule, CubeUiModule, PostUiModule } from '../shared/ui';
+import {
+  FooterWidgetModule,
+  HeaderWidgetModule,
+  PostUiModule,
+} from '../widgets';
+import { CardUiModule, CubeUiModule } from '../shared/ui';
 import { AuthPageModule, NotFoundPageModule } from '../pages';
 
 @NgModule({

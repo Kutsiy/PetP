@@ -11,6 +11,10 @@
   border-bottom: 0.5px solid var(--shadow-head);
   z-index: 100 !important;
 
+  &.normal {
+    transform: none !important;
+  }
+
   &.show-header {
     transition: 0.5s 0.1s;
     box-shadow: 0px 2px 5px var(--shadow-head);
