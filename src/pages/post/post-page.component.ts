@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PostsService } from '../../../../../Services/postService/posts.service';
+import { PostsService } from '../../features/posts/posts.service';
 
 type PostData = {
   __typename: string;
@@ -9,10 +9,10 @@ type PostData = {
   body: string;
 };
 @Component({
-    selector: 'app-post-page',
-    templateUrl: './post-page.component.html',
-    styleUrl: './post-page.component.scss',
-    standalone: false
+  selector: 'app-post-page',
+  templateUrl: './post-page.component.html',
+  styleUrl: './post-page.component.scss',
+  standalone: false,
 })
 export class PostPageComponent implements OnInit {
   postId: string | null = null;

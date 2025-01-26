@@ -10,8 +10,8 @@ import {
   PLATFORM_ID,
   SimpleChanges,
 } from '@angular/core';
-import { PostsService } from '../../../../../Services/postService/posts.service';
-import { GsapService } from '../../../../../Services/gsapService/gsap.service';
+import { PostsService } from '../../features/posts/posts.service';
+import { GsapService } from '../../shared/animations/gsap.service';
 
 type range = {
   firstPage: boolean;
@@ -24,12 +24,12 @@ type range = {
 };
 
 @Component({
-    selector: 'app-posts',
-    templateUrl: './posts.component.html',
-    styleUrl: './posts.component.scss',
-    standalone: false
+  selector: 'app-posts',
+  templateUrl: './posts.component.html',
+  styleUrl: './posts.component.scss',
+  standalone: false,
 })
-export class PostsComponent implements OnInit, OnChanges {
+export class PostsWidgetComponent implements OnInit, OnChanges {
   data: any[] | null = null;
   totalCount: string | null = null;
   currentPage = 1;

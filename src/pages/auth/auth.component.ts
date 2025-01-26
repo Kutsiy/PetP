@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './auth.component.scss',
   standalone: false,
 })
-export class AuthComponent implements OnInit {
+export class AuthPageComponent implements OnInit {
   element: HTMLDivElement | null = null;
   elementLogin: HTMLDivElement | null = null;
   elementSignUp: HTMLDivElement | null = null;

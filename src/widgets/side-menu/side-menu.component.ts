@@ -10,12 +10,12 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'app-side-menu',
-    templateUrl: './side-menu.component.html',
-    styleUrl: './side-menu.component.scss',
-    standalone: false
+  selector: 'app-side-menu',
+  templateUrl: './side-menu.component.html',
+  styleUrl: './side-menu.component.scss',
+  standalone: false,
 })
-export class SideMenuComponent implements OnInit, OnDestroy {
+export class SideMenuWidgetComponent implements OnInit, OnDestroy {
   @Output() notify: EventEmitter<string> = new EventEmitter<string>();
   private breakpointSubscription!: Subscription;
   isSmallScreen = false;

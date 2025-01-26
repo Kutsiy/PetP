@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AccountwrapperComponent } from './accountwrapper.component';
+import { AccountwrapperComponent } from './account.component';
 
 describe('AccountwrapperComponent', () => {
   let component: AccountwrapperComponent;
@@ -8,9 +8,8 @@ describe('AccountwrapperComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AccountwrapperComponent]
-    })
-    .compileComponents();
+      declarations: [AccountwrapperComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AccountwrapperComponent);
     component = fixture.componentInstance;

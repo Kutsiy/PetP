@@ -7,6 +7,6 @@ import { join } from 'node:path';
   styleUrl: './post.component.scss',
   standalone: false,
 })
-export class PostComponent {
+export class PostWidgetComponent {
   @Input() post: any = null;
 }

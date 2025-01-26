@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomewrapperComponent } from './Components/MainComponents/wrappers/homewrapper/homewrapper.component';
-import { ArticleswrapperComponent } from './Components/MainComponents/wrappers/articleswrapper/articleswrapper.component';
-import { PostPageComponent } from './Components/MainComponents/wrappers/articleswrapper/post-page/post-page.component';
-import { AccountwrapperComponent } from './Components/MainComponents/wrappers/accountwrapper/accountwrapper.component';
-import { AuthComponent } from '../pages/auth/auth.component';
-import { ProfileComponent } from './Components/MainComponents/wrappers/accountwrapper/profile/profile.component';
-import { NotFoundPageComponent } from '../pages/not-found/not-found.component';
+import {
+  AccountPageComponent,
+  ArticlesPageComponent,
+  AuthPageComponent,
+  HomewrapperComponent,
+  NotFoundPageComponent,
+  PostPageComponent,
+} from './';
+import { ProfileWidgetComponent } from '../widgets/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -17,7 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'articles',
-    component: ArticleswrapperComponent,
+    component: ArticlesPageComponent,
     title: 'ArticlesPage',
     data: { animation: 'ArticlesPage' },
   },
@@ -28,13 +30,13 @@ const routes: Routes = [
   },
   {
     path: 'account',
-    component: AccountwrapperComponent,
+    component: AccountPageComponent,
     title: 'AccountPage',
     data: { animation: 'AccountPage' },
     children: [
       {
         path: 'profile',
-        component: ProfileComponent,
+        component: ProfileWidgetComponent,
       },
       {
         path: '**',
@@ -44,7 +46,7 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    component: AuthComponent,
+    component: AuthPageComponent,
     title: 'AuthenticationPage',
     data: { animation: 'AuthenticationPage' },
   },

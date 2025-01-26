@@ -6,7 +6,7 @@ import {
   OnInit,
   PLATFORM_ID,
 } from '@angular/core';
-import { GsapService } from '../../app/Services/gsapService/gsap.service';
+import { GsapService } from '../../shared/animations/gsap.service';
 
 @Component({
   selector: 'app-header',

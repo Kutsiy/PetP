@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { AuthComponent } from './auth.component';
+import { AuthPageComponent } from './auth.component';
 
 @NgModule({
-  declarations: [AuthComponent],
+  declarations: [AuthPageComponent],
   imports: [],
-  exports: [AuthComponent],
+  exports: [AuthPageComponent],
 })
 export class AuthPageModule {}

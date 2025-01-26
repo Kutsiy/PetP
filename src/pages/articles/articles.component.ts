@@ -1,13 +1,13 @@
 import { Component, Inject, SimpleChanges } from '@angular/core';
-import { PostsService } from '../../../../Services/postService/posts.service';
+import { PostsService } from '../../features/posts/posts.service';
 
 @Component({
-    selector: 'app-articleswrapper',
-    templateUrl: './articleswrapper.component.html',
-    styleUrl: './articleswrapper.component.scss',
-    standalone: false
+  selector: 'app-articleswrapper',
+  templateUrl: './articles.component.html',
+  styleUrl: './articles.component.scss',
+  standalone: false,
 })
-export class ArticleswrapperComponent {
+export class ArticlesPageComponent {
   searchString: string | null = null;
 
   constructor(@Inject(PostsService) private postService: PostsService) {

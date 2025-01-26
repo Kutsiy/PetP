@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { PostWidgetComponent } from './post.component';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import { ProfileWidgetComponent } from './profile.component';
 
 @NgModule({
-  declarations: [PostWidgetComponent],
+  declarations: [ProfileWidgetComponent],
   imports: [MatIconModule, RouterModule],
-  exports: [PostWidgetComponent],
+  exports: [ProfileWidgetComponent],
 })
-export class PostWidgetModule {}
+export class ProfileWidgetModule {}

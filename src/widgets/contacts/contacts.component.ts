@@ -1,14 +1,14 @@
 import { AfterViewInit, Component, Inject, PLATFORM_ID } from '@angular/core';
-import { GsapService } from '../../../../../Services/gsapService/gsap.service';
+import { GsapService } from '../../shared/animations/gsap.service';
 import { isPlatformBrowser } from '@angular/common';
 @Component({
-    selector: 'app-contacts',
-    templateUrl: './contacts.component.html',
-    styleUrl: './contacts.component.scss',
-    providers: [GsapService],
-    standalone: false
+  selector: 'app-contacts',
+  templateUrl: './contacts.component.html',
+  styleUrl: './contacts.component.scss',
+  providers: [GsapService],
+  standalone: false,
 })
-export class ContactsComponent implements AfterViewInit {
+export class ContactsWidgetComponent implements AfterViewInit {
   constructor(
     private gsapService: GsapService,
     @Inject(PLATFORM_ID) private platformId: Object
