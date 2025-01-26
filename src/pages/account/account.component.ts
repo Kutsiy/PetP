@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-accountwrapper',
+  selector: 'app-account',
   templateUrl: './account.component.html',
   styleUrl: './account.component.scss',
   standalone: false,

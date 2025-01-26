@@ -1,62 +1,8 @@
 <div class="auth__wrapper">
   <div class="auth__container">
     <div class="auth__box">
-      <div class="auth__login">
-        <form action="">
-          <div class="auth__login_title">Login</div>
-          <div class="auth__inputBox inputBox">
-            <input type="text" required />
-            <label>Email</label>
-          </div>
-          <div class="auth__inputBox inputBox">
-            <input type="password" required />
-            <label>Password</label>
-          </div>
-          <div class="auth__buttonBox">
-            <button>Submit</button>
-          </div>
-          <div class="auth__options">
-            <div class="auth__forgot-password">
-              <span>Forgot your password?</span>
-              <div>Forgot your password?</div>
-            </div>
-            <div class="auth__sign-up-button">
-              <span (click)="activate()">Sign Up</span>
-              <div>Sign Up</div>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="auth__sign-up">
-        <form action="">
-          <div class="auth__login_title">Sign Up</div>
-          <div class="auth__inputBox inputBox">
-            <input type="text" required />
-            <label>UserName</label>
-          </div>
-          <div class="auth__inputBox inputBox">
-            <input type="text" required />
-            <label>Email</label>
-          </div>
-          <div class="auth__inputBox inputBox">
-            <input type="password" required />
-            <label>Password</label>
-          </div>
-          <div class="auth__inputBox inputBox">
-            <input type="password" required />
-            <label>Confirm password</label>
-          </div>
-          <div class="auth__buttonBox">
-            <button>Submit</button>
-          </div>
-          <div class="auth__options">
-            <div class="auth__login-button">
-              <span (click)="activate()">Login</span>
-              <div>Login</div>
-            </div>
-          </div>
-        </form>
-      </div>
+      <app-login-form (action)="activate()"></app-login-form>
+      <app-sign-up-form (action)="activate()"></app-sign-up-form>
     </div>
   </div>
 </div>

@@ -1,19 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {
-  AccountPageComponent,
-  ArticlesPageComponent,
-  AuthPageComponent,
-  HomewrapperComponent,
-  NotFoundPageComponent,
-  PostPageComponent,
-} from './';
 import { ProfileWidgetComponent } from '../widgets/profile/profile.component';
+import { ArticlesPageComponent } from './articles/articles.component';
+import { HomePageComponent } from './home/home.component';
+import { PostPageComponent } from './post/post-page.component';
+import { AccountPageComponent } from './account/account.component';
+import { AuthPageComponent } from './auth/auth.component';
+import { NotFoundPageComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomewrapperComponent,
+    component: HomePageComponent,
     title: 'HomePage',
     data: { animation: 'HomePage' },
   },

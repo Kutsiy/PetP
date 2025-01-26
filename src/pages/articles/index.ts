@@ -1,2 +1,2 @@
 export * from './articles.module';
-export * from './articles.component';
+export { ArticlesPageComponent } from './articles.component';

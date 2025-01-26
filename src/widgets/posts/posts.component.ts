@@ -10,8 +10,8 @@ import {
   PLATFORM_ID,
   SimpleChanges,
 } from '@angular/core';
-import { PostsService } from '../../features/posts/posts.service';
 import { GsapService } from '../../shared/animations/gsap.service';
+import { PostsService } from '../../features';
 
 type range = {
   firstPage: boolean;
@@ -45,8 +45,7 @@ export class PostsWidgetComponent implements OnInit, OnChanges {
   @Output() searchStringChange = new EventEmitter<string | null>();
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    @Inject(PostsService) private postService: PostsService,
-    @Inject(GsapService) private gsapService: GsapService
+    @Inject(PostsService) private postService: PostsService
   ) {}
   ngOnInit(): void {
     this.currentPage = this.postService.getPage();

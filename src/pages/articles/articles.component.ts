@@ -1,8 +1,8 @@
-import { Component, Inject, SimpleChanges } from '@angular/core';
-import { PostsService } from '../../features/posts/posts.service';
+import { Component, Inject } from '@angular/core';
+import { PostsService } from '../../features';
 
 @Component({
-  selector: 'app-articleswrapper',
+  selector: 'app-articles',
   templateUrl: './articles.component.html',
   styleUrl: './articles.component.scss',
   standalone: false,

@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './auth.component.scss',
   standalone: false,
 })
-export class AuthPageComponent implements OnInit {
+export class AuthPageComponent implements AfterViewInit {
   element: HTMLDivElement | null = null;
   elementLogin: HTMLDivElement | null = null;
   elementSignUp: HTMLDivElement | null = null;
@@ -23,16 +23,14 @@ export class AuthPageComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {}
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.element = this.elementRef.nativeElement.querySelector(
       '.auth__box'
     ) as HTMLDivElement;
-    this.elementLogin = this.elementRef.nativeElement.querySelector(
-      '.auth__login'
-    ) as HTMLDivElement;
-    this.elementSignUp = this.elementRef.nativeElement.querySelector(
-      '.auth__sign-up'
-    ) as HTMLDivElement;
+    this.elementLogin =
+      this.elementRef.nativeElement.querySelector('app-login-form');
+    this.elementSignUp =
+      this.elementRef.nativeElement.querySelector('app-sign-up-form');
     this.route.queryParams.subscribe((params) => {
       if (this.element) {
         this.authType = params['authType'];

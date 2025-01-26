@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { HomewrapperComponent } from './home.component';
+import { HomePageComponent } from './home.component';
 import { CubeUiModule } from '../../shared/ui';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { ContactsWidgetModule, MainWidgetModule } from '../../widgets';
 
 @NgModule({
-  declarations: [HomewrapperComponent],
+  declarations: [HomePageComponent],
   imports: [
     CubeUiModule,
     RouterModule,
@@ -14,6 +14,6 @@ import { ContactsWidgetModule, MainWidgetModule } from '../../widgets';
     MainWidgetModule,
     ContactsWidgetModule,
   ],
-  exports: [HomewrapperComponent],
+  exports: [HomePageComponent],
 })
 export class HomePageModule {}
