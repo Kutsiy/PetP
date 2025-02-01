@@ -19,8 +19,7 @@ export class AuthPageComponent implements AfterViewInit {
   constructor(
     private elementRef: ElementRef,
     private router: Router,
-    private route: ActivatedRoute,
-    private formBuilder: FormBuilder
+    private route: ActivatedRoute
   ) {}
 
   ngAfterViewInit(): void {

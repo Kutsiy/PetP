@@ -1,30 +1,30 @@
 <div class="sign-up-form">
-  <form action="">
+  <form action="" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
     <div class="sign-up-form__title">Sign Up</div>
     <div class="sign-up-form__inputBox inputBox">
-      <input type="text" required />
+      <input type="text" required formControlName="name" />
       <label>UserName:</label>
     </div>
     <div class="sign-up-form__inputBox inputBox">
-      <input type="text" required />
+      <input type="text" required formControlName="email" />
       <label>Email:</label>
     </div>
     <div class="sign-up-form__inputBox inputBox">
-      <input type="password" required />
+      <input type="password" required formControlName="password" />
       <label>Password:</label>
     </div>
     <div class="sign-up-form__inputBox inputBox">
-      <input type="password" required />
+      <input type="password" required formControlName="confirmPassword" />
       <label>Confirm password</label>
     </div>
     <div class="sign-up-form__buttonBox">
       <button>Submit</button>
     </div>
-    <div class="sign-up-form__options">
-      <div class="sign-up-form__login-button">
-        <span (click)="activate()">Login</span>
-        <div>Login</div>
-      </div>
-    </div>
   </form>
+  <div class="sign-up-form__options">
+    <div class="sign-up-form__login-button">
+      <span (click)="activate()">Login</span>
+      <div>Login</div>
+    </div>
+  </div>
 </div>

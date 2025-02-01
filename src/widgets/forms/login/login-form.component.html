@@ -1,26 +1,42 @@
 <div class="login-form">
-  <form action="">
+  <form action="" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="login-form__title">Login</div>
-    <div class="login-form__inputBox inputBox">
-      <input type="text" required />
+    <div
+      class="login-form__inputBox inputBox"
+      [class.invalid]="validInput('email')"
+    >
+      <input type="text" required formControlName="email" />
       <label>Email:</label>
     </div>
-    <div class="login-form__inputBox inputBox">
-      <input type="password" required />
+    @if(this.getError('email', 'email')) {
+    <li class="login-form__error">Please enter a valid email address.</li>
+    } @if(this.getError('email', 'required')) {
+    <li class="login-form__error">Email is required.</li>
+    }
+    <div
+      class="login-form__inputBox inputBox"
+      [class.invalid]="validInput('password')"
+    >
+      <input type="password" required formControlName="password" />
       <label>Password:</label>
     </div>
+    @if(this.getError('password', 'minlength')) {
+    <li class="login-form__error">Please enter at least 6 characters.</li>
+    } @if(this.getError('password', 'required')) {
+    <li class="login-form__error">Password is required.</li>
+    }
     <div class="login-form__buttonBox">
       <button>Submit</button>
     </div>
-    <div class="login-form__options">
-      <div class="login-form__forgot-password">
-        <span>Forgot your password?</span>
-        <div>Forgot your password?</div>
-      </div>
-      <div class="login-form__sign-up-button">
-        <span (click)="activate()">Sign Up</span>
-        <div>Sign Up</div>
-      </div>
-    </div>
   </form>
+  <div class="login-form__options">
+    <div class="login-form__forgot-password">
+      <span>Forgot your password?</span>
+      <div>Forgot your password?</div>
+    </div>
+    <div class="login-form__sign-up-button">
+      <span (click)="activate()">Sign Up</span>
+      <div>Sign Up</div>
+    </div>
+  </div>
 </div>

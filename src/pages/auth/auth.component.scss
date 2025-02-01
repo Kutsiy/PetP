@@ -19,7 +19,7 @@
   &__box {
     margin: 25px 0;
     width: 350px;
-    height: 450px;
+    // height: 450px;
     border-radius: 5px;
     background: var(--account-bar-back);
     box-sizing: border-box;
@@ -30,21 +30,21 @@
     align-items: center;
     overflow: hidden;
     position: relative;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 
   &__time {
     transition: 0.5s;
   }
 
-  &__box.active {
-    height: 580px;
-  }
-
   &__box.active app-login-form {
+    position: absolute;
     transform: translateX(-350px);
   }
 
   &__box.active app-sign-up-form {
+    position: relative;
     transform: translateX(0);
   }
 }
