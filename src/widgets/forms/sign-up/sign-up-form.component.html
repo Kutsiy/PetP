@@ -1,22 +1,54 @@
 <div class="sign-up-form">
   <form action="" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
     <div class="sign-up-form__title">Sign Up</div>
-    <div class="sign-up-form__inputBox inputBox">
-      <input type="text" required formControlName="name" />
+    <div
+      class="sign-up-form__inputBox inputBox"
+      [class.invalid]="validInput('userName')"
+    >
+      <input type="text" required formControlName="userName" />
       <label>UserName:</label>
     </div>
-    <div class="sign-up-form__inputBox inputBox">
+    @if(getError('userName', 'minlength')) {
+    <li class="sign-up-form__error">Please enter at least 3 characters</li>
+    } @if(getError('userName', 'required')) {
+    <li class="sign-up-form__error">UserName is required.</li>
+    }
+    <div
+      class="sign-up-form__inputBox inputBox"
+      [class.invalid]="validInput('email')"
+    >
       <input type="text" required formControlName="email" />
       <label>Email:</label>
     </div>
-    <div class="sign-up-form__inputBox inputBox">
+    @if(getError('email', 'email')) {
+    <li class="sign-up-form__error">Please enter a valid email address.</li>
+    } @if(getError('email', 'required')) {
+    <li class="sign-up-form__error">Email is required.</li>
+    }
+    <div
+      class="sign-up-form__inputBox inputBox"
+      [class.invalid]="validInput('password')"
+    >
       <input type="password" required formControlName="password" />
       <label>Password:</label>
     </div>
-    <div class="sign-up-form__inputBox inputBox">
+    @if(getError('password', 'minlength')) {
+    <li class="sign-up-form__error">Please enter at least 6 characters.</li>
+    } @if(getError('password', 'required')) {
+    <li class="sign-up-form__error">Password is required.</li>
+    }
+    <div
+      class="sign-up-form__inputBox inputBox"
+      [class.invalid]="validInput('confirmPassword')"
+    >
       <input type="password" required formControlName="confirmPassword" />
       <label>Confirm password</label>
     </div>
+    @if(getError('confirmPassword', 'minlength')) {
+    <li class="sign-up-form__error">Please enter at least 6 characters</li>
+    } @if(getError('confirmPassword', 'required')) {
+    <li class="sign-up-form__error">Password Confirm is required.</li>
+    }
     <div class="sign-up-form__buttonBox">
       <button>Submit</button>
     </div>

@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 
 interface FormType {
-  name: FormControl<string>;
+  userName: FormControl<string>;
   email: FormControl<string>;
   password: FormControl<string>;
   confirmPassword: FormControl<string>;
@@ -22,12 +22,13 @@ interface FormType {
 export class SignUpFormWidgetComponent {
   signUpForm: FormGroup<FormType>;
   isSubmitted = false;
+  isInvalid = false;
   constructor(
     public readonly elementRef: ElementRef,
     private formBuilder: NonNullableFormBuilder
   ) {
     this.signUpForm = this.formBuilder.group({
-      name: ['', Validators.required, Validators.minLength(3)],
+      userName: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
@@ -40,16 +41,17 @@ export class SignUpFormWidgetComponent {
   }
 
   onSubmit() {
-    console.log(this.signUpForm.value);
+    if (this.signUpForm.invalid) this.isInvalid = true;
+
     this.isSubmitted = true;
   }
 
-  validInput(field: string) {
+  validInput(field: keyof FormType) {
     return (
       this.signUpForm.get(field)?.invalid &&
       (this.signUpForm.get(field)?.dirty ||
         this.signUpForm.get(field)?.touched ||
-        this.isSubmitted)
+        this.isInvalid)
     );
   }
 
@@ -59,13 +61,9 @@ export class SignUpFormWidgetComponent {
         (this.signUpForm.get(field)?.hasError('required') &&
           (this.signUpForm.get(field)?.dirty ||
             this.signUpForm.get(field)?.touched)) ||
-        this.isSubmitted
+        this.isInvalid
       );
     }
-    return (
-      (this.signUpForm.get(field)?.hasError(errorMassage) ||
-        this.isSubmitted) ??
-      false
-    );
+    return this.signUpForm.get(field)?.hasError(errorMassage) || this.isInvalid;
   }
 }

@@ -20,6 +20,7 @@ interface FormType {
 export class LoginFormWidgetComponent {
   loginForm: FormGroup<FormType>;
   isSubmitted = false;
+  isInvalid = false;
   constructor(
     public readonly elementRef: ElementRef,
     private formBuilder: NonNullableFormBuilder
@@ -36,16 +37,20 @@ export class LoginFormWidgetComponent {
   }
 
   onSubmit() {
-    console.log(this.loginForm.invalid);
+    if (this.loginForm.invalid) {
+      this.isInvalid = true;
+    } else {
+      this.isInvalid = false;
+    }
     this.isSubmitted = true;
   }
 
-  validInput(field: string) {
+  validInput(field: keyof FormType) {
     return (
       this.loginForm.get(field)?.invalid &&
       (this.loginForm.get(field)?.dirty ||
         this.loginForm.get(field)?.touched ||
-        this.isSubmitted)
+        this.isInvalid)
     );
   }
 
@@ -55,12 +60,9 @@ export class LoginFormWidgetComponent {
         (this.loginForm.get(field)?.hasError('required') &&
           (this.loginForm.get(field)?.dirty ||
             this.loginForm.get(field)?.touched)) ||
-        this.isSubmitted
+        this.isInvalid
       );
     }
-    return (
-      (this.loginForm.get(field)?.hasError(errorMassage) || this.isSubmitted) ??
-      false
-    );
+    return this.loginForm.get(field)?.hasError(errorMassage) || this.isInvalid;
   }
 }
