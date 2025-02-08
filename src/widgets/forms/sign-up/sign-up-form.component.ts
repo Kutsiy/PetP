@@ -5,6 +5,7 @@ import {
   NonNullableFormBuilder,
   Validators,
 } from '@angular/forms';
+import { AuthService } from '../../../features';
 
 interface FormType {
   userName: FormControl<string>;
@@ -25,7 +26,8 @@ export class SignUpFormWidgetComponent {
   isInvalid = false;
   constructor(
     public readonly elementRef: ElementRef,
-    private formBuilder: NonNullableFormBuilder
+    private formBuilder: NonNullableFormBuilder,
+    private authService: AuthService
   ) {
     this.signUpForm = this.formBuilder.group({
       userName: ['', [Validators.required, Validators.minLength(3)]],
@@ -41,9 +43,20 @@ export class SignUpFormWidgetComponent {
   }
 
   onSubmit() {
-    if (this.signUpForm.invalid) this.isInvalid = true;
-
-    this.isSubmitted = true;
+    if (this.signUpForm.invalid) {
+      this.isInvalid = true;
+    } else {
+      this.isSubmitted = true;
+      const { userName, email, password, confirmPassword } =
+        this.signUpForm.value;
+      if (userName && email && password)
+        this.authService
+          .signUp(userName, email, password)
+          ?.subscribe((data) => {
+            console.log(data);
+            console.log(document.cookie);
+          });
+    }
   }
 
   validInput(field: keyof FormType) {

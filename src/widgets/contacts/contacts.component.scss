@@ -1,9 +1,11 @@
 .contacts {
   padding-top: 195px;
+  padding-bottom: 195px;
   max-width: 100%;
   width: 100%;
   min-width: 320px;
-  margin-bottom: 220px;
+  margin-bottom: 25px;
+  overflow: hidden;
 
   &__container {
     position: relative;
@@ -11,7 +13,7 @@
     flex-direction: column;
     max-width: 1050px;
     min-width: 320px;
-    margin: 0 auto;
+    margin: 10px auto;
   }
 
   &__circle {

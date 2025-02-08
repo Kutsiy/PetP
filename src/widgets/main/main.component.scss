@@ -1,5 +1,6 @@
 .main {
   max-width: 100%;
+  width: 100%;
   min-width: 320px;
   position: relative;
   height: 700px;
@@ -139,6 +140,7 @@
 
     &__container {
       flex-direction: column;
+      padding: 0 20px;
     }
 
     &__image-element {
@@ -169,6 +171,20 @@
     }
     &__title {
       font-size: 30px;
+    }
+    &__text {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 370px) {
+  .main {
+    &__container {
+      padding: 0;
+    }
+    &__text {
+      font-size: 12px;
     }
   }
 }
