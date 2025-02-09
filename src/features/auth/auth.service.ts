@@ -3,6 +3,7 @@ import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { SIGN_UP } from './schema/sign-up.schema';
 import { map } from 'rxjs';
+import { LOGIN } from './schema/login.schema';
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +14,17 @@ export class AuthService {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
-  login() {
+  login(email: string, password: string) {
     if (isPlatformBrowser(this.platformId)) {
+      return this.apollo
+        .watchQuery<any>({
+          query: LOGIN,
+          variables: {
+            email,
+            password,
+          },
+        })
+        .valueChanges.pipe(map((data) => data.data.Login));
     }
     return null;
   }
