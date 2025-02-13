@@ -37,18 +37,10 @@ export class SignUpFormWidgetComponent {
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
     });
 
-    this.signUpForm.controls.userName.valueChanges.subscribe(() =>
-      this.checkFieldValidity('userName')
-    );
-    this.signUpForm.controls.email.valueChanges.subscribe(() =>
-      this.checkFieldValidity('email')
-    );
     this.signUpForm.controls.password.valueChanges.subscribe(() => {
-      this.checkFieldValidity('password');
       this.checkPasswordsMatch();
     });
     this.signUpForm.controls.confirmPassword.valueChanges.subscribe(() => {
-      this.checkFieldValidity('confirmPassword');
       this.checkPasswordsMatch();
     });
   }
@@ -56,15 +48,6 @@ export class SignUpFormWidgetComponent {
 
   activate() {
     this.action.emit();
-  }
-
-  checkFieldValidity(field: keyof FormType) {
-    if (this.isSubmitted) {
-      const control = this.signUpForm.get(field);
-      if (control?.valid) {
-        control.markAsUntouched();
-      }
-    }
   }
 
   checkPasswordsMatch() {

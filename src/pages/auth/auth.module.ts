@@ -5,7 +5,7 @@ import { AuthStoreModule } from '../../shared/store';
 
 @NgModule({
   declarations: [AuthPageComponent],
-  imports: [LoginFormWidgetModule, SignUpFormWidgetModule, AuthStoreModule],
+  imports: [LoginFormWidgetModule, SignUpFormWidgetModule],
   exports: [AuthPageComponent],
 })
 export class AuthPageModule {}

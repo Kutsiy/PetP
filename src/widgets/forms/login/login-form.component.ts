@@ -31,27 +31,11 @@ export class LoginFormWidgetComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
-
-    this.loginForm.controls.email.valueChanges.subscribe(() =>
-      this.checkFieldValidity('email')
-    );
-    this.loginForm.controls.password.valueChanges.subscribe(() =>
-      this.checkFieldValidity('password')
-    );
   }
   @Output() action = new EventEmitter<void>();
 
   activate() {
     this.action.emit();
-  }
-
-  checkFieldValidity(field: keyof FormType) {
-    if (this.isSubmitted) {
-      const control = this.loginForm.get(field);
-      if (control?.valid) {
-        control.markAsUntouched();
-      }
-    }
   }
 
   onSubmit() {
