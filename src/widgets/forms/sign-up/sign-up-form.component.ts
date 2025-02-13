@@ -24,6 +24,7 @@ export class SignUpFormWidgetComponent {
   signUpForm: FormGroup<FormType>;
   isSubmitted = false;
   isInvalid = false;
+  passwordsNotSame = false;
   constructor(
     public readonly elementRef: ElementRef,
     private formBuilder: NonNullableFormBuilder,
@@ -49,6 +50,11 @@ export class SignUpFormWidgetComponent {
       this.isSubmitted = true;
       const { userName, email, password, confirmPassword } =
         this.signUpForm.value;
+      if (password?.toLowerCase() !== confirmPassword?.toLowerCase()) {
+        this.passwordsNotSame = true;
+        return;
+      }
+
       if (userName && email && password)
         this.authService
           .signUp(userName, email, password)

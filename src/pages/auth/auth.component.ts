@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ElementRef } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import * as AuthAction from './../../shared/store/auth';
 
 @Component({
   selector: 'app-auth',
@@ -19,7 +21,8 @@ export class AuthPageComponent implements AfterViewInit {
   constructor(
     private elementRef: ElementRef,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private store: Store
   ) {}
 
   ngAfterViewInit(): void {

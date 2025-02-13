@@ -12,7 +12,7 @@ export interface AuthStateType {
 }
 
 export const authState: AuthStateType = {
-  isAuthenticated: true,
+  isAuthenticated: false,
   isActivated: false,
   user: null,
 };
