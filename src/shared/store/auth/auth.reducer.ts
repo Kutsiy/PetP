@@ -1,14 +1,20 @@
 import { createReducer, on } from '@ngrx/store';
 import * as AuthAction from './auth.actions';
 
+export interface User {
+  id: string;
+  email: string;
+}
 export interface AuthStateType {
   isAuthenticated: boolean;
   isActivated: boolean;
+  user: User | null;
 }
 
 export const authState: AuthStateType = {
   isAuthenticated: true,
   isActivated: false,
+  user: null,
 };
 
 export const authReducer = createReducer(
