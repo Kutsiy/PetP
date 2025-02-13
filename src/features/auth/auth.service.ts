@@ -23,6 +23,12 @@ export class AuthService {
             email,
             password,
           },
+          context: {
+            fetchOptions: {
+              credentials: 'include',
+              caches: false,
+            },
+          },
         })
         .valueChanges.pipe(map((data) => data.data.Login));
     }
@@ -38,6 +44,11 @@ export class AuthService {
             name,
             email,
             password,
+          },
+          context: {
+            fetchOptions: {
+              credentials: 'include',
+            },
           },
         })
         .valueChanges.pipe(map((data) => data.data.SignUp));

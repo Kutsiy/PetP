@@ -6,6 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../../features';
+import * as AuthAction from './../../../shared/store/auth/auth.actions';
+import { Store } from '@ngrx/store';
 
 interface FormType {
   email: FormControl<string>;
@@ -25,7 +27,8 @@ export class LoginFormWidgetComponent {
   constructor(
     public readonly elementRef: ElementRef,
     private formBuilder: NonNullableFormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private store: Store
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -48,8 +51,10 @@ export class LoginFormWidgetComponent {
     const { email, password } = this.loginForm.value;
 
     if (email && password) {
-      this.authService.login(email, password)?.subscribe(() => {
+      this.authService.login(email, password)?.subscribe((data) => {
         this.loginForm.reset();
+        this.store.dispatch(AuthAction.authSetAuthenticated());
+        console.log(data);
         this.isSubmitted = false;
       });
     }
