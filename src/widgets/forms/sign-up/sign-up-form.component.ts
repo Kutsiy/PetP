@@ -36,6 +36,21 @@ export class SignUpFormWidgetComponent {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
     });
+
+    this.signUpForm.controls.userName.valueChanges.subscribe(() =>
+      this.checkFieldValidity('userName')
+    );
+    this.signUpForm.controls.email.valueChanges.subscribe(() =>
+      this.checkFieldValidity('email')
+    );
+    this.signUpForm.controls.password.valueChanges.subscribe(() => {
+      this.checkFieldValidity('password');
+      this.checkPasswordsMatch();
+    });
+    this.signUpForm.controls.confirmPassword.valueChanges.subscribe(() => {
+      this.checkFieldValidity('confirmPassword');
+      this.checkPasswordsMatch();
+    });
   }
   @Output() action = new EventEmitter<void>();
 
@@ -43,46 +58,51 @@ export class SignUpFormWidgetComponent {
     this.action.emit();
   }
 
-  onSubmit() {
-    if (this.signUpForm.invalid) {
-      this.isInvalid = true;
-    } else {
-      this.isSubmitted = true;
-      const { userName, email, password, confirmPassword } =
-        this.signUpForm.value;
-      if (password?.toLowerCase() !== confirmPassword?.toLowerCase()) {
-        this.passwordsNotSame = true;
-        return;
+  checkFieldValidity(field: keyof FormType) {
+    if (this.isSubmitted) {
+      const control = this.signUpForm.get(field);
+      if (control?.valid) {
+        control.markAsUntouched();
       }
+    }
+  }
 
-      if (userName && email && password)
-        this.authService
-          .signUp(userName, email, password)
-          ?.subscribe((data) => {
-            console.log(data);
-            console.log(document.cookie);
-          });
+  checkPasswordsMatch() {
+    const password = this.signUpForm.controls.password.value;
+    const confirmPassword = this.signUpForm.controls.confirmPassword.value;
+    this.passwordsNotSame = password !== confirmPassword;
+  }
+
+  onSubmit() {
+    this.isSubmitted = true;
+
+    if (this.signUpForm.invalid) {
+      return;
+    }
+
+    const { userName, email, password } = this.signUpForm.value;
+
+    if (userName && email && password) {
+      this.authService.signUp(userName, email, password)?.subscribe(() => {
+        this.signUpForm.reset();
+        this.isSubmitted = false;
+      });
     }
   }
 
   validInput(field: keyof FormType) {
+    const control = this.signUpForm.get(field);
     return (
-      this.signUpForm.get(field)?.invalid &&
-      (this.signUpForm.get(field)?.dirty ||
-        this.signUpForm.get(field)?.touched ||
-        this.isInvalid)
+      control?.invalid &&
+      (control?.dirty || control?.touched || this.isSubmitted)
     );
   }
 
   getError(field: keyof FormType, errorMassage: string) {
-    if (errorMassage === 'required') {
-      return (
-        (this.signUpForm.get(field)?.hasError('required') &&
-          (this.signUpForm.get(field)?.dirty ||
-            this.signUpForm.get(field)?.touched)) ||
-        this.isInvalid
-      );
-    }
-    return this.signUpForm.get(field)?.hasError(errorMassage) || this.isInvalid;
+    const control = this.signUpForm.get(field);
+    return (
+      control?.hasError(errorMassage) &&
+      (control.dirty || control.touched || this.isSubmitted)
+    );
   }
 }
