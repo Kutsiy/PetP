@@ -11,9 +11,18 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GraphQLModule } from './graphql.module';
 import { FooterWidgetModule, HeaderWidgetModule } from '../widgets';
-import { AppRoutingModule } from '../pages';
+import {
+  AccountPageModule,
+  AppRoutingModule,
+  ArticlesPageModule,
+  AuthPageModule,
+  HomePageModule,
+  NotFoundPageModule,
+  PostPageModule,
+} from '../pages';
 import { provideStore, StoreModule } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { AccountPageComponent } from '../pages/account/account.component';
 
 @NgModule({
   declarations: [AppComponent],

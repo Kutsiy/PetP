@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { AuthService } from './auth.service';
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors } from '@angular/common/http';
-import { authInterceptor } from './interceptor/auth.interceptor';
-
+import { AuthInterceptor } from '../../shared/interceptors/auth/auth.interceptor';
 
 @NgModule({
   declarations: [],
-  providers: [AuthService, provideHttpClient(withInterceptors([authInterceptor]))],
+  providers: [AuthService],
   imports: [],
   exports: [],
 })

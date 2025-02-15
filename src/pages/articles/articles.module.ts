@@ -5,6 +5,9 @@ import { PostsWidgetModule, SideMenuWidgetModule } from '../../widgets';
 import { CommonModule } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { PostsService } from '../../features';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [{ path: '', component: ArticlesPageComponent }];
 
 @NgModule({
   declarations: [ArticlesPageComponent],
@@ -15,6 +18,8 @@ import { PostsService } from '../../features';
     PostsWidgetModule,
     CommonModule,
     MatIcon,
+
+    RouterModule.forChild(routes),
   ],
   exports: [ArticlesPageComponent],
 })
