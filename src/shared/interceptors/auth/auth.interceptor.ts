@@ -1,28 +1,17 @@
 import { Injectable } from '@angular/core';
-import { ApolloLink, FetchResult, Observable } from '@apollo/client/core';
-
+import { ApolloLink } from '@apollo/client/core';
+import { onError } from '@apollo/client/link/error';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthInterceptor {
   create(): ApolloLink {
-    return new ApolloLink((operation, forward) => {
-      if (!forward) {
-        return null;
-      }
-      console.log('LOG');
-      return new Observable<FetchResult>((observer) => {
-        forward(operation).subscribe({
-          next: (response) => {
-            response.errors?.forEach((error) => {});
-            observer.next(response);
-            observer.complete();
-          },
-          error: (err) => {
-            observer.error(err);
-          },
-        });
-      });
+    return onError(({ operation, networkError }) => {
+      let isRetry;
+      console.log(isRetry);
+      console.log(operation.query.loc?.source.body, 'operation');
+      console.log(networkError, 'networkError');
+      isRetry = true;
     });
   }
 }

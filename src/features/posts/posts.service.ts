@@ -50,6 +50,7 @@ export class PostsService {
             page,
             take,
           },
+          fetchPolicy: 'no-cache',
         })
         .valueChanges.pipe(map((data) => data.data.Posts));
     }
@@ -64,6 +65,7 @@ export class PostsService {
           variables: {
             id,
           },
+          fetchPolicy: 'no-cache',
         })
         .valueChanges.pipe(map((data) => data.data.Post));
     }
