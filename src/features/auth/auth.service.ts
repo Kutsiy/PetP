@@ -1,9 +1,8 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { SIGN_UP } from './schema/sign-up.schema';
+import { SIGN_UP, LOGIN, REFRESH } from './schema';
 import { map } from 'rxjs';
-import { LOGIN } from './schema/login.schema';
 
 @Injectable({
   providedIn: 'root',
@@ -58,6 +57,13 @@ export class AuthService {
 
   logOut() {
     if (isPlatformBrowser(this.platformId)) {
+    }
+    return null;
+  }
+
+  refresh() {
+    if (isPlatformBrowser(this.platformId)) {
+      return this.apollo.mutate({ mutation: REFRESH });
     }
     return null;
   }
