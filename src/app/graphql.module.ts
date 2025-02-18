@@ -1,22 +1,22 @@
 import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
-import { NgModule } from '@angular/core';
+import { Injector, NgModule } from '@angular/core';
 import {
   ApolloClientOptions,
   ApolloLink,
   InMemoryCache,
 } from '@apollo/client/core';
 import { AuthInterceptor } from '../shared/interceptors';
-import { AuthFeatModule } from '../features/auth/auth.module';
 
 const uri = 'http://localhost:3000/graphql'; // <-- add the URL of the GraphQL server here
 export function createApollo(
   httpLink: HttpLink,
-  authInterceptor: AuthInterceptor
+  injector: Injector
 ): ApolloClientOptions<any> {
+  const authInterceptor = injector.get(AuthInterceptor, null);
   return {
     link: ApolloLink.from([
-      authInterceptor.create(),
+      authInterceptor ? authInterceptor.create() : ApolloLink.empty(),
       httpLink.create({ uri, withCredentials: true }),
     ]),
     cache: new InMemoryCache(),
@@ -28,11 +28,10 @@ export function createApollo(
   exports: [ApolloModule],
   providers: [
     AuthInterceptor,
-    AuthFeatModule,
     {
       provide: APOLLO_OPTIONS,
       useFactory: createApollo,
-      deps: [HttpLink, AuthInterceptor, AuthFeatModule],
+      deps: [HttpLink, Injector],
     },
   ],
 })
