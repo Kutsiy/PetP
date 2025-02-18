@@ -119,7 +119,7 @@ export class PostsWidgetComponent implements OnInit, OnChanges {
           this.isLoading = false;
         },
         (error) => {
-          console.error(error);
+          // console.log(error);
         }
       );
     }
