@@ -8,3 +8,13 @@ export const selectAuthActivated = createSelector(
   selectAuth,
   (state: AuthStateType) => state.isActivated
 );
+
+export const selectLoginError = createSelector(
+  selectAuth,
+  (state: AuthStateType) => state.errors.login.message
+);
+
+export const selectSignUpError = createSelector(
+  selectAuth,
+  (state: AuthStateType) => state.errors.signUp.message
+);

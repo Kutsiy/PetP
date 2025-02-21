@@ -66,10 +66,13 @@ export class SignUpFormWidgetComponent {
     const { userName, email, password } = this.signUpForm.value;
 
     if (userName && email && password) {
-      this.authService.signUp(userName, email, password)?.subscribe(() => {
-        this.signUpForm.reset();
-        this.isSubmitted = false;
-      });
+      this.authService.signUp(userName, email, password)?.subscribe(
+        () => {
+          this.signUpForm.reset();
+          this.isSubmitted = false;
+        },
+        (error) => {}
+      );
     }
   }
 

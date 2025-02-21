@@ -13,6 +13,14 @@
     margin-bottom: 20px;
   }
 
+  &__form-error {
+    color: rgb(255, 0, 119);
+    font-size: 30px;
+    padding: 15px 0;
+    text-align: center;
+    list-style-type: circle;
+  }
+
   &__error {
     color: rgb(255, 0, 119);
     font-size: 14px;

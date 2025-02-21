@@ -6,8 +6,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../../features';
-import * as AuthAction from './../../../shared/store/auth/auth.actions';
+import * as AuthActions from './../../../shared/store/auth/auth.actions';
 import { Store } from '@ngrx/store';
+import * as AuthSelectors from '../../../shared/store';
+import { Observable } from 'rxjs';
 
 interface FormType {
   email: FormControl<string>;
@@ -24,6 +26,7 @@ export class LoginFormWidgetComponent {
   loginForm: FormGroup<FormType>;
   isSubmitted = false;
   isInvalid = false;
+  error: Observable<string | null> = new Observable<string | null>();
   constructor(
     public readonly elementRef: ElementRef,
     private formBuilder: NonNullableFormBuilder,
@@ -34,6 +37,8 @@ export class LoginFormWidgetComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
+
+    this.error = this.store.select(AuthSelectors.selectLoginError);
   }
   @Output() action = new EventEmitter<void>();
 
@@ -51,12 +56,19 @@ export class LoginFormWidgetComponent {
     const { email, password } = this.loginForm.value;
 
     if (email && password) {
-      this.authService.login(email, password)?.subscribe((data) => {
-        this.loginForm.reset();
-        this.store.dispatch(AuthAction.authSetAuthenticated());
-        console.log(data);
-        this.isSubmitted = false;
-      });
+      this.authService.login(email, password)?.subscribe(
+        (data) => {
+          this.loginForm.reset();
+          this.store.dispatch(AuthActions.authSetAuthenticated());
+          console.log(data);
+          this.isSubmitted = false;
+        },
+        (error) => {
+          this.store.dispatch(
+            AuthActions.authSetLoginError({ message: error.message })
+          );
+        }
+      );
     }
   }
 

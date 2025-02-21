@@ -1,6 +1,9 @@
 <div class="login-form">
   <form action="" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="login-form__title">Login</div>
+    @if (error | async) {
+    <div class="login-form__form-error">{{ error | async }}</div>
+    }
     <div
       class="login-form__inputBox inputBox"
       [class.invalid]="validInput('email')"
