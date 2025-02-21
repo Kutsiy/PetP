@@ -60,7 +60,6 @@ export class LoginFormWidgetComponent {
         (data) => {
           this.loginForm.reset();
           this.store.dispatch(AuthActions.authSetAuthenticated());
-          console.log(data);
           this.isSubmitted = false;
         },
         (error) => {

@@ -6,6 +6,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../../features';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as AuthActions from './../../../shared/store';
+import * as AuthSelectors from '../../../shared/store';
 
 interface FormType {
   userName: FormControl<string>;
@@ -25,10 +29,12 @@ export class SignUpFormWidgetComponent {
   isSubmitted = false;
   isInvalid = false;
   passwordsNotSame = false;
+  error: Observable<string | null> = new Observable<string | null>();
   constructor(
     public readonly elementRef: ElementRef,
     private formBuilder: NonNullableFormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private store: Store
   ) {
     this.signUpForm = this.formBuilder.group({
       userName: ['', [Validators.required, Validators.minLength(3)]],
@@ -43,6 +49,8 @@ export class SignUpFormWidgetComponent {
     this.signUpForm.controls.confirmPassword.valueChanges.subscribe(() => {
       this.checkPasswordsMatch();
     });
+
+    this.error = this.store.select(AuthSelectors.selectSignUpError);
   }
   @Output() action = new EventEmitter<void>();
 
@@ -69,9 +77,14 @@ export class SignUpFormWidgetComponent {
       this.authService.signUp(userName, email, password)?.subscribe(
         () => {
           this.signUpForm.reset();
+          this.store.dispatch(AuthActions.authSetAuthenticated());
           this.isSubmitted = false;
         },
-        (error) => {}
+        (error) => {
+          this.store.dispatch(
+            AuthActions.authSetSignUpError({ message: error.message })
+          );
+        }
       );
     }
   }
