@@ -63,7 +63,9 @@ export class AuthService {
 
   refresh() {
     if (isPlatformBrowser(this.platformId)) {
-      return this.apollo.mutate({ mutation: REFRESH });
+      return this.apollo
+        .mutate({ mutation: REFRESH })
+        .pipe(map((data: any) => data.data.Refresh));
     }
     return null;
   }

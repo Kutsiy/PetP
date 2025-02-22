@@ -1,4 +1,4 @@
-import { isDevMode, NgModule } from '@angular/core';
+import { isDevMode, NgModule, OnInit } from '@angular/core';
 import {
   BrowserModule,
   provideClientHydration,
@@ -11,18 +11,12 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GraphQLModule } from './graphql.module';
 import { FooterWidgetModule, HeaderWidgetModule } from '../widgets';
-import {
-  AccountPageModule,
-  AppRoutingModule,
-  ArticlesPageModule,
-  AuthPageModule,
-  HomePageModule,
-  NotFoundPageModule,
-  PostPageModule,
-} from '../pages';
-import { provideStore, StoreModule } from '@ngrx/store';
+import { AppRoutingModule } from '../pages';
+import { provideStore, Store, StoreModule } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
-import { AccountPageComponent } from '../pages/account/account.component';
+import { AuthService } from '../features';
+import * as AuthActions from './../shared/store/auth/auth.actions';
+import * as AuthSelectors from '../shared/store/auth/auth.selectors';
 
 @NgModule({
   declarations: [AppComponent],
@@ -59,7 +53,23 @@ import { AccountPageComponent } from '../pages/account/account.component';
       traceLimit: 75,
       connectInZone: true,
     }),
+    AuthService,
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(
+    private readonly authService: AuthService,
+    private readonly store: Store
+  ) {
+    this.authService.refresh()?.subscribe((data) => {
+      this.store.dispatch(AuthActions.authSetAuthenticated());
+      if (data.user) {
+        this.store.dispatch(AuthActions.authSetUser({ user: data.user }));
+      }
+      if (data.user.isActivated) {
+        this.store.dispatch(AuthActions.authSetActivated());
+      }
+    });
+  }
+}

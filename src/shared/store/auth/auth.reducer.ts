@@ -7,20 +7,25 @@ export interface FormsErrors {
 }
 
 export interface User {
-  id: string;
-  email: string;
+  id: string | null;
+  email: string | null;
+  isActivated: boolean;
 }
 export interface AuthStateType {
   isAuthenticated: boolean;
   isActivated: boolean;
-  user: User | null;
+  user: User;
   errors: FormsErrors;
 }
 
 export const authState: AuthStateType = {
   isAuthenticated: false,
   isActivated: false,
-  user: null,
+  user: {
+    id: null,
+    email: null,
+    isActivated: false,
+  },
   errors: {
     signUp: {
       message: null,
@@ -40,7 +45,7 @@ export const authReducer = createReducer(
   })),
   on(AuthAction.authSetUser, (state, { user }) => ({
     ...state,
-    user,
+    user: user,
   })),
   on(AuthAction.authSetLoginError, (state, { message }) => ({
     ...state,

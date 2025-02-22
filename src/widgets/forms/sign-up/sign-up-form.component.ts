@@ -8,8 +8,8 @@ import {
 import { AuthService } from '../../../features';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import * as AuthActions from './../../../shared/store';
-import * as AuthSelectors from '../../../shared/store';
+import * as AuthActions from './../../../shared/store/auth/auth.actions';
+import * as AuthSelectors from '../../../shared/store/auth/auth.selectors';
 
 interface FormType {
   userName: FormControl<string>;
@@ -75,9 +75,15 @@ export class SignUpFormWidgetComponent {
 
     if (userName && email && password) {
       this.authService.signUp(userName, email, password)?.subscribe(
-        () => {
+        (data) => {
           this.signUpForm.reset();
           this.store.dispatch(AuthActions.authSetAuthenticated());
+          if (data.user) {
+            this.store.dispatch(AuthActions.authSetUser({ user: data.user }));
+          }
+          if (data.user.isActivated) {
+            this.store.dispatch(AuthActions.authSetActivated());
+          }
           this.isSubmitted = false;
         },
         (error) => {

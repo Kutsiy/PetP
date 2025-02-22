@@ -10,6 +10,7 @@ export const SIGN_UP = gql`
       user {
         id
         email
+        isActivated
       }
     }
   }

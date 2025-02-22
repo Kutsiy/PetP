@@ -8,7 +8,7 @@ import {
 import { AuthService } from '../../../features';
 import * as AuthActions from './../../../shared/store/auth/auth.actions';
 import { Store } from '@ngrx/store';
-import * as AuthSelectors from '../../../shared/store';
+import * as AuthSelectors from '../../../shared/store/auth/auth.selectors';
 import { Observable } from 'rxjs';
 
 interface FormType {
@@ -60,6 +60,9 @@ export class LoginFormWidgetComponent {
         (data) => {
           this.loginForm.reset();
           this.store.dispatch(AuthActions.authSetAuthenticated());
+          if (data.user) {
+            this.store.dispatch(AuthActions.authSetUser({ user: data.user }));
+          }
           this.isSubmitted = false;
         },
         (error) => {
