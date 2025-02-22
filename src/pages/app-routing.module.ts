@@ -41,6 +41,13 @@ const routes: Routes = [
     data: { animation: 'AuthenticationPage' },
   },
   {
+    path: 'not-auth',
+    loadChildren: () =>
+      import('../pages/not-auth').then((m) => m.NotAuthPageModule),
+    title: 'NotAuth',
+    data: { animation: 'NotAuthenticated' },
+  },
+  {
     path: '**',
     loadChildren: () =>
       import('../pages/not-found').then((m) => m.NotFoundPageModule),

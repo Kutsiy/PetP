@@ -10,6 +10,7 @@ export const routeAnimation = trigger('routeAnimation', [
   transition('* => SomePostPage', []),
   transition('* => AuthenticationPage', []),
   transition('* => PageNotFound', []),
+  transition('* => NotAuth', []),
   transition('* <=> *', [
     query(
       ':enter, :leave',
