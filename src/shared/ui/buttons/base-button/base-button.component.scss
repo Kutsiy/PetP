@@ -1,0 +1,34 @@
+.button {
+  width: 160px;
+  height: 40px;
+  background: var(--base-button);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+  transition: 0.5s;
+
+  &.success {
+    background: var(--base-button-success);
+    box-shadow: 0px 0px 10px var(--base-button-success);
+  }
+
+  &.warning {
+    background: var(--base-button-warning);
+    box-shadow: 0px 0px 10px var(--base-button-warning);
+  }
+
+  &.success:hover {
+    transform: translate(2px, -2px);
+    transition: 0.5s;
+    box-shadow: 0px 0px 15px 2px var(--base-button-success);
+    cursor: pointer;
+  }
+
+  &.warning:hover {
+    transform: translate(2px, -2px);
+    transition: 0.5s;
+    box-shadow: 0px 0px 15px 2px var(--base-button-warning);
+    cursor: pointer;
+  }
+}
