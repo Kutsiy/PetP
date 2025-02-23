@@ -38,7 +38,6 @@ export const authState: AuthStateType = {
 
 export const authReducer = createReducer(
   authState,
-  on(AuthAction.authSetActivated, (state) => ({ ...state, isActivated: true })),
   on(AuthAction.authSetAuthenticated, (state) => ({
     ...state,
     isAuthenticated: true,

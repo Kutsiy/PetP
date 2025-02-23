@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../shared/guards';
 
 const routes: Routes = [
   {
@@ -17,12 +18,14 @@ const routes: Routes = [
       ),
     title: 'ArticlesPage',
     data: { animation: 'ArticlesPage' },
+    canActivate: [AuthGuard],
   },
   {
     path: 'article/:id',
     loadChildren: () =>
       import('../pages/post/post.module').then((m) => m.PostPageModule),
     data: { animation: 'SomePostPage' },
+    canActivate: [AuthGuard],
   },
   {
     path: 'account',
@@ -32,6 +35,7 @@ const routes: Routes = [
       ),
     title: 'AccountPage',
     data: { animation: 'AccountPage' },
+    canActivate: [AuthGuard],
   },
   {
     path: 'auth',
@@ -45,7 +49,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('../pages/not-auth').then((m) => m.NotAuthPageModule),
     title: 'NotAuth',
-    data: { animation: 'NotAuthenticated' },
+    data: { animation: 'NotAuth' },
   },
   {
     path: '**',
@@ -62,6 +66,7 @@ const routes: Routes = [
       scrollPositionRestoration: 'top',
     }),
   ],
+  providers: [AuthGuard],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

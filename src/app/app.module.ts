@@ -67,9 +67,6 @@ export class AppModule {
       if (data.user) {
         this.store.dispatch(AuthActions.authSetUser({ user: data.user }));
       }
-      if (data.user.isActivated) {
-        this.store.dispatch(AuthActions.authSetActivated());
-      }
     });
   }
 }
