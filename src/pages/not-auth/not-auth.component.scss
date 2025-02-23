@@ -1,0 +1,39 @@
+.not-auth {
+  &__wrapper {
+    max-width: 100%;
+    min-width: 320px;
+    height: 100%;
+    position: relative;
+  }
+
+  &__container {
+    max-width: 1050px;
+    min-width: 320px;
+    margin: 25px auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__plaque {
+    width: 980px;
+    height: 440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background: var(--plague-background);
+    border: 2px solid #6a5acd;
+    box-shadow: 0 0 10px #6a5acd;
+  }
+  &__title {
+    position: relative;
+    // top: 20px;
+  }
+  &__buttons {
+    width: 230px;
+    height: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
