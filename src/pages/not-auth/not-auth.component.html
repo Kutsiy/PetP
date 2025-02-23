@@ -3,8 +3,16 @@
     <div class="not-auth__plaque">
       <div class="not-auth__title">YOU ARE NOT AUTHORIZED</div>
       <div class="not-auth__buttons">
-        <app-base-button>LOGIN</app-base-button>
-        <app-base-button>SIGN UP</app-base-button>
+        <app-base-button
+          [routerLink]="['/auth']"
+          [queryParams]="{ authType: 'login' }"
+          >LOGIN</app-base-button
+        >
+        <app-base-button
+          [routerLink]="['/auth']"
+          [queryParams]="{ authType: 'sign_up' }"
+          >SIGN UP</app-base-button
+        >
       </div>
     </div>
   </div>

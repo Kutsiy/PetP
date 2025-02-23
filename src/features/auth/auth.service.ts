@@ -1,7 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { SIGN_UP, LOGIN, REFRESH } from './schema';
+import { SIGN_UP, LOGIN, REFRESH, LOGOUT } from './schema';
 import { map } from 'rxjs';
 
 @Injectable({
@@ -57,6 +57,16 @@ export class AuthService {
 
   logOut() {
     if (isPlatformBrowser(this.platformId)) {
+      return this.apollo
+        .watchQuery<any>({
+          query: LOGOUT,
+          context: {
+            fetchOptions: {
+              credentials: 'include',
+            },
+          },
+        })
+        .valueChanges.pipe(map((data) => data.data.LogOut));
     }
     return null;
   }

@@ -7,6 +7,8 @@ import {
   PLATFORM_ID,
 } from '@angular/core';
 import { GsapService } from '../../shared/animations/gsap.service';
+import { Store } from '@ngrx/store';
+import * as AuthSelectors from './../../shared/store/auth/auth.selectors';
 
 @Component({
   selector: 'app-header',
@@ -27,7 +29,8 @@ export class HeaderWidgetComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document,
     @Inject(PLATFORM_ID) private platformId: Object,
     private elementRef: ElementRef,
-    @Inject(GsapService) private gsapService: GsapService
+    @Inject(GsapService) private gsapService: GsapService,
+    private store: Store
   ) {
     this.headerElement = this.elementRef.nativeElement.querySelector('.header');
     if (isPlatformBrowser(this.platformId)) {
@@ -40,6 +43,13 @@ export class HeaderWidgetComponent implements OnInit {
         },
       });
     }
+    this.store
+      .select(AuthSelectors.selectAuthState)
+      .subscribe(({ isActive, isAuth }) => {
+        if (isAuth && isActive) {
+          this.isHaveAccount = true;
+        }
+      });
   }
 
   themeToggle() {
