@@ -13,14 +13,12 @@ export interface User {
 }
 export interface AuthStateType {
   isAuthenticated: boolean;
-  isActivated: boolean;
-  user: User;
+  user: User | null;
   errors: FormsErrors;
 }
 
 export const authState: AuthStateType = {
   isAuthenticated: false,
-  isActivated: false,
   user: {
     id: null,
     email: null,
@@ -38,9 +36,9 @@ export const authState: AuthStateType = {
 
 export const authReducer = createReducer(
   authState,
-  on(AuthAction.authSetAuthenticated, (state) => ({
+  on(AuthAction.authSetAuthenticated, (state, { value }) => ({
     ...state,
-    isAuthenticated: true,
+    isAuthenticated: value,
   })),
   on(AuthAction.authSetUser, (state, { user }) => ({
     ...state,

@@ -61,7 +61,7 @@
               >
                 Sign Up
               </div>
-              } @if (isHaveAccount) {
+              } @else {
               <div [routerLink]="['/account/profile']">Settings</div>
               }
             </div>

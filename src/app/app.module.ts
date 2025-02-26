@@ -63,7 +63,7 @@ export class AppModule {
     private readonly store: Store
   ) {
     this.authService.refresh()?.subscribe((data) => {
-      this.store.dispatch(AuthActions.authSetAuthenticated());
+      this.store.dispatch(AuthActions.authSetAuthenticated({ value: true }));
       if (data.user) {
         this.store.dispatch(AuthActions.authSetUser({ user: data.user }));
       }

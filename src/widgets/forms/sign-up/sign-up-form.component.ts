@@ -77,7 +77,9 @@ export class SignUpFormWidgetComponent {
       this.authService.signUp(userName, email, password)?.subscribe(
         (data) => {
           this.signUpForm.reset();
-          this.store.dispatch(AuthActions.authSetAuthenticated());
+          this.store.dispatch(
+            AuthActions.authSetAuthenticated({ value: true })
+          );
           if (data.user) {
             this.store.dispatch(AuthActions.authSetUser({ user: data.user }));
           }

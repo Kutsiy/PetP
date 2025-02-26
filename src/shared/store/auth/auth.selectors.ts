@@ -6,7 +6,7 @@ const selectAuth = createFeatureSelector<AuthStateType>(stateName);
 
 export const selectAuthActivated = createSelector(
   selectAuth,
-  (state: AuthStateType) => state.user.isActivated
+  (state: AuthStateType) => (state.user ? state.user.isActivated : false)
 );
 
 export const selectAuthAuthenticated = createSelector(

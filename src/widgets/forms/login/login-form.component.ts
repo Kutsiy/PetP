@@ -59,7 +59,9 @@ export class LoginFormWidgetComponent {
       this.authService.login(email, password)?.subscribe(
         (data) => {
           this.loginForm.reset();
-          this.store.dispatch(AuthActions.authSetAuthenticated());
+          this.store.dispatch(
+            AuthActions.authSetAuthenticated({ value: true })
+          );
           if (data.user) {
             this.store.dispatch(AuthActions.authSetUser({ user: data.user }));
           }
