@@ -6,3 +6,6 @@ export * from './contacts';
 export * from './posts';
 export * from './side-menu';
 export * from './forms';
+export * from './accessibility';
+export * from './notifications';
+export * from './write-article';

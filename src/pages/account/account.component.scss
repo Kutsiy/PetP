@@ -19,6 +19,7 @@
   &__sidebar {
     background: var(--account-bar-back);
     border-radius: 5px;
+    min-height: 500px;
 
     .sidebar__inner {
       display: flex;

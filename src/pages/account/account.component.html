@@ -2,9 +2,18 @@
   <div class="account__container">
     <div class="account__sidebar sidebar">
       <div class="sidebar__inner">
-        <div class="sidebar__button">Profile</div>
-        <div class="sidebar__button">Notifications</div>
-        <div class="sidebar__button">Accessibility</div>
+        <div class="sidebar__button" [routerLink]="['/account/profile']">
+          Profile
+        </div>
+        <div class="sidebar__button" [routerLink]="['/account/notifications']">
+          Notifications
+        </div>
+        <div class="sidebar__button" [routerLink]="['/account/accessability']">
+          Accessibility
+        </div>
+        <div class="sidebar__button" [routerLink]="['/account/write-article']">
+          Write an article
+        </div>
         <!-- <div class="sidebar__button">Admin Panel</div> -->
         <div class="sidebar__button" (click)="logOut()">Log Out</div>
       </div>

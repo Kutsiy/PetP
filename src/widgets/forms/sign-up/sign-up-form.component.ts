@@ -1,4 +1,10 @@
-import { Component, ElementRef, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnDestroy,
+  Output,
+} from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -10,6 +16,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as AuthActions from './../../../shared/store/auth/auth.actions';
 import * as AuthSelectors from '../../../shared/store/auth/auth.selectors';
+import { Router } from '@angular/router';
 
 interface FormType {
   userName: FormControl<string>;
@@ -24,7 +31,7 @@ interface FormType {
   styleUrl: './sign-up-form.component.scss',
   standalone: false,
 })
-export class SignUpFormWidgetComponent {
+export class SignUpFormWidgetComponent implements OnDestroy {
   signUpForm: FormGroup<FormType>;
   isSubmitted = false;
   isInvalid = false;
@@ -34,7 +41,8 @@ export class SignUpFormWidgetComponent {
     public readonly elementRef: ElementRef,
     private formBuilder: NonNullableFormBuilder,
     private authService: AuthService,
-    private store: Store
+    private store: Store,
+    private readonly router: Router
   ) {
     this.signUpForm = this.formBuilder.group({
       userName: ['', [Validators.required, Validators.minLength(3)]],
@@ -51,6 +59,9 @@ export class SignUpFormWidgetComponent {
     });
 
     this.error = this.store.select(AuthSelectors.selectSignUpError);
+  }
+  ngOnDestroy(): void {
+    this.store.dispatch(AuthActions.authSetSignUpError({ message: null }));
   }
   @Output() action = new EventEmitter<void>();
 
@@ -84,6 +95,7 @@ export class SignUpFormWidgetComponent {
             this.store.dispatch(AuthActions.authSetUser({ user: data.user }));
           }
           this.isSubmitted = false;
+          this.router.navigate(['/']);
         },
         (error) => {
           this.store.dispatch(

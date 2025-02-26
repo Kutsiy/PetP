@@ -1,4 +1,10 @@
-import { Component, ElementRef, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Output,
+  OnDestroy,
+} from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -10,6 +16,7 @@ import * as AuthActions from './../../../shared/store/auth/auth.actions';
 import { Store } from '@ngrx/store';
 import * as AuthSelectors from '../../../shared/store/auth/auth.selectors';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 interface FormType {
   email: FormControl<string>;
@@ -22,7 +29,7 @@ interface FormType {
   styleUrl: './login-form.component.scss',
   standalone: false,
 })
-export class LoginFormWidgetComponent {
+export class LoginFormWidgetComponent implements OnDestroy {
   loginForm: FormGroup<FormType>;
   isSubmitted = false;
   isInvalid = false;
@@ -31,7 +38,8 @@ export class LoginFormWidgetComponent {
     public readonly elementRef: ElementRef,
     private formBuilder: NonNullableFormBuilder,
     private authService: AuthService,
-    private store: Store
+    private store: Store,
+    private readonly router: Router
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -40,6 +48,11 @@ export class LoginFormWidgetComponent {
 
     this.error = this.store.select(AuthSelectors.selectLoginError);
   }
+
+  ngOnDestroy(): void {
+    this.store.dispatch(AuthActions.authSetLoginError({ message: null }));
+  }
+
   @Output() action = new EventEmitter<void>();
 
   activate() {
@@ -66,6 +79,7 @@ export class LoginFormWidgetComponent {
             this.store.dispatch(AuthActions.authSetUser({ user: data.user }));
           }
           this.isSubmitted = false;
+          this.router.navigate(['/']);
         },
         (error) => {
           this.store.dispatch(

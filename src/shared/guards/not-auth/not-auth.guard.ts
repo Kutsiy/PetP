@@ -12,7 +12,7 @@ import * as AuthSelectors from '../../store/auth/auth.selectors';
 import { map } from 'rxjs';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class NotAuthGuard implements CanActivate {
   constructor(private readonly store: Store, private readonly router: Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -20,12 +20,11 @@ export class AuthGuard implements CanActivate {
   ): MaybeAsync<GuardResult> {
     return this.store.select(AuthSelectors.selectAuthState).pipe(
       map(({ isActive, isAuth }) => {
-        if (isAuth) {
-          this.router.navigate(['/']);
+        if (!isAuth) {
+          this.router.navigate(['/not-auth']);
           return false;
-        } else {
-          return true;
         }
+        return true;
       })
     );
   }
