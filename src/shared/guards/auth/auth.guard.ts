@@ -9,7 +9,7 @@ import {
 } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as AuthSelectors from '../../store/auth/auth.selectors';
-import { filter, map, take } from 'rxjs';
+import { filter, map, Observable, take, tap } from 'rxjs';
 import { Location } from '@angular/common';
 
 @Injectable()
@@ -22,13 +22,17 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): MaybeAsync<GuardResult> {
+  ): Observable<boolean> {
     return this.store.select(AuthSelectors.selectAuthState).pipe(
       filter(({ isAuth }) => isAuth !== null),
-      take(1),
-      map(({ isActive, isAuth }) => {
+      take(100),
+      tap(({ isActive, isAuth }) => {
         if (isAuth) {
           this.router.navigate(['/']);
+        }
+      }),
+      map(({ isActive, isAuth }) => {
+        if (isAuth) {
           return false;
         } else {
           return true;

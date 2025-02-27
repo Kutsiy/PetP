@@ -9,7 +9,7 @@ import {
 } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as AuthSelectors from '../../store/auth/auth.selectors';
-import { filter, map, take } from 'rxjs';
+import { filter, map, Observable, take } from 'rxjs';
 
 @Injectable()
 export class NotAuthGuard implements CanActivate {
@@ -17,7 +17,7 @@ export class NotAuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): MaybeAsync<GuardResult> {
+  ): Observable<boolean> {
     return this.store.select(AuthSelectors.selectAuthState).pipe(
       filter(({ isActive, isAuth }) => isAuth !== null),
       map(({ isAuth }) => {
