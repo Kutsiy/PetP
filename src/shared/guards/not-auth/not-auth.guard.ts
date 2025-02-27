@@ -9,7 +9,7 @@ import {
 } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as AuthSelectors from '../../store/auth/auth.selectors';
-import { map } from 'rxjs';
+import { filter, map, take } from 'rxjs';
 
 @Injectable()
 export class NotAuthGuard implements CanActivate {
@@ -19,12 +19,14 @@ export class NotAuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): MaybeAsync<GuardResult> {
     return this.store.select(AuthSelectors.selectAuthState).pipe(
-      map(({ isActive, isAuth }) => {
+      filter(({ isActive, isAuth }) => isAuth !== null),
+      map(({ isAuth }) => {
         if (!isAuth) {
           this.router.navigate(['/not-auth']);
           return false;
+        } else {
+          return true;
         }
-        return true;
       })
     );
   }

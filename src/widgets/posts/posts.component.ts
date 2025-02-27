@@ -12,6 +12,8 @@ import {
 } from '@angular/core';
 import { GsapService } from '../../shared/animations/gsap.service';
 import { PostsService } from '../../features';
+import { Store } from '@ngrx/store';
+import * as PostsActions from './../../shared/store/posts/posts.actions';
 
 type range = {
   firstPage: boolean;
@@ -45,7 +47,8 @@ export class PostsWidgetComponent implements OnInit, OnChanges {
   @Output() searchStringChange = new EventEmitter<string | null>();
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
-    @Inject(PostsService) private postService: PostsService
+    @Inject(PostsService) private postService: PostsService,
+    private readonly store: Store
   ) {}
   ngOnInit(): void {
     this.currentPage = this.postService.getPage();
@@ -93,6 +96,7 @@ export class PostsWidgetComponent implements OnInit, OnChanges {
   async loadPosts(value = '', pageNumber: number = 1, limit: number = 10) {
     if (isPlatformBrowser(this.platformId)) {
       this.isLoading = true;
+      this.store.dispatch(PostsActions.postsSetLoading({ value: true }));
 
       await this.postService.start(value, pageNumber, limit)?.subscribe(
         (data: any) => {
@@ -117,6 +121,7 @@ export class PostsWidgetComponent implements OnInit, OnChanges {
             }
           }
           this.isLoading = false;
+          this.store.dispatch(PostsActions.postsSetLoading({ value: false }));
         },
         (error) => {
           // console.log(error);

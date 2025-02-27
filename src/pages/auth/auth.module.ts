@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { AuthPageComponent } from './auth.component';
 import { LoginFormWidgetModule, SignUpFormWidgetModule } from '../../widgets';
-import { AuthStoreModule } from '../../shared/store';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [{ path: '', component: AuthPageComponent }];
