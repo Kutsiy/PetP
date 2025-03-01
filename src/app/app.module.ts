@@ -1,4 +1,11 @@
-import { isDevMode, NgModule, OnInit } from '@angular/core';
+import {
+  APP_INITIALIZER,
+  inject,
+  isDevMode,
+  NgModule,
+  OnInit,
+  provideAppInitializer,
+} from '@angular/core';
 import {
   BrowserModule,
   provideClientHydration,
@@ -53,20 +60,23 @@ import * as AuthSelectors from '../shared/store/auth/auth.selectors';
       traceLimit: 75,
       connectInZone: true,
     }),
+    provideAppInitializer(() => {
+      const store = inject(Store);
+      const authService = inject(AuthService);
+      authService.getUser()?.subscribe((data: any) => {
+        const user = {
+          id: data.id,
+          email: data.email,
+          isActivated: data.isActivated,
+        };
+        store.dispatch(AuthActions.authSetAuthenticated({ value: true }));
+        if (data) {
+          store.dispatch(AuthActions.authSetUser({ user }));
+        }
+      });
+    }),
     AuthService,
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-  constructor(
-    private readonly authService: AuthService,
-    private readonly store: Store
-  ) {
-    this.authService.refresh()?.subscribe((data) => {
-      this.store.dispatch(AuthActions.authSetAuthenticated({ value: true }));
-      if (data.user) {
-        this.store.dispatch(AuthActions.authSetUser({ user: data.user }));
-      }
-    });
-  }
-}
+export class AppModule {}

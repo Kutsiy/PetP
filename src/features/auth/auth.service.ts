@@ -1,7 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { SIGN_UP, LOGIN, REFRESH, LOGOUT } from './schema';
+import { SIGN_UP, LOGIN, REFRESH, LOGOUT, GETUSER } from './schema';
 import { map } from 'rxjs';
 
 @Injectable({
@@ -76,6 +76,15 @@ export class AuthService {
       return this.apollo
         .mutate({ mutation: REFRESH })
         .pipe(map((data: any) => data.data.Refresh));
+    }
+    return null;
+  }
+
+  getUser() {
+    if (isPlatformBrowser(this.platformId)) {
+      return this.apollo
+        .mutate({ mutation: GETUSER })
+        .pipe(map((data: any) => data.data.GetUser));
     }
     return null;
   }
