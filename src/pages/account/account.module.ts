@@ -6,6 +6,7 @@ import { ProfileWidgetComponent } from '../../widgets/profile/profile.component'
 import { NotificationsWidgetComponent } from '../../widgets/notifications/notifications.component';
 import { AccessibilityWidgetComponent } from '../../widgets/accessibility/accessibility.component';
 import { WriteArticleWidgetComponent } from '../../widgets/write-article/write-article.component';
+import { LogOutWidgetModule } from '../../widgets';
 
 const routes: Routes = [
   {
@@ -37,7 +38,12 @@ const routes: Routes = [
 ];
 @NgModule({
   declarations: [AccountPageComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), RouterModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    RouterModule,
+    LogOutWidgetModule,
+  ],
   exports: [AccountPageComponent],
 })
 export class AccountPageModule {}

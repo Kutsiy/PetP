@@ -12,5 +12,5 @@ export class BaseButtonUiComponent extends AbstractBaseButton {
   @Input()
   override buttonType!: ButtonType;
   @Input()
-  override onClick!: (event: MouseEvent) => void;
+  override onClick!: (...args: any[]) => void;
 }

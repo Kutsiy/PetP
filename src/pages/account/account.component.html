@@ -15,10 +15,14 @@
           Write an article
         </div>
         <!-- <div class="sidebar__button">Admin Panel</div> -->
-        <div class="sidebar__button" (click)="logOut()">Log Out</div>
+        <div class="sidebar__button" (click)="changeLogoutState()">Log Out</div>
       </div>
     </div>
     <div class="account__main main">
+      <app-logout
+        [class.logout]="this.logoutState()"
+        (onChange)="changeLogoutState()"
+      ></app-logout>
       <div class="main__inner">
         <router-outlet></router-outlet>
       </div>

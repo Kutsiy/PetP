@@ -1,1 +1,11 @@
-<p>logout works!</p>
+<div class="logout__wrapper">
+  <div class="logout__text">
+    Are you sure you want to log out of your account?
+  </div>
+  <div class="logout__buttons">
+    <app-base-button [onClick]="logOut">Yes</app-base-button>
+    <app-base-button [buttonType]="'warning'" [onClick]="change"
+      >No</app-base-button
+    >
+  </div>
+</div>

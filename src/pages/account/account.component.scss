@@ -45,6 +45,7 @@
   &__main {
     background: var(--account-bar-back);
     border-radius: 5px;
+    position: relative;
 
     .main__inner {
       box-sizing: border-box;
@@ -70,4 +71,8 @@
       }
     }
   }
+}
+
+.logout {
+  display: none;
 }
