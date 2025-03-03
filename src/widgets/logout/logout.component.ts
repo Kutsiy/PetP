@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AuthService } from '../../features';
 import { Store } from '@ngrx/store';
-import * as AuthActions from './../../shared/store/auth/auth.actions';
+import * as AuthActions from '../../shared/store/auth/auth.actions';
 import { Router } from '@angular/router';
 
 @Component({
