@@ -1,14 +1,13 @@
 <div class="profile">
   <div class="profile_column-characteristic">
     <div class="profile__subtititle">Your username:</div>
-    <div class="profile__username profile__row">Jaja</div>
+    <div class="profile__username profile__row">{{ user?.name }}</div>
     <div class="profile__subtititle">Your roles:</div>
     <div class="profile__roles profile__row">
-      <div>User</div>
-      <div>Admin</div>
+      {{ user?.roles }}
     </div>
-    <div class="profile__subtititle">Your public email:</div>
-    <div class="profile__row">egtfggfgmail.com</div>
+    <div class="profile__subtititle">Your email:</div>
+    <div class="profile__row">{{ user?.email }}</div>
     <div class="profile__subtititle">Your pronouns:</div>
     <div class="profile__row">he/him</div>
   </div>

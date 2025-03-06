@@ -1,7 +1,14 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { SIGN_UP, LOGIN, REFRESH, LOGOUT, GETUSER } from './schema';
+import {
+  SIGN_UP,
+  LOGIN,
+  REFRESH,
+  LOGOUT,
+  GETUSER,
+  GETUSERINFO,
+} from './schema';
 import { map } from 'rxjs';
 
 @Injectable({
@@ -85,6 +92,22 @@ export class AuthService {
       return this.apollo
         .mutate({ mutation: GETUSER })
         .pipe(map((data: any) => data.data.GetUser));
+    }
+    return null;
+  }
+
+  getAllInfoAboutUser() {
+    if (isPlatformBrowser(this.platformId)) {
+      return this.apollo
+        .watchQuery<any>({
+          query: GETUSERINFO,
+          context: {
+            fetchOptions: {
+              credentials: 'include',
+            },
+          },
+        })
+        .valueChanges.pipe(map((data) => data.data.GetAllInfoAboutUser));
     }
     return null;
   }

@@ -20,6 +20,11 @@ export const selectAuthState = createSelector(
   (isActive, isAuth) => ({ isActive, isAuth })
 );
 
+export const selectUser = createSelector(
+  selectAuth,
+  (state: AuthStateType) => state.user
+);
+
 export const selectLoginError = createSelector(
   selectAuth,
   (state: AuthStateType) => state.errors.login.message
