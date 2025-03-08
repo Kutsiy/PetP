@@ -5,6 +5,10 @@ export const authSetAuthenticated = createAction(
   '[Auth] Set Authenticated',
   props<{ value: boolean }>()
 );
+export const authSetLoading = createAction(
+  '[Auth] Set Loading',
+  props<{ value: boolean }>()
+);
 export const authSetUser = createAction(
   '[Auth] Set User',
   props<{ user: User | null }>()

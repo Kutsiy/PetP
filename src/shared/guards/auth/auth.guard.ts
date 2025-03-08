@@ -14,25 +14,21 @@ import { Location } from '@angular/common';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(
-    private readonly store: Store,
-    private readonly router: Router,
-    private location: Location
-  ) {}
+  constructor(private readonly store: Store, private readonly router: Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
     return this.store.select(AuthSelectors.selectAuthState).pipe(
       filter(({ isAuth }) => isAuth !== null),
-      take(100),
-      tap(({ isActive, isAuth }) => {
-        if (isAuth) {
+      take(1),
+      tap(({ isActive, isAuth, isLoading }) => {
+        if (isAuth && isLoading === false) {
           this.router.navigate(['/']);
         }
       }),
-      map(({ isActive, isAuth }) => {
-        if (isAuth) {
+      map(({ isActive, isAuth, isLoading }) => {
+        if (isAuth && isLoading === false) {
           return false;
         } else {
           return true;

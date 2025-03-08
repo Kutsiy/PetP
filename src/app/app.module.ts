@@ -63,6 +63,7 @@ import * as AuthSelectors from '../shared/store/auth/auth.selectors';
     provideAppInitializer(() => {
       const store = inject(Store);
       const authService = inject(AuthService);
+      store.dispatch(AuthActions.authSetLoading({ value: true }));
       authService.getUser()?.subscribe((data: any) => {
         const user = {
           id: data.id,
@@ -73,6 +74,7 @@ import * as AuthSelectors from '../shared/store/auth/auth.selectors';
         if (data) {
           store.dispatch(AuthActions.authSetUser({ user }));
         }
+        store.dispatch(AuthActions.authSetLoading({ value: false }));
       });
     }),
     AuthService,

@@ -14,10 +14,16 @@ export const selectAuthAuthenticated = createSelector(
   (state: AuthStateType) => state.isAuthenticated
 );
 
+export const selectAuthLoading = createSelector(
+  selectAuth,
+  (state: AuthStateType) => state.isLoading
+);
+
 export const selectAuthState = createSelector(
   selectAuthActivated,
   selectAuthAuthenticated,
-  (isActive, isAuth) => ({ isActive, isAuth })
+  selectAuthLoading,
+  (isActive, isAuth, isLoading) => ({ isActive, isAuth, isLoading })
 );
 
 export const selectUser = createSelector(

@@ -1,3 +1,27 @@
 <div class="write__container">
-  <quill-editor> </quill-editor>
+  <div class="write__add-title">
+    <div class="write__label">Add title</div>
+    <input type="text" placeholder="Add title" class="write__input" />
+  </div>
+  <div class="write__add-preview">
+    <div class="write__label">Add preview</div>
+    <input type="file" />
+  </div>
+  <div class="write__choose-category">
+    <div class="write__label">Choose a category</div>
+    <mat-form-field>
+      <mat-label>Category</mat-label>
+      <mat-select>
+        @for (category of categories; track category) {
+        <mat-option [value]="category.value">{{
+          category.viewValue
+        }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="write__text">
+    <div class="write__label">Add text</div>
+    <quill-editor> </quill-editor>
+  </div>
 </div>

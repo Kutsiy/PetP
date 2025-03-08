@@ -15,3 +15,24 @@
 ::ng-deep .ql-container {
   border: 1px solid #ccc !important;
 }
+
+.write {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__label {
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  &__input {
+    min-width: 320px;
+    height: 30px;
+    padding: 3px;
+    font-size: 20px;
+  }
+}

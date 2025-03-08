@@ -69,6 +69,7 @@ export class LoginFormWidgetComponent implements OnDestroy {
     const { email, password } = this.loginForm.value;
 
     if (email && password) {
+      this.store.dispatch(AuthActions.authSetLoading({ value: true }));
       this.authService.login(email, password)?.subscribe(
         (data) => {
           this.loginForm.reset();
@@ -79,6 +80,7 @@ export class LoginFormWidgetComponent implements OnDestroy {
             this.store.dispatch(AuthActions.authSetUser({ user: data.user }));
           }
           this.isSubmitted = false;
+          this.store.dispatch(AuthActions.authSetLoading({ value: false }));
           this.router.navigate(['/']);
         },
         (error) => {

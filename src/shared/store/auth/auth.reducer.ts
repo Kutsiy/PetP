@@ -14,6 +14,7 @@ export interface User {
 export interface AuthStateType {
   isAuthenticated: boolean;
   user: User | null;
+  isLoading: boolean;
   errors: FormsErrors;
 }
 
@@ -24,6 +25,7 @@ export const authState: AuthStateType = {
     email: null,
     isActivated: false,
   },
+  isLoading: false,
   errors: {
     signUp: {
       message: null,
@@ -39,6 +41,10 @@ export const authReducer = createReducer(
   on(AuthAction.authSetAuthenticated, (state, { value }) => ({
     ...state,
     isAuthenticated: value,
+  })),
+  on(AuthAction.authSetLoading, (state, { value }) => ({
+    ...state,
+    isLoading: value ?? false,
   })),
   on(AuthAction.authSetUser, (state, { user }) => ({
     ...state,

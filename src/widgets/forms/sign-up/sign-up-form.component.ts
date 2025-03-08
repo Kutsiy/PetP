@@ -85,6 +85,7 @@ export class SignUpFormWidgetComponent implements OnDestroy {
     const { userName, email, password } = this.signUpForm.value;
 
     if (userName && email && password) {
+      this.store.dispatch(AuthActions.authSetLoading({ value: true }));
       this.authService.signUp(userName, email, password)?.subscribe(
         (data) => {
           this.signUpForm.reset();
@@ -95,6 +96,7 @@ export class SignUpFormWidgetComponent implements OnDestroy {
             this.store.dispatch(AuthActions.authSetUser({ user: data.user }));
           }
           this.isSubmitted = false;
+          this.store.dispatch(AuthActions.authSetLoading({ value: false }));
           this.router.navigate(['/']);
         },
         (error) => {
