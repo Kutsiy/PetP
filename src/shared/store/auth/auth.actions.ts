@@ -9,10 +9,18 @@ export const authSetLoading = createAction(
   '[Auth] Set Loading',
   props<{ value: boolean }>()
 );
+
+export const authGetUser = createAction('[Auth] Get User');
 export const authSetUser = createAction(
   '[Auth] Set User',
   props<{ user: User | null }>()
 );
+
+export const authSetUserAndAuthenticated = createAction(
+  '[Auth] Set User And Authenticated',
+  props<{ user: User | null; value: boolean }>()
+);
+
 export const authSetLoginError = createAction(
   '[Auth] Set Login Error',
   props<{ message: string | null }>()

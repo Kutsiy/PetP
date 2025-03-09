@@ -20,15 +20,16 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> {
     return this.store.select(AuthSelectors.selectAuthState).pipe(
+      filter(({ isLoading }) => isLoading === false),
       filter(({ isAuth }) => isAuth !== null),
       take(1),
-      tap(({ isActive, isAuth, isLoading }) => {
-        if (isAuth && isLoading === false) {
+      tap(({ isActive, isAuth }) => {
+        if (isAuth) {
           this.router.navigate(['/']);
         }
       }),
       map(({ isActive, isAuth, isLoading }) => {
-        if (isAuth && isLoading === false) {
+        if (isAuth) {
           return false;
         } else {
           return true;

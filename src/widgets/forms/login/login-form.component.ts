@@ -80,7 +80,6 @@ export class LoginFormWidgetComponent implements OnDestroy {
             this.store.dispatch(AuthActions.authSetUser({ user: data.user }));
           }
           this.isSubmitted = false;
-          this.store.dispatch(AuthActions.authSetLoading({ value: false }));
           this.router.navigate(['/']);
         },
         (error) => {

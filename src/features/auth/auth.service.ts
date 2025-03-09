@@ -9,7 +9,7 @@ import {
   GETUSER,
   GETUSERINFO,
 } from './schema';
-import { map } from 'rxjs';
+import { map, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -93,7 +93,7 @@ export class AuthService {
         .mutate({ mutation: GETUSER })
         .pipe(map((data: any) => data.data.GetUser));
     }
-    return null;
+    return of(null);
   }
 
   getAllInfoAboutUser() {

@@ -46,9 +46,20 @@ export const authReducer = createReducer(
     ...state,
     isLoading: value ?? false,
   })),
+  on(AuthAction.authGetUser, (state) => ({
+    ...state,
+    isLoading: true,
+  })),
   on(AuthAction.authSetUser, (state, { user }) => ({
     ...state,
     user: user,
+    isLoading: false,
+  })),
+  on(AuthAction.authSetUserAndAuthenticated, (state, { user, value }) => ({
+    ...state,
+    user: user,
+    isAuthenticated: value,
+    isLoading: false,
   })),
   on(AuthAction.authSetLoginError, (state, { message }) => ({
     ...state,

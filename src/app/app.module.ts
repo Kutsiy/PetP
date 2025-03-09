@@ -4,6 +4,7 @@ import {
   isDevMode,
   NgModule,
   OnInit,
+  PLATFORM_ID,
   provideAppInitializer,
 } from '@angular/core';
 import {
@@ -24,6 +25,8 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { AuthService } from '../features';
 import * as AuthActions from './../shared/store/auth/auth.actions';
 import * as AuthSelectors from '../shared/store/auth/auth.selectors';
+import { EffectsModule } from '@ngrx/effects';
+import { isPlatformBrowser } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -47,6 +50,7 @@ import * as AuthSelectors from '../shared/store/auth/auth.selectors';
         },
       }
     ),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     provideClientHydration(),
@@ -62,20 +66,23 @@ import * as AuthSelectors from '../shared/store/auth/auth.selectors';
     }),
     provideAppInitializer(() => {
       const store = inject(Store);
-      const authService = inject(AuthService);
-      store.dispatch(AuthActions.authSetLoading({ value: true }));
-      authService.getUser()?.subscribe((data: any) => {
-        const user = {
-          id: data.id,
-          email: data.email,
-          isActivated: data.isActivated,
-        };
-        store.dispatch(AuthActions.authSetAuthenticated({ value: true }));
-        if (data) {
-          store.dispatch(AuthActions.authSetUser({ user }));
-        }
-        store.dispatch(AuthActions.authSetLoading({ value: false }));
-      });
+      // const authService = inject(AuthService);
+      const platformId = inject(PLATFORM_ID);
+      if (isPlatformBrowser(platformId)) {
+        store.dispatch(AuthActions.authGetUser());
+        // store.dispatch(AuthActions.authSetLoading({ value: true }));
+        // authService.getUser()?.subscribe((data: any) => {
+        //   const user = {
+        //     id: data.id,
+        //     email: data.email,
+        //     isActivated: data.isActivated,
+        //   };
+        //   store.dispatch(AuthActions.authSetAuthenticated({ value: true }));
+        //   if (data) {
+        //     store.dispatch(AuthActions.authSetUser({ user }));
+        //   }
+        // });
+      }
     }),
     AuthService,
   ],
