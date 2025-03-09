@@ -2,14 +2,15 @@
   max-width: 100%;
   width: 100%;
   min-width: 320px;
-  height: 140px;
-  // background: var(--footer-gradient);
+  min-height: 100px;
+  max-height: 300px;
   border-top: 0.5px solid var(--shadow-head);
 
   &__container {
     max-width: 1050px;
     min-width: 320px;
-    height: 100%;
+    min-height: 100px;
+    max-height: 300px;
     margin: 0 auto;
     display: flex;
     align-self: center;
@@ -41,7 +42,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 240px;
+    min-width: 240px;
+    gap: 10px;
+    margin: 10px 0px;
   }
 
   &__list {
@@ -66,6 +69,18 @@
   &__list-item:hover {
     color: var(--text-color);
     transition: 0.5s;
+  }
+
+  &__button {
+    width: 100px;
+    height: 50px;
+    background-color: var(--footer-button);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-size: 30px;
+    cursor: pointer;
   }
 
   @media (max-width: 1200px) {
@@ -98,4 +113,13 @@
       width: 200px;
     }
   }
+}
+
+.mat-icon {
+  height: 40px;
+  width: 40px;
+}
+
+.material-icons {
+  font-size: 40px;
 }

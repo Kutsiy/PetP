@@ -6,4 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './footer.component.scss',
   standalone: false,
 })
-export class FooterWidgetComponent {}
+export class FooterWidgetComponent {
+  scrollUp() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}

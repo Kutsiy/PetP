@@ -21,11 +21,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
   }
 
   &__row-avatar {
     font-size: 30px;
-    margin-bottom: 10px;
   }
 
   &__avatar {
@@ -33,5 +33,30 @@
     height: 200px;
     background-color: black;
     border-radius: 100%;
+    margin-bottom: 10px;
+  }
+
+  &__load-avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  &__load-avatar > input[type="file"] {
+    display: none;
+  }
+  &__load-avatar > label {
+    padding: 10px 30px;
+    background-color: var(--load-button);
+    box-shadow: 3px 3px 5px rgb(30, 30, 30);
+    transition: 0.5s;
+  }
+  &__load-avatar > label:hover {
+    transform: translate(2px, 2px);
+    transition: 0.5s;
+  }
+  &__load-avatar > label:active {
+    transform: translate(5px, 5px);
+    transition: 0.5s;
   }
 }

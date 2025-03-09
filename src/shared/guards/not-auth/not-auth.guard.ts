@@ -20,20 +20,14 @@ export class NotAuthGuard implements CanActivate {
   ): Observable<boolean> {
     return this.store.select(AuthSelectors.selectAuthState).pipe(
       filter(({ isLoading }) => isLoading === false),
-      filter(({ isActive, isAuth }) => isAuth !== null),
+      filter(({ isAuth }) => isAuth !== null),
       take(1),
-      tap(({ isAuth, isLoading }) => {
+      tap(({ isAuth }) => {
         if (!isAuth) {
           this.router.navigate(['/not-auth']);
         }
       }),
-      map(({ isActive, isAuth }) => {
-        if (!isAuth) {
-          return false;
-        } else {
-          return true;
-        }
-      })
+      map(({ isAuth }) => isAuth)
     );
   }
 }
