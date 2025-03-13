@@ -5,7 +5,7 @@ import { ProfileWidgetComponent } from './profile.component';
 
 @NgModule({
   declarations: [ProfileWidgetComponent],
-  imports: [MatIconModule, RouterModule],
+  imports: [RouterModule, MatIconModule],
   exports: [ProfileWidgetComponent],
 })
 export class ProfileWidgetModule {}

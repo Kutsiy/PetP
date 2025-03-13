@@ -7,6 +7,7 @@ import { NotificationsWidgetComponent } from '../../widgets/notifications/notifi
 import { AccessibilityWidgetComponent } from '../../widgets/accessibility/accessibility.component';
 import { WriteArticleWidgetComponent } from '../../widgets/write-article/write-article.component';
 import { LogOutWidgetModule } from '../../widgets';
+import { ProfileWidgetModule } from '../../widgets/profile';
 
 const routes: Routes = [
   {
@@ -43,6 +44,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     RouterModule,
     LogOutWidgetModule,
+    ProfileWidgetModule,
   ],
   exports: [AccountPageComponent],
 })
