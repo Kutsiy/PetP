@@ -5,7 +5,16 @@
   </div>
   <div class="write__add-preview">
     <div class="write__label">Add preview</div>
-    <input type="file" />
+    <input type="file" id="input-id" (change)="onFileSelected($event)" />
+    <label for="input-id">Add</label>
+    <div>
+      @if (imageUrl) {
+      <img
+        [src]="imageUrl"
+        style="max-width: 300px; max-height: 500px; margin-top: 10px"
+      />
+      }
+    </div>
   </div>
   <div class="write__choose-category">
     <div class="write__label">Choose a category</div>
