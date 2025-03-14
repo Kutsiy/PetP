@@ -5,7 +5,12 @@
   </div>
   <div class="write__add-preview">
     <div class="write__label">Add preview</div>
-    <input type="file" id="input-id" (change)="onFileSelected($event)" />
+    <input
+      type="file"
+      id="input-id"
+      (change)="onFileSelected($event)"
+      accept="image/*, .png, .jpg, .web,"
+    />
     <label for="input-id">Add</label>
     <div>
       @if (imageUrl) {
