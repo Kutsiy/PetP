@@ -1,0 +1,28 @@
+<div class="avatar">
+  @if(imageUrl) {
+  <img [src]="croppedImage" class="preview" />
+  }
+  <div class="avatar__load-avatar">
+    <input
+      type="file"
+      id="load"
+      accept="image/*, .png, .jpg, .web,"
+      (change)="onFileSelected($event)"
+    />
+    <label for="load"><mat-icon>add_a_photo</mat-icon></label>
+  </div>
+</div>
+
+@if(openCropper) {
+<div class="cropper">
+  <div class="cropper-container">
+    <angular-cropper
+      #angularCropper
+      [cropperOptions]="cropperOptions"
+      [imageUrl]="imageUrl"
+    ></angular-cropper>
+  </div>
+  <button (click)="cropImage()">Crop</button>
+  <button (click)="close()">Close</button>
+</div>
+}

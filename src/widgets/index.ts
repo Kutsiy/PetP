@@ -10,3 +10,4 @@ export * from './accessibility';
 export * from './notifications';
 export * from './write-article';
 export * from './logout';
+export * from './avatar';
