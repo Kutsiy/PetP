@@ -11,9 +11,14 @@ export interface User {
   email: string | null;
   isActivated: boolean;
 }
+
+export interface Settings {
+  avatar: string;
+}
 export interface AuthStateType {
   isAuthenticated: boolean;
   user: User | null;
+  settings: Settings;
   isLoading: boolean;
   errors: FormsErrors;
 }
@@ -24,6 +29,9 @@ export const authState: AuthStateType = {
     id: null,
     email: null,
     isActivated: false,
+  },
+  settings: {
+    avatar: '',
   },
   isLoading: false,
   errors: {
@@ -73,6 +81,12 @@ export const authReducer = createReducer(
     errors: {
       ...state.errors,
       signUp: { message },
+    },
+  })),
+  on(AuthAction.authSetAvatar, (state, { avatar }) => ({
+    ...state,
+    settings: {
+      avatar: avatar,
     },
   }))
 );

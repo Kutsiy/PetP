@@ -10,6 +10,11 @@ export const authSetLoading = createAction(
   props<{ value: boolean }>()
 );
 
+export const authSetAvatar = createAction(
+  '[Auth] Set Avatar',
+  props<{ avatar: string }>()
+);
+
 export const authGetUser = createAction('[Auth] Get User');
 export const authSetUser = createAction(
   '[Auth] Set User',

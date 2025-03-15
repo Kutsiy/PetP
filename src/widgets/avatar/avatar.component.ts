@@ -1,5 +1,8 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
+import * as AuthSelectors from './../../shared/store/auth/auth.selectors';
+import * as AuthActions from './../../shared/store/auth/auth.actions';
 
 @Component({
   selector: 'app-avatar',
@@ -8,8 +11,18 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
   templateUrl: './avatar.component.html',
   styleUrl: './avatar.component.scss',
 })
-export class AvatarWidgetComponent {
-  imageSrc: string | null = null;
+export class AvatarWidgetComponent implements OnInit {
+  constructor(private readonly store: Store) {}
+
+  ngOnInit(): void {
+    this.store.select(AuthSelectors.selectAuthAvatar).subscribe((data) => {
+      if (data) {
+        this.imageSrc = data;
+      }
+    });
+  }
+
+  imageSrc: string = '';
   openCropper = false;
   imageChangedEvent: any = null;
   croppedImage: any = '';
@@ -25,6 +38,7 @@ export class AvatarWidgetComponent {
 
   cropImage = () => {
     this.imageSrc = this.croppedImage;
+    this.store.dispatch(AuthActions.authSetAvatar({ avatar: this.imageSrc }));
     this.openCropper = false;
     this.imageChangedEvent.target.value = null;
   };

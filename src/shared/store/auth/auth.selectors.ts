@@ -14,6 +14,11 @@ export const selectAuthAuthenticated = createSelector(
   (state: AuthStateType) => state.isAuthenticated
 );
 
+export const selectAuthAvatar = createSelector(
+  selectAuth,
+  (state: AuthStateType) => state.settings.avatar
+);
+
 export const selectAuthLoading = createSelector(
   selectAuth,
   (state: AuthStateType) => state.isLoading
