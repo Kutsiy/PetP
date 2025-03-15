@@ -72,6 +72,8 @@ img {
   object-position: center;
   border-radius: 50%;
   overflow: hidden;
+  pointer-events: none;
+  user-select: none;
 }
 
 .fullscreen-overlay {

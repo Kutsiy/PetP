@@ -2,16 +2,32 @@
   <div class="account__container">
     <div class="account__sidebar sidebar">
       <div class="sidebar__inner">
-        <div class="sidebar__button" [routerLink]="['/account/profile']">
+        <div
+          class="sidebar__button"
+          [routerLink]="['/account/profile']"
+          routerLinkActive="active"
+        >
           Profile
         </div>
-        <div class="sidebar__button" [routerLink]="['/account/notifications']">
+        <div
+          class="sidebar__button"
+          [routerLink]="['/account/notifications']"
+          routerLinkActive="active"
+        >
           Notifications
         </div>
-        <div class="sidebar__button" [routerLink]="['/account/accessability']">
+        <div
+          class="sidebar__button"
+          [routerLink]="['/account/accessability']"
+          routerLinkActive="active"
+        >
           Accessibility
         </div>
-        <div class="sidebar__button" [routerLink]="['/account/write-article']">
+        <div
+          class="sidebar__button"
+          [routerLink]="['/account/write-article']"
+          routerLinkActive="active"
+        >
           Write an article
         </div>
         <!-- <div class="sidebar__button">Admin Panel</div> -->
