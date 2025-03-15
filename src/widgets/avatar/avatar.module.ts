@@ -4,6 +4,7 @@ import { BaseButtonUiModule } from '../../shared/ui';
 import { AvatarWidgetComponent } from './avatar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { AngularCropperjsModule } from 'angular-cropperjs';
+import { ImageCropperComponent } from 'ngx-image-cropper';
 
 @NgModule({
   declarations: [AvatarWidgetComponent],
@@ -12,6 +13,7 @@ import { AngularCropperjsModule } from 'angular-cropperjs';
     BaseButtonUiModule,
     MatIconModule,
     AngularCropperjsModule,
+    ImageCropperComponent,
   ],
   exports: [AvatarWidgetComponent],
 })

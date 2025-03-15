@@ -1,28 +1,42 @@
 <div class="avatar">
-  @if(imageUrl) {
-  <img [src]="croppedImage" class="preview" />
+  @if(imageSrc) {
+  <img [src]="imageSrc" class="avatar__image preview" />
   }
+
   <div class="avatar__load-avatar">
     <input
       type="file"
       id="load"
-      accept="image/*, .png, .jpg, .web,"
+      accept="image/*"
       (change)="onFileSelected($event)"
     />
     <label for="load"><mat-icon>add_a_photo</mat-icon></label>
   </div>
 </div>
 
-@if(openCropper) {
-<div class="cropper">
-  <div class="cropper-container">
-    <angular-cropper
-      #angularCropper
-      [cropperOptions]="cropperOptions"
-      [imageUrl]="imageUrl"
-    ></angular-cropper>
+<div *ngIf="openCropper" class="cropper">
+  <image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="1 / 1"
+    format="png"
+    (imageCropped)="imageCropped($event)"
+    [resizeToWidth]="200"
+    [resizeToHeight]="200"
+    [cropperMaxWidth]="500"
+    [cropperMaxHeight]="500"
+    [cropperMinWidth]="90"
+    [cropperMinHeight]="90"
+    [roundCropper]="true"
+    [autoCrop]="true"
+    [alignImage]="'center'"
+    [hideResizeSquares]="true"
+  ></image-cropper>
+
+  <div class="cropper__buttons">
+    <app-base-button [onClick]="cropImage">Crop</app-base-button>
+    <app-base-button [onClick]="close" [buttonType]="'warning'"
+      >Close</app-base-button
+    >
   </div>
-  <button (click)="cropImage()">Crop</button>
-  <button (click)="close()">Close</button>
 </div>
-}

@@ -1,77 +1,40 @@
 .avatar {
   width: 200px;
   height: 200px;
-  background-color: black;
-  border-radius: 100%;
-  margin-bottom: 10px;
+  border-radius: 50%;
   position: relative;
+  background-color: black;
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
   &__load-avatar {
     position: absolute;
     bottom: 0;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
   }
-  &__load-avatar > input[type="file"] {
+
+  input[type="file"] {
     display: none;
   }
-  &__load-avatar > label {
-    padding: 10px 10px;
+
+  label {
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--load-button);
+    border-radius: 50%;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    background-color: var(--load-button);
-    box-shadow: 3px 3px 5px rgb(30, 30, 30);
-    transition: 0.5s;
   }
-  &__load-avatar > label:hover {
-    transform: translate(2px, 2px);
-    transition: 0.5s;
-  }
-  &__load-avatar > label:active {
-    transform: translate(5px, 5px);
-    transition: 0.5s;
-  }
-}
-
-::ng-deep .cropper-crop-box,
-::ng-deep .cropper-view-box {
-  border-radius: 50% !important;
-}
-
-::ng-deep .cropper-view-box {
-  box-shadow: 0 0 0 1px #39f;
-  outline: none;
-  overflow: hidden; /* Важно для скрытия лишних углов */
-  clip-path: circle(50% at 50% 50%); /* Вырезаем круг */
-}
-
-::ng-deep .cropper-face {
-  background-color: inherit !important;
-  border-radius: 50%;
-}
-
-/* Убираем углы */
-::ng-deep .cropper-dashed,
-::ng-deep .cropper-point,
-::ng-deep .cropper-line {
-  display: none !important;
-}
-
-img {
-  width: 200px;
-  height: 200px;
-  background-color: black;
-  border-radius: 100%;
-  margin-bottom: 10px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
 }
 
 .cropper {
@@ -79,12 +42,44 @@ img {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 85%;
-  height: 85%;
-  background-color: gray;
+  background: var(--card-back);
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  height: 400px;
 
-  &-container {
-    width: 250px;
-    height: 250px;
+  &__buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
   }
+
+  button {
+    padding: 10px 15px;
+    border: none;
+    background: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  button:hover {
+    background: var(--primary-hover);
+  }
+
+  & image-cropper {
+    height: 100%;
+  }
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  overflow: hidden;
 }
