@@ -38,6 +38,7 @@
 }
 
 .cropper {
+  z-index: 101;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -50,6 +51,7 @@
   align-items: center;
   width: 500px;
   height: 400px;
+  box-shadow: 2px 2px 5px black;
 
   &__buttons {
     display: flex;
@@ -82,4 +84,14 @@ img {
   object-position: center;
   border-radius: 50%;
   overflow: hidden;
+}
+
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
 }
