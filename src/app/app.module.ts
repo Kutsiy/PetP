@@ -27,8 +27,6 @@ import * as AuthActions from './../shared/store/auth/auth.actions';
 import * as AuthSelectors from '../shared/store/auth/auth.selectors';
 import { EffectsModule } from '@ngrx/effects';
 import { isPlatformBrowser } from '@angular/common';
-import { filter, take } from 'rxjs';
-import { AuthStateType } from '../shared/store/auth/auth.reducer';
 
 @NgModule({
   declarations: [AppComponent],

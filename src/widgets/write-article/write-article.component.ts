@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
 @Component({
   selector: 'app-write-articlewidget',
   standalone: false,
@@ -8,10 +8,21 @@ import { Component } from '@angular/core';
   styleUrl: './write-article.component.scss',
 })
 export class WriteArticleWidgetComponent {
+  quillText: string | null = null;
   categories = [
     { value: 'About me', viewValue: 'About me' },
     { value: 'News about programming', viewValue: 'News about programming' },
   ];
+
+  editorModules = {
+    toolbar: [
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ header: [1, 2, 3, false] }],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      [{ align: [] }],
+      ['code-block'],
+    ],
+  };
 
   imageUrl: string | null = null;
 
@@ -24,5 +35,11 @@ export class WriteArticleWidgetComponent {
       };
       reader.readAsDataURL(file);
     }
+  }
+
+  onContentChanged(event: any) {
+    const delta = event.editor.getContents();
+    const converter = new QuillDeltaToHtmlConverter(delta.ops, {});
+    this.quillText = converter.convert();
   }
 }

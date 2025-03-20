@@ -11,6 +11,9 @@ import { MatInputModule } from '@angular/material/input';
   imports: [
     QuillModule.forRoot({
       theme: 'dark',
+      modules: {
+        syntax: true,
+      },
     }),
     FormsModule,
     MatFormFieldModule,

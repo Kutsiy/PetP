@@ -36,6 +36,13 @@
   </div>
   <div class="write__text">
     <div class="write__label">Add text</div>
-    <quill-editor> </quill-editor>
+    <quill-editor
+      class="write__quill-editor"
+      [placeholder]="'Write your text...'"
+      [minLength]="40"
+      [maxLength]="1500"
+      [modules]="editorModules"
+      (onContentChanged)="onContentChanged($event)"
+    ></quill-editor>
   </div>
 </div>
