@@ -17,10 +17,11 @@ export class WriteArticleWidgetComponent {
   editorModules = {
     toolbar: [
       ['bold', 'italic', 'underline', 'strike'],
+      ['link', 'image', 'video'],
       [{ header: [1, 2, 3, false] }],
+      [{ indent: '-1' }, { indent: '+1' }],
       [{ list: 'ordered' }, { list: 'bullet' }],
       [{ align: [] }],
-      ['code-block'],
     ],
   };
 
@@ -41,5 +42,6 @@ export class WriteArticleWidgetComponent {
     const delta = event.editor.getContents();
     const converter = new QuillDeltaToHtmlConverter(delta.ops, {});
     this.quillText = converter.convert();
+    console.log(this.quillText);
   }
 }

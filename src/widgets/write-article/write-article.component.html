@@ -17,6 +17,8 @@
       <img
         [src]="imageUrl"
         style="max-width: 300px; max-height: 500px; margin-top: 10px"
+        height="300px"
+        width="500px"
       />
       }
     </div>
@@ -44,5 +46,8 @@
       [modules]="editorModules"
       (onContentChanged)="onContentChanged($event)"
     ></quill-editor>
+  </div>
+  <div class="write__button">
+    <app-base-button>Create article</app-base-button>
   </div>
 </div>

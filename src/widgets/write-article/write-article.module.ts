@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { BaseButtonUiModule } from '../../shared/ui';
 
 @NgModule({
   declarations: [WriteArticleWidgetComponent],
@@ -19,6 +20,7 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatSelectModule,
     MatInputModule,
+    BaseButtonUiModule,
   ],
   exports: [WriteArticleWidgetComponent],
 })
