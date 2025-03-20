@@ -6,11 +6,18 @@ import { PostWidgetModule } from '../post/post.module';
 import { PostsService } from '../../features';
 import { GsapService } from '../../shared/animations/gsap.service';
 import { PostsStoreModule } from '../../shared/store';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [PostsWidgetComponent],
   providers: [PostsService, GsapService],
-  imports: [RouterModule, FormsModule, PostWidgetModule, PostsStoreModule],
+  imports: [
+    RouterModule,
+    FormsModule,
+    PostWidgetModule,
+    PostsStoreModule,
+    CommonModule,
+  ],
   exports: [PostsWidgetComponent],
 })
 export class PostsWidgetModule {}

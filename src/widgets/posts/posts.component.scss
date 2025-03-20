@@ -5,6 +5,19 @@
     min-width: 320px;
     gap: 10px;
   }
+
+  &.horizontal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+  }
+
+  &.horizontal > .posts__container {
+    max-width: 700px;
+  }
+
   @media (max-width: 1200px) {
     & {
       margin: 0;

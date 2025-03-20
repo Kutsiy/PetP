@@ -14,9 +14,10 @@ export class ArticlesPageComponent {
     this.searchString = this.postService.getSearchString();
   }
 
-  message: string = 'vertically';
+  message: 'Vertically' | 'Horizontally' = 'Vertically';
 
   handleNotification(message: string) {
-    this.message = message;
+    if (message === 'Vertically' || message === 'Horizontally')
+      this.message = message;
   }
 }

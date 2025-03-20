@@ -44,6 +44,7 @@ export class PostsWidgetComponent implements OnInit, OnChanges {
   leftNumber: number = 0;
   rightNumber: number = 0;
   @Input() searchString: string | null = null;
+  @Input() filterDisplay: 'Horizontally' | 'Vertically' = 'Vertically';
   @Output() searchStringChange = new EventEmitter<string | null>();
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,

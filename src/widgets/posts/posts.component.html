@@ -1,4 +1,10 @@
-<div class="posts">
+<div
+  class="posts"
+  [ngClass]="{
+    vertical: filterDisplay === 'Vertically',
+    horizontal: filterDisplay === 'Horizontally'
+  }"
+>
   <div class="posts__container">
     @if(isLoading) {
     <div class="posts__loading">Loading...</div>
