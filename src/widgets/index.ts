@@ -11,3 +11,4 @@ export * from './notifications';
 export * from './write-article';
 export * from './logout';
 export * from './avatar';
+export * from './search';

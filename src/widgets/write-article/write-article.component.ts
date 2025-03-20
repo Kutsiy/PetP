@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
+
 @Component({
   selector: 'app-write-articlewidget',
   standalone: false,
@@ -42,6 +43,5 @@ export class WriteArticleWidgetComponent {
     const delta = event.editor.getContents();
     const converter = new QuillDeltaToHtmlConverter(delta.ops, {});
     this.quillText = converter.convert();
-    console.log(this.quillText);
   }
 }

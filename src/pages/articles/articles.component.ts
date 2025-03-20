@@ -20,4 +20,8 @@ export class ArticlesPageComponent {
     if (message === 'Vertically' || message === 'Horizontally')
       this.message = message;
   }
+
+  changeSearchString(event: string) {
+    this.searchString = event;
+  }
 }

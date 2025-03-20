@@ -1,0 +1,12 @@
+<div class="search__wrapper">
+  <span>Search:</span>
+  <div class="search__block">
+    <input
+      type="text"
+      placeholder="Search..."
+      [(ngModel)]="searchString"
+      (input)="search.emit(searchString)"
+    />
+    <mat-icon class="search__icon">search</mat-icon>
+  </div>
+</div>
