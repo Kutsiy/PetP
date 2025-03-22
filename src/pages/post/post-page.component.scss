@@ -155,6 +155,11 @@
     color: gray;
     transition: 0.5s;
   }
+
+  &__views {
+    display: flex;
+    gap: 5px;
+  }
 }
 
 .comments {

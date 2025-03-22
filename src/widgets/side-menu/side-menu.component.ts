@@ -62,6 +62,12 @@ export class SideMenuWidgetComponent implements OnInit, OnDestroy {
     { value: 'Vertically', viewValue: 'Vertically' },
     { value: 'Horizontally', viewValue: 'Horizontally' },
   ];
+
+  sortFilter = [
+    { value: 'Date', viewValue: 'Date' },
+    { value: 'Views', viewValue: 'Views' },
+  ];
+
   selected: string = this.filterDisplay[0].value;
   onSelectionChange(event: any): void {
     this.notifyParent(this.selected);

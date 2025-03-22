@@ -40,3 +40,8 @@
     font-size: 30px;
   }
 }
+
+img {
+  pointer-events: none;
+  user-select: none;
+}

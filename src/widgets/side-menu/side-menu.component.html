@@ -36,5 +36,17 @@
         </mat-select>
       </mat-form-field>
     </div>
+
+    <div class="side-menu__select">
+      <h4 class="side-menu__select-title">Select a sort filter</h4>
+      <mat-form-field>
+        <mat-label>Sort filter</mat-label>
+        <mat-select>
+          @for (sort of sortFilter; track sort) {
+          <mat-option [value]="sort.value">{{ sort.viewValue }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
   </div>
 </div>
