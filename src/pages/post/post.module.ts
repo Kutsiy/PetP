@@ -3,7 +3,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { RouterModule, Routes } from '@angular/router';
 import { PostPageComponent } from './post-page.component';
 import { QuillModule } from 'ngx-quill';
-import { BaseButtonUiModule } from '../../shared/ui';
+import { BaseButtonUiModule, CommentUiModule } from '../../shared/ui';
 
 const routes: Routes = [{ path: '', component: PostPageComponent }];
 
@@ -20,6 +20,7 @@ const routes: Routes = [{ path: '', component: PostPageComponent }];
       },
     }),
     BaseButtonUiModule,
+    CommentUiModule,
   ],
   exports: [PostPageComponent],
 })

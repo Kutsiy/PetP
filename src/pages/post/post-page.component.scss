@@ -124,4 +124,16 @@
   padding: 15px;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  &__container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }

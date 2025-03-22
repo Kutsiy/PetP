@@ -8,6 +8,7 @@
   justify-content: center;
   font-size: 23px;
   transition: 0.5s;
+  border-radius: 5px;
 
   &.success {
     background: var(--base-button-success);

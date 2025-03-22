@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-comment',
@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
   templateUrl: './comment.component.html',
   styleUrl: './comment.component.scss',
 })
-export class CommentUIComponent {}
+export class CommentUIComponent {
+  @Input() nick!: string;
+  @Input() avatar: string = 'unnamed.png';
+}

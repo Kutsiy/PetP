@@ -1,1 +1,10 @@
-<p>comment works!</p>
+<div class="comment">
+  <div class="comment__header">
+    <img [src]="avatar" alt="" class="comment__header-avatar" />
+    <div class="comment__header-name">{{ nick }}</div>
+    <div class="comment__header-time">11:20</div>
+  </div>
+  <div class="comment__body">
+    <ng-content></ng-content>
+  </div>
+</div>
