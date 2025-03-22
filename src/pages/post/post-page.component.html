@@ -1,11 +1,32 @@
-<div class="page">
-  <div class="page__container">
-    <div class="page__header">
-      <mat-icon class="page_back" [routerLink]="['/articles']"
-        >arrow_back</mat-icon
-      >
-      <div class="page__title">{{ data?.title }}</div>
+<div class="post-post-page">
+  <div class="post-page__container">
+    <div class="post-page__content-block">
+      <div class="post-page__header">
+        <mat-icon class="post-page__back" [routerLink]="['/articles']"
+          >arrow_back</mat-icon
+        >
+        <div class="post-page__title">{{ data?.title }}</div>
+      </div>
+      <div class="post-page__body">{{ data?.body }}</div>
     </div>
-    <div class="page__body">{{ data?.body }}</div>
+
+    <div class="post-page__comments-block">
+      <div class="post-page__write-comment">
+        <div class="post-page__write-comment-title">Write comment:</div>
+        <quill-editor
+          class="write__quill-editor"
+          [placeholder]="'Write your text...'"
+          [minLength]="10"
+          [maxLength]="700"
+          [modules]="editorModules"
+          (onContentChanged)="onContentChanged($event)"
+        ></quill-editor>
+        <app-base-button>Send your comment</app-base-button>
+      </div>
+      <div class="post-page__comments comments">
+        <div class="comments__title">Comments:</div>
+        <div class="comments__container"></div>
+      </div>
+    </div>
   </div>
 </div>

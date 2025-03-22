@@ -24,6 +24,9 @@ export class WriteArticleWidgetComponent {
       [{ list: 'ordered' }, { list: 'bullet' }],
       [{ align: [] }],
     ],
+    clipboard: {
+      matchVisual: false,
+    },
   };
 
   imageUrl: string | null = null;
@@ -41,7 +44,9 @@ export class WriteArticleWidgetComponent {
 
   onContentChanged(event: any) {
     const delta = event.editor.getContents();
-    const converter = new QuillDeltaToHtmlConverter(delta.ops, {});
+    const converter = new QuillDeltaToHtmlConverter(delta.ops, {
+      paragraphTag: 'p',
+    });
     this.quillText = converter.convert();
   }
 }

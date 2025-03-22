@@ -24,6 +24,7 @@ const routes: Routes = [
     path: 'article/:id',
     loadChildren: () =>
       import('../pages/post/post.module').then((m) => m.PostPageModule),
+    title: 'PostPage',
     data: { animation: 'SomePostPage' },
     canActivate: [NotAuthGuard],
   },

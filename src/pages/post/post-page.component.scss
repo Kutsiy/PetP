@@ -1,12 +1,54 @@
-.page {
+::ng-deep .ql-toolbar {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #ccc !important;
+}
+
+::ng-deep .ql-editor {
+  background: #fff !important;
+  color: #000 !important;
+  min-height: 200px;
+  padding: 10px;
+  border: 1px solid #ccc !important;
+  min-height: 150px !important;
+  max-height: 500px !important;
+  font-size: 20px !important;
+}
+
+::ng-deep .ql-container {
+  border: 1px solid #ccc !important;
+  height: 150px !important;
+  max-height: 500px !important;
+}
+
+.post-page {
   max-width: 100%;
   min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #fff;
+  background-color: #24003e;
+
   &__container {
     max-width: 1050px;
     min-width: 320px;
     margin: 10px auto;
     margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
+
+  &__content-block {
+    background-color: #2d004d;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
   &__header {
     max-width: 100%;
     min-width: 320px;
@@ -16,22 +58,70 @@
     flex-direction: column;
   }
 
-  mat-icon {
+  &__back {
     background: var(--circle);
-    width: 40px;
-    height: 40px;
-    font-size: 40px;
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 40px !important;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__title {
-    font-size: 60px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    // text-align: center;
   }
 
   &__body {
     max-width: 100%;
     min-width: 320px;
-    font-size: 40px;
+    font-size: 1.2rem;
+    line-height: 1.6;
     text-align: justify;
   }
+
+  &__comments-block {
+    padding: 15px;
+    background: #2d004d;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__write-comment {
+    border-top: 3px solid #8501be;
+    border-bottom: 3px solid #8501be;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  &__write-comment-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  &__write-comment > quill-editor {
+    width: 100%;
+  }
+
+  &__write-comment > app-base-button {
+  }
+}
+
+.comments {
+  border-top: 3px solid #8501be;
+  border-bottom: 3px solid #8501be;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
 }

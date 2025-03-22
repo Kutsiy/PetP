@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostsService } from '../../features/posts/posts.service';
+import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
 
 type PostData = {
   __typename: string;
@@ -17,6 +18,17 @@ type PostData = {
 export class PostPageComponent implements OnInit {
   postId: string | null = null;
   data: PostData | null = null;
+  quillText: string | null = null;
+  editorModules = {
+    toolbar: [
+      ['bold', 'italic', 'underline', 'strike'],
+      ['link', 'video'],
+      [{ header: [1, 2, 3, false] }],
+      [{ indent: '-1' }, { indent: '+1' }],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      [{ align: [] }],
+    ],
+  };
 
   constructor(
     private route: ActivatedRoute,
@@ -24,7 +36,6 @@ export class PostPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.postService.getPage());
     this.route.paramMap.subscribe((params) => {
       this.postId = params.get('id');
     });
@@ -32,8 +43,13 @@ export class PostPageComponent implements OnInit {
     if (result !== null) {
       result.subscribe((result) => {
         this.data = { ...result };
-        // console.log(this.data);
       });
     }
+  }
+
+  onContentChanged(event: any) {
+    const delta = event.editor.getContents();
+    const converter = new QuillDeltaToHtmlConverter(delta.ops, {});
+    this.quillText = converter.convert();
   }
 }
