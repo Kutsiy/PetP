@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     min-width: 320px;
-    gap: 10px;
+    gap: 15px;
   }
 
   &.horizontal {
@@ -42,6 +42,7 @@
     padding-left: 20px;
     height: 40px;
     border-radius: 15px;
+    box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
   }
   &__pagination-button {
     cursor: pointer;

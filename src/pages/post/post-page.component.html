@@ -2,9 +2,19 @@
   <div class="post-page__container">
     <div class="post-page__content-block">
       <div class="post-page__header">
-        <mat-icon class="post-page__back" [routerLink]="['/articles']"
-          >arrow_back</mat-icon
-        >
+        <div class="post-page__header-bar header-bar">
+          <mat-icon class="post-page__back" [routerLink]="['/articles']"
+            >arrow_back</mat-icon
+          >
+          <div class="header-bar__meta">
+            <div class="header-bar__category">
+              Category: <span>programming</span>
+            </div>
+            <div class="header-bar__date">
+              Date of creation: <span>12.02.2025</span>
+            </div>
+          </div>
+        </div>
         <div class="post-page__title">{{ data?.title }}</div>
       </div>
       <div class="post-page__body">{{ data?.body }}</div>

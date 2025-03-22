@@ -150,8 +150,8 @@ body[data-theme="dark"] {
   --text-gradient: -webkit-linear-gradient(1800deg, #763cac 20%, #320f85 70%);
   --card-button: -webkit-linear-gradient(1800deg, #763cac 20%, #320f85 70%);
   --base-button: -webkit-linear-gradient(1800deg, #763cac 20%, #320f85 70%);
-  --base-button-success: #17d4c4;
-  --base-button-warning: red;
+  --base-button-success: linear-gradient(90deg, #a855f7 0%, #ec4899 100%);
+  --base-button-warning: linear-gradient(90deg, #f97316 0%, #dc2626 100%);
   --circle: radial-gradient(
     circle,
     rgba(118, 60, 172, 1) 0%,
