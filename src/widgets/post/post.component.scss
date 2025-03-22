@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 20px 20px;
-  gap: 10px;
+  gap: 8px;
   cursor: pointer;
   box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
 
@@ -31,6 +31,26 @@
         text-align: center;
       }
     }
+  }
+
+  &__meta-bar {
+    display: flex;
+    font-size: 10px;
+    align-items: center;
+    padding: 5px;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.101);
+    border-radius: 5px;
+  }
+
+  &__meta-bar span {
+    color: gray;
+    transition: 0.5s;
+  }
+
+  &__meta-bar span:hover {
+    color: white;
+    transition: 0.5s;
   }
 
   &__about {
