@@ -10,6 +10,17 @@
       <div class="post-page__body">{{ data?.body }}</div>
     </div>
 
+    <div class="post-page__action-bar action-bar">
+      <div class="action-bar__like">
+        <mat-icon>thumb_up</mat-icon>
+        <div class="action-bar__like-count">10k</div>
+      </div>
+      <div class="action-bar__dislike">
+        <mat-icon>thumb_down </mat-icon>
+        <div class="action-bar__dislike-count">5k</div>
+      </div>
+    </div>
+
     <div class="post-page__comments-block">
       <div class="post-page__write-comment">
         <div class="post-page__write-comment-title">Write comment:</div>
@@ -27,6 +38,7 @@
         <div class="comments__title">Comments:</div>
         <div class="comments__container">
           <app-comment [nick]="'nick'">Content </app-comment>
+          <app-comment [nick]="'bob'">Content BOB</app-comment>
         </div>
       </div>
     </div>

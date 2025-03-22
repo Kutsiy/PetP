@@ -118,6 +118,45 @@
   }
 }
 
+.action-bar {
+  padding: 15px;
+  background: #2d004d;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &__like {
+    display: flex;
+    gap: 5px;
+  }
+
+  &__like > mat-icon {
+    transition: 0.5s;
+    cursor: pointer;
+  }
+
+  &__like > mat-icon:hover {
+    color: gray;
+    transition: 0.5s;
+  }
+
+  &__dislike {
+    display: flex;
+    gap: 5px;
+  }
+
+  &__dislike > mat-icon {
+    transition: 0.5s;
+    cursor: pointer;
+  }
+
+  &__dislike > mat-icon:hover {
+    color: gray;
+    transition: 0.5s;
+  }
+}
+
 .comments {
   border-top: 3px solid #8501be;
   border-bottom: 3px solid #8501be;
