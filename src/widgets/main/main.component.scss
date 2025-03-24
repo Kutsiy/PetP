@@ -115,23 +115,23 @@
     }
   }
 
-  &__button {
-    display: flex;
-    justify-content: center;
-    gap: 3px;
-    background: rgb(131, 58, 180);
-    background: var(--gradient);
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: box-shadow 0.2s, transform 0.5s;
-    color: white;
-  }
-  &__button:hover {
-    transition: box-shadow 0.2s, transform 0.5s;
-    box-shadow: -2px 2px 5px var(--shadow-head);
-    transform: translate(2px, -2px);
-  }
+  // &__button {
+  //   display: flex;
+  //   justify-content: center;
+  //   gap: 3px;
+  //   background: rgb(131, 58, 180);
+  //   background: var(--gradient);
+  //   padding: 10px;
+  //   border-radius: 5px;
+  //   cursor: pointer;
+  //   transition: box-shadow 0.2s, transform 0.5s;
+  //   color: white;
+  // }
+  // &__button:hover {
+  //   transition: box-shadow 0.2s, transform 0.5s;
+  //   box-shadow: -2px 2px 5px var(--shadow-head);
+  //   transform: translate(2px, -2px);
+  // }
 }
 
 @media (max-width: 1200px) {

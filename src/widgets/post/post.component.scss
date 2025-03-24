@@ -90,6 +90,13 @@
     gap: 10px;
   }
 
+  &__views {
+    position: relative;
+    top: -3px;
+    display: flex;
+    gap: 5px;
+  }
+
   mat-icon {
     transition: 0.25s ease-in-out;
     color: white;
