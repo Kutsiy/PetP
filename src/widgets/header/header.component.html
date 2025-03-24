@@ -39,7 +39,12 @@
             >
             <span>Articles</span>
           </div>
-          <div class="header__about-us-button header__buttons account_button">
+          <div
+            class="header__about-us-button header__buttons account_button"
+            routerLink="/account"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: false }"
+          >
             <mat-icon
               style="
                 font-size: 19px;
@@ -47,9 +52,12 @@
                 align-items: center;
                 justify-content: center;
               "
+              (click)="$event.stopPropagation(); $event.preventDefault()"
               >person</mat-icon
             >
-            <span>Account</span>
+            <span (click)="$event.stopPropagation(); $event.preventDefault()"
+              >Account</span
+            >
             <div
               class="account_button__menu"
               (click)="$event.stopPropagation()"
