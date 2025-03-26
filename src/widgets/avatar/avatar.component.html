@@ -14,8 +14,9 @@
   </div>
 </div>
 
-<div *ngIf="openCropper" class="fullscreen-overlay" (click)="close()"></div>
-<div *ngIf="openCropper" class="cropper">
+@if (openCropper) {
+<div class="fullscreen-overlay" (click)="close()"></div>
+<div class="cropper">
   <image-cropper
     [imageChangedEvent]="imageChangedEvent"
     [maintainAspectRatio]="true"
@@ -41,3 +42,5 @@
     >
   </div>
 </div>
+
+}
