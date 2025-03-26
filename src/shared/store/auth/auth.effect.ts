@@ -32,7 +32,18 @@ export class AuthEffects {
               value: true,
             });
           }),
-          catchError((error) => of(error))
+          catchError(() => {
+            return of(
+              AuthActions.authSetUserAndAuthenticated({
+                user: {
+                  id: null,
+                  email: null,
+                  isActivated: false,
+                },
+                value: false,
+              })
+            );
+          })
         );
       })
     )

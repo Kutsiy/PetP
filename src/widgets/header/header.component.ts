@@ -46,7 +46,7 @@ export class HeaderWidgetComponent implements OnInit {
     this.store
       .select(AuthSelectors.selectAuthState)
       .subscribe(({ isActive, isAuth }) => {
-        if (isAuth && isActive) {
+        if (isAuth) {
           this.isHaveAccount = true;
         } else this.isHaveAccount = false;
       });

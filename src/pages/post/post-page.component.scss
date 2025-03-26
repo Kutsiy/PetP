@@ -169,6 +169,7 @@
   &__like > mat-icon:hover {
     color: gray;
     transition: 0.5s;
+    transform: scale(0.9);
   }
 
   &__dislike {
@@ -184,6 +185,7 @@
   &__dislike > mat-icon:hover {
     color: gray;
     transition: 0.5s;
+    transform: scale(0.9);
   }
 
   &__views {
