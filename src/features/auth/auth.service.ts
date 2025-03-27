@@ -8,6 +8,7 @@ import {
   LOGOUT,
   GETUSER,
   GETUSERINFO,
+  UPLOADAVATAR,
 } from './schema';
 import { map, of } from 'rxjs';
 
@@ -110,5 +111,15 @@ export class AuthService {
         .valueChanges.pipe(map((data) => data.data.GetAllInfoAboutUser));
     }
     return null;
+  }
+
+  uploadAvatar(file: File) {
+    return this.apollo.mutate({
+      mutation: UPLOADAVATAR,
+      variables: { file },
+      context: {
+        useMultipart: true,
+      },
+    });
   }
 }

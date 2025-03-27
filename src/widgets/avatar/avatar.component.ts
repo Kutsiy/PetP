@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import * as AuthSelectors from './../../shared/store/auth/auth.selectors';
 import * as AuthActions from './../../shared/store/auth/auth.actions';
+import { AuthService } from '../../features';
 
 @Component({
   selector: 'app-avatar',
@@ -12,7 +13,10 @@ import * as AuthActions from './../../shared/store/auth/auth.actions';
   styleUrl: './avatar.component.scss',
 })
 export class AvatarWidgetComponent implements OnInit {
-  constructor(private readonly store: Store) {}
+  constructor(
+    private readonly store: Store,
+    private readonly authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.store.select(AuthSelectors.selectAuthAvatar).subscribe((data) => {
@@ -40,12 +44,15 @@ export class AvatarWidgetComponent implements OnInit {
 
   cropImage = () => {
     if (!this.imageBlob) return;
-    this.imageSrc = this.croppedImage;
     const uniqueFileName = `avatar-${Date.now()}.png`;
     const file = new File([this.imageBlob], uniqueFileName, {
       type: 'image/png',
     });
-    this.store.dispatch(AuthActions.authSetAvatar({ avatar: this.imageSrc }));
+    this.authService.uploadAvatar(file).subscribe((res: any) => {
+      console.log(res);
+      this.imageSrc = res.data.uploadAvatar;
+      this.store.dispatch(AuthActions.authSetAvatar({ avatar: this.imageSrc }));
+    });
     this.openCropper = false;
     this.imageChangedEvent.target.value = null;
   };
