@@ -18,14 +18,12 @@ export const authSetAvatar = createAction(
 export const authGetUser = createAction('[Auth] Get User');
 export const authSetUser = createAction(
   '[Auth] Set User',
-  props<{ user: User | null }>()
+  props<{ user: User | null; settings: Settings | null }>()
 );
-
-// TODO add "settings: Settings | null" prop to SetUser
 
 export const authSetUserAndAuthenticated = createAction(
   '[Auth] Set User And Authenticated',
-  props<{ user: User | null; value: boolean }>()
+  props<{ user: User | null; value: boolean; settings: Settings | null }>()
 );
 
 export const authSetLoginError = createAction(

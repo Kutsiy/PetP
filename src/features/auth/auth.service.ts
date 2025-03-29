@@ -114,12 +114,14 @@ export class AuthService {
   }
 
   uploadAvatar(file: File) {
-    return this.apollo.mutate({
-      mutation: UPLOADAVATAR,
-      variables: { file },
-      context: {
-        useMultipart: true,
-      },
-    });
+    return this.apollo
+      .mutate({
+        mutation: UPLOADAVATAR,
+        variables: { file },
+        context: {
+          useMultipart: true,
+        },
+      })
+      .pipe(map((data: any) => data.data.uploadAvatar));
   }
 }

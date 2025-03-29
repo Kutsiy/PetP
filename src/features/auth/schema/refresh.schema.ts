@@ -7,6 +7,7 @@ export const REFRESH = gql`
         id
         email
         isActivated
+        avatarLink
       }
     }
   }

@@ -13,7 +13,7 @@ export interface User {
 }
 
 export interface Settings {
-  avatar: string;
+  avatar: string | null | undefined;
 }
 export interface AuthStateType {
   isAuthenticated: boolean;
@@ -58,17 +58,28 @@ export const authReducer = createReducer(
     ...state,
     isLoading: true,
   })),
-  on(AuthAction.authSetUser, (state, { user }) => ({
+  on(AuthAction.authSetUser, (state, { user, settings }) => ({
     ...state,
     user: user,
     isLoading: false,
+    settings: {
+      ...settings,
+      avatar: settings?.avatar,
+    },
   })),
-  on(AuthAction.authSetUserAndAuthenticated, (state, { user, value }) => ({
-    ...state,
-    user: user,
-    isAuthenticated: value,
-    isLoading: false,
-  })),
+  on(
+    AuthAction.authSetUserAndAuthenticated,
+    (state, { user, value, settings }) => ({
+      ...state,
+      user: user,
+      isAuthenticated: value,
+      isLoading: false,
+      settings: {
+        ...settings,
+        avatar: settings?.avatar,
+      },
+    })
+  ),
   on(AuthAction.authSetLoginError, (state, { message }) => ({
     ...state,
     errors: {

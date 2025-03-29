@@ -49,8 +49,7 @@ export class AvatarWidgetComponent implements OnInit {
       type: 'image/png',
     });
     this.authService.uploadAvatar(file).subscribe((res: any) => {
-      console.log(res);
-      this.imageSrc = res.data.uploadAvatar;
+      this.imageSrc = `http://localhost:3000${res.avatarLink}`;
       this.store.dispatch(AuthActions.authSetAvatar({ avatar: this.imageSrc }));
     });
     this.openCropper = false;

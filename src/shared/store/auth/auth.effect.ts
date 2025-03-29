@@ -14,12 +14,12 @@ export class AuthEffects {
       ofType(AuthActions.authGetUser),
       exhaustMap(() => {
         if (!this.authService) {
-          return of(AuthActions.authSetUser({ user: null }));
+          return of(AuthActions.authSetUser({ user: null, settings: null }));
         }
         return this.authService.getUser().pipe(
           map((data) => {
             if (!data) {
-              return AuthActions.authSetUser({ user: null });
+              return AuthActions.authSetUser({ user: null, settings: null });
             }
             const user = {
               id: data.id,
@@ -27,9 +27,14 @@ export class AuthEffects {
               isActivated: data.isActivated,
             };
 
+            const settings = {
+              avatar: `http://localhost:3000${data.avatarLink}`,
+            };
+
             return AuthActions.authSetUserAndAuthenticated({
               user,
               value: true,
+              settings,
             });
           }),
           catchError(() => {
@@ -41,6 +46,9 @@ export class AuthEffects {
                   isActivated: false,
                 },
                 value: false,
+                settings: {
+                  avatar: null,
+                },
               })
             );
           })

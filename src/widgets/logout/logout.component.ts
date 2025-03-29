@@ -23,7 +23,9 @@ export class LogOutWidgetComponent {
   logOut = () => {
     this.authService.logOut()?.subscribe();
     this.store.dispatch(AuthActions.authSetAuthenticated({ value: false }));
-    this.store.dispatch(AuthActions.authSetUser({ user: null }));
+    this.store.dispatch(
+      AuthActions.authSetUser({ user: null, settings: { avatar: null } })
+    );
     this.router.navigate(['/']);
   };
 

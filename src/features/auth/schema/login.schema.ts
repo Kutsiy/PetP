@@ -11,6 +11,7 @@ export const LOGIN = gql`
         id
         email
         isActivated
+        avatarLink
       }
     }
   }
