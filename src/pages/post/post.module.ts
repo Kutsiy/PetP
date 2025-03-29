@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PostPageComponent } from './post-page.component';
 import { QuillModule } from 'ngx-quill';
 import { BaseButtonUiModule, CommentUiModule } from '../../shared/ui';
+import { PostsFeatModule } from '../../features';
 
 const routes: Routes = [{ path: '', component: PostPageComponent }];
 
@@ -21,6 +22,7 @@ const routes: Routes = [{ path: '', component: PostPageComponent }];
     }),
     BaseButtonUiModule,
     CommentUiModule,
+    PostsFeatModule,
   ],
   exports: [PostPageComponent],
 })

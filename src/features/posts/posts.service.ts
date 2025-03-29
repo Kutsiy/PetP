@@ -72,6 +72,12 @@ export class PostsService {
     return null;
   }
 
+  createPost(title: string, body: string, category: string, file: File) {
+    if (isPlatformBrowser(this.platformId)) {
+    }
+    return null;
+  }
+
   getPage() {
     return this.pageOnSite();
   }
