@@ -2,32 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { map, Subscription } from 'rxjs';
-
-const GET_POSTS = gql`
-  query GetPosts($searchString: String, $page: Int, $take: Int) {
-    Posts(searchString: $searchString, page: $page, take: $take) {
-      posts {
-        id
-        title
-        body
-      }
-      totalCount
-      pageCount
-      currentPage
-      isEmpty
-    }
-  }
-`;
-
-const GET_POST = gql`
-  query GetPost($id: String) {
-    Post(id: $id) {
-      id
-      title
-      body
-    }
-  }
-`;
+import { GET_POST, GET_POSTS } from './schema';
 
 @Injectable({
   providedIn: 'root',
