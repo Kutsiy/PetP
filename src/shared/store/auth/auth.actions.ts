@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { User } from './auth.reducer';
+import { Settings, User } from './auth.reducer';
 
 export const authSetAuthenticated = createAction(
   '[Auth] Set Authenticated',
@@ -20,6 +20,8 @@ export const authSetUser = createAction(
   '[Auth] Set User',
   props<{ user: User | null }>()
 );
+
+// TODO add "settings: Settings | null" prop to SetUser
 
 export const authSetUserAndAuthenticated = createAction(
   '[Auth] Set User And Authenticated',
