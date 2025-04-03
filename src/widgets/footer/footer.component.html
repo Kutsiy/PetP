@@ -3,28 +3,34 @@
     <div class="footer__logo" [routerLink]="['/']">
       <span class="footer__logo-title">NE</span>
     </div>
-    <div class="footer__lists">
-      <ul class="footer__list">
-        <div class="footer__list-title">Main</div>
-        <li class="footer__list-item" [routerLink]="['/']">Main Page</li>
-      </ul>
-      <ul class="footer__list">
-        <div class="footer__list-title">Articles</div>
-        <li class="footer__list-item" [routerLink]="['/articles']">
-          Articles Page
-        </li>
-      </ul>
-    </div>
-    <div class="footer__socials">
-      <a href="#" class="footer__social-icon"><mat-icon>facebook</mat-icon></a>
-      <a href="#" class="footer__social-icon"><mat-icon>close</mat-icon></a>
-      <a href="#" class="footer__social-icon"
-        ><mat-icon>camera_alt</mat-icon></a
-      >
-    </div>
-    <div class="footer__button-container">
-      <div class="footer__button" (click)="scrollUp()">
-        <mat-icon>arrow_upward</mat-icon>
+    <div class="footer__nav">
+      <div class="footer__lists">
+        <ul class="footer__list">
+          <div class="footer__list-title">Main</div>
+          <li class="footer__list-item" [routerLink]="['/']">Main Page</li>
+        </ul>
+        <ul class="footer__list">
+          <div class="footer__list-title">Articles</div>
+          <li class="footer__list-item" [routerLink]="['/articles']">
+            Articles Page
+          </li>
+        </ul>
+      </div>
+      <div class="footer__socials">
+        <a href="#" class="footer__social-icon" style="--i: blue"
+          ><mat-icon>facebook</mat-icon></a
+        >
+        <a href="#" class="footer__social-icon" style="--i: white"
+          ><mat-icon>close</mat-icon></a
+        >
+        <a href="#" class="footer__social-icon" style="--i: pink"
+          ><mat-icon>camera_alt</mat-icon></a
+        >
+      </div>
+      <div class="footer__button-container">
+        <div class="footer__button" (click)="scrollUp()">
+          <mat-icon>arrow_upward</mat-icon>
+        </div>
       </div>
     </div>
   </div>
