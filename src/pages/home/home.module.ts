@@ -3,7 +3,11 @@ import { HomePageComponent } from './home.component';
 import { CubeUiModule } from '../../shared/ui';
 import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-import { ContactsWidgetModule, MainWidgetModule } from '../../widgets';
+import {
+  ContactsWidgetModule,
+  MainWidgetModule,
+  PopularArticlesWidgetModule,
+} from '../../widgets';
 
 const routes: Routes = [{ path: '', component: HomePageComponent }];
 
@@ -15,6 +19,7 @@ const routes: Routes = [{ path: '', component: HomePageComponent }];
     MatIconModule,
     MainWidgetModule,
     ContactsWidgetModule,
+    PopularArticlesWidgetModule,
     RouterModule.forChild(routes),
   ],
   exports: [HomePageComponent],

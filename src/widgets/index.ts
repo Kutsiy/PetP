@@ -12,3 +12,4 @@ export * from './write-article';
 export * from './logout';
 export * from './avatar';
 export * from './search';
+export * from './popular-articles';

@@ -1,7 +1,7 @@
 <div class="footer">
   <div class="footer__container">
     <div class="footer__logo" [routerLink]="['/']">
-      <span class="footer__logo-title"> NE </span>
+      <span class="footer__logo-title">NE</span>
     </div>
     <div class="footer__lists">
       <ul class="footer__list">
@@ -14,11 +14,18 @@
           Articles Page
         </li>
       </ul>
-      <ul class="footer__list">
-        <div class="footer__button" (click)="scrollUp()">
-          <mat-icon>arrow_upward</mat-icon>
-        </div>
-      </ul>
+    </div>
+    <div class="footer__socials">
+      <a href="#" class="footer__social-icon"><mat-icon>facebook</mat-icon></a>
+      <a href="#" class="footer__social-icon"><mat-icon>close</mat-icon></a>
+      <a href="#" class="footer__social-icon"
+        ><mat-icon>camera_alt</mat-icon></a
+      >
+    </div>
+    <div class="footer__button-container">
+      <div class="footer__button" (click)="scrollUp()">
+        <mat-icon>arrow_upward</mat-icon>
+      </div>
     </div>
   </div>
 </div>
