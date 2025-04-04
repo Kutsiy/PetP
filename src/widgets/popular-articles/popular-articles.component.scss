@@ -9,6 +9,7 @@
     min-width: 320px;
     display: flex;
     flex-direction: column;
+    gap: 40px;
     margin: 0 auto;
   }
 
@@ -21,6 +22,18 @@
     width: 100%;
   }
 
+  &__block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-box {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+
   @media (max-width: 1200px) {
     &__container {
       max-width: 700px;
@@ -28,7 +41,14 @@
 
     &__title {
       display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__block {
+      flex-direction: column;
       justify-content: center;
+      gap: 20px;
     }
   }
 }

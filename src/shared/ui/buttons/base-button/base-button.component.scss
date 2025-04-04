@@ -12,25 +12,23 @@
 
   &.success {
     background: var(--base-button-success);
-    box-shadow: 0px 0px 10px var(--base-button-success);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
   }
 
   &.warning {
     background: var(--base-button-warning);
-    box-shadow: 0px 0px 10px var(--base-button-warning);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
   }
 
   &.success:hover {
-    transform: translate(2px, -2px);
+    transform: scale(1.1);
     transition: 0.5s;
-    box-shadow: 0px 0px 15px 2px var(--base-button-success);
     cursor: pointer;
   }
 
   &.warning:hover {
-    transform: translate(2px, -2px);
+    transform: scale(1.1);
     transition: 0.5s;
-    box-shadow: 0px 0px 15px 2px var(--base-button-warning);
     cursor: pointer;
   }
 }
