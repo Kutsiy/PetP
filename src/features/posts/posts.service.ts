@@ -2,7 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { map, Subscription } from 'rxjs';
-import { GET_POST, GET_POSTS } from './schema';
+import { CREATE_POST, GET_POST, GET_POSTS } from './schema';
 
 @Injectable({
   providedIn: 'root',
@@ -47,8 +47,27 @@ export class PostsService {
     return null;
   }
 
-  createPost(title: string, body: string, category: string, file: File) {
+  createPost(
+    title: string,
+    body: string,
+    category: string,
+    file: File,
+    description: string
+  ) {
     if (isPlatformBrowser(this.platformId)) {
+      console.log(file);
+      return this.apollo
+        .mutate<any>({
+          mutation: CREATE_POST,
+          variables: { file, title, body, category, description },
+          context: {
+            useMultipart: true,
+            fetchOptions: {
+              credentials: 'include',
+            },
+          },
+        })
+        .pipe(map((data: any) => data.data.AddPost));
     }
     return null;
   }

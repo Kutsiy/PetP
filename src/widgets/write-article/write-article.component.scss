@@ -61,6 +61,15 @@
     width: 100%;
     display: flex;
     justify-content: end;
-    margin: 0 0 10px 0;
+    margin: 0 0 30px 0;
   }
+}
+
+img {
+  padding: 15px;
+  margin: 10px 0;
+  background-color: rgba(57, 0, 78, 0.467);
+  border: 2px solid rgba(111, 0, 151, 0.6);
+  box-shadow: 0 0 5px rgba(111, 0, 151, 0.8);
+  border-radius: 5px;
 }

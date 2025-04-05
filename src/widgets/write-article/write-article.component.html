@@ -1,7 +1,12 @@
 <div class="write__container">
   <div class="write__add-title">
     <div class="write__label">Add title</div>
-    <input type="text" placeholder="Add title" class="write__input" />
+    <input
+      type="text"
+      placeholder="Add title"
+      class="write__input"
+      (input)="onInput($event)"
+    />
   </div>
   <div class="write__add-preview">
     <div class="write__label">Add preview</div>
@@ -27,7 +32,7 @@
     <div class="write__label">Choose a category</div>
     <mat-form-field>
       <mat-label>Category</mat-label>
-      <mat-select>
+      <mat-select [(value)]="selected">
         @for (category of categories; track category) {
         <mat-option [value]="category.value">{{
           category.viewValue
@@ -48,6 +53,6 @@
     ></quill-editor>
   </div>
   <div class="write__button">
-    <app-base-button>Create article</app-base-button>
+    <app-base-button [onClick]="onSubmit">Create article</app-base-button>
   </div>
 </div>
