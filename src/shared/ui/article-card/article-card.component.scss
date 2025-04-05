@@ -12,10 +12,12 @@
   background-color: rgba(153, 0, 255, 0.1);
   transition: 0.5s;
   filter: blur(0.7px);
+  cursor: pointer;
 
   &:hover {
     transition: 0.5s;
     filter: blur(0px);
+    transform: scale(1.01);
   }
 
   &__thumbnail {

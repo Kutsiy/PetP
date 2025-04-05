@@ -14,6 +14,7 @@ import { GsapService } from '../../shared/animations/gsap.service';
 import { PostsService } from '../../features';
 import { Store } from '@ngrx/store';
 import * as PostsActions from './../../shared/store/posts/posts.actions';
+import { ActivatedRoute, Router } from '@angular/router';
 
 type range = {
   firstPage: boolean;
@@ -49,7 +50,9 @@ export class PostsWidgetComponent implements OnInit, OnChanges {
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
     @Inject(PostsService) private postService: PostsService,
-    private readonly store: Store
+    private readonly store: Store,
+    private readonly router: Router,
+    private readonly activateRoute: ActivatedRoute
   ) {}
   ngOnInit(): void {
     this.currentPage = this.postService.getPage();
@@ -58,6 +61,13 @@ export class PostsWidgetComponent implements OnInit, OnChanges {
       this.currentPage,
       this.pageLimit
     );
+    const querySub = this.activateRoute.queryParamMap.subscribe((params) => {
+      const page = params.get('page');
+      if (page) {
+        this.clickOnPageNumber(+page);
+      }
+    });
+    querySub.unsubscribe();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -125,7 +135,7 @@ export class PostsWidgetComponent implements OnInit, OnChanges {
           this.store.dispatch(PostsActions.postsSetLoading({ value: false }));
         },
         (error) => {
-          // console.log(error);
+          console.log(error);
         }
       );
     }
@@ -134,6 +144,13 @@ export class PostsWidgetComponent implements OnInit, OnChanges {
   setPaginationButtons(pageCount: number | null, currentPage: number) {
     const total = pageCount;
     const current = currentPage;
+    this.router.navigate([], {
+      relativeTo: this.activateRoute,
+      queryParams: {
+        page: currentPage,
+      },
+      queryParamsHandling: 'merge',
+    });
     const delta = currentPage === 1 ? 2 : currentPage === pageCount ? 2 : 1;
     if (
       typeof currentPage === 'number' &&
