@@ -15,6 +15,7 @@ export const GET_POSTS = gql`
         dislikes
         views
         createdAt
+        commentCount
       }
       totalCount
       pageCount

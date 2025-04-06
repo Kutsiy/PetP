@@ -14,6 +14,7 @@ export const GET_POST = gql`
       dislikes
       views
       createdAt
+      commentCount
     }
   }
 `;

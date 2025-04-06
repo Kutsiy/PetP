@@ -28,6 +28,7 @@ type PostData = {
   dislikedBy?: string[];
   comments?: Comment[];
   createdAt: number;
+  commentCount: number;
 };
 @Component({
   selector: 'app-post-page',

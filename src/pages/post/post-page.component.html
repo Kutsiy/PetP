@@ -53,7 +53,15 @@
         <app-base-button>Send your comment</app-base-button>
       </div>
       <div class="post-page__comments comments" #comments>
-        <div class="comments__title">Comments:</div>
+        <div class="comments__header">
+          <div class="comments__title">Comments:</div>
+          <div class="comments__count">
+            <mat-icon>comment</mat-icon>
+            <div class="comments__number">
+              {{ data?.commentCount }}
+            </div>
+          </div>
+        </div>
         <div class="comments__container">
           <app-comment [nick]="'nick'">Content </app-comment>
           <app-comment [nick]="'bob'">Content BOB</app-comment>

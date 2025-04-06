@@ -12,7 +12,8 @@
 
   &.success {
     background: var(--base-button-success);
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4),
+      0px 0px 15px rgba(59, 59, 59, 0.4);
   }
 
   &.warning {
@@ -21,13 +22,13 @@
   }
 
   &.success:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: 0.5s;
     cursor: pointer;
   }
 
   &.warning:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: 0.5s;
     cursor: pointer;
   }
