@@ -5,6 +5,7 @@ import { PostPageComponent } from './post-page.component';
 import { QuillModule } from 'ngx-quill';
 import { BaseButtonUiModule, CommentUiModule } from '../../shared/ui';
 import { PostsFeatModule } from '../../features';
+import { DatePipeModule } from '../../shared/pipes';
 
 const routes: Routes = [{ path: '', component: PostPageComponent }];
 
@@ -23,6 +24,7 @@ const routes: Routes = [{ path: '', component: PostPageComponent }];
     BaseButtonUiModule,
     CommentUiModule,
     PostsFeatModule,
+    DatePipeModule,
   ],
   exports: [PostPageComponent],
 })

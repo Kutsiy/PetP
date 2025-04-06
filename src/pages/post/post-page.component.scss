@@ -86,6 +86,11 @@
     text-align: justify;
   }
 
+  &__body > * {
+    width: 100%;
+    color: red;
+  }
+
   &__comments-block {
     padding: 15px;
     background: #2d004d;

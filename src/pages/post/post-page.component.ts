@@ -1,13 +1,33 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostsService } from '../../features/posts/posts.service';
 import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
+import { AfterViewInit } from '@angular/core';
 
 type PostData = {
   __typename: string;
   id: string;
+  imageUrl: string;
   title: string;
   body: string;
+  description: string;
+  authorId: string;
+  authorName: string;
+  category: string;
+  views: number;
+  viewsBy?: string[];
+  likes: number;
+  dislikes: number;
+  likedBy?: string[];
+  dislikedBy?: string[];
+  comments?: Comment[];
+  createdAt: number;
 };
 @Component({
   selector: 'app-post-page',
@@ -52,4 +72,12 @@ export class PostPageComponent implements OnInit {
     const converter = new QuillDeltaToHtmlConverter(delta.ops, {});
     this.quillText = converter.convert();
   }
+
+  setLike() {}
+
+  setDislike() {}
+
+  writeComment() {}
+
+  addView() {}
 }

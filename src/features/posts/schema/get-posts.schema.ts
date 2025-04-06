@@ -5,8 +5,16 @@ export const GET_POSTS = gql`
     Posts(searchString: $searchString, page: $page, take: $take) {
       posts {
         id
+        imageUrl
         title
         body
+        description
+        category
+        authorName
+        likes
+        dislikes
+        views
+        createdAt
       }
       totalCount
       pageCount

@@ -261,3 +261,13 @@ a {
 main {
   position: relative;
 }
+
+p {
+  width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.ql-image {
+  width: 100%;
+  height: 600px;
+}

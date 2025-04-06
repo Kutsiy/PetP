@@ -7,6 +7,10 @@ import { join } from 'node:path';
   styleUrl: './post.component.scss',
   standalone: false,
 })
-export class PostWidgetComponent {
+export class PostWidgetComponent implements OnInit {
+  ngOnInit(): void {
+    this.img = `http://localhost:3000${this.post.imageUrl}`;
+  }
   @Input() post: any = null;
+  img: string | null = null;
 }

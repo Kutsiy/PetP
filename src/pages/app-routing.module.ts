@@ -66,6 +66,8 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes, {
       scrollPositionRestoration: 'top',
+      scrollOffset: [0, 64],
+      anchorScrolling: 'enabled',
     }),
   ],
   providers: [NotAuthGuard, AuthGuard],
