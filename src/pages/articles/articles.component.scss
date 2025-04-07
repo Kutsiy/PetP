@@ -2,6 +2,18 @@
   max-width: 100%;
   min-width: 320px;
   position: relative;
+  background: rgb(49, 0, 85);
+  background: linear-gradient(
+    180deg,
+    rgba(49, 0, 85, 0.01) 5%,
+    rgba(40, 6, 70, 0.5) 15%,
+    rgba(35, 9, 62, 0.75) 30%,
+    rgba(30, 13, 54, 1) 45%,
+    rgba(30, 13, 54, 1) 55%,
+    rgba(35, 9, 62, 0.75) 70%,
+    rgba(40, 6, 70, 0.5) 85%,
+    rgba(49, 0, 85, 0.01) 95%
+  );
   &__container {
     max-width: 1050px;
     min-width: 320px;
