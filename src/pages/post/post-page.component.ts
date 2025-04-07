@@ -63,6 +63,9 @@ export class PostPageComponent implements OnInit {
     const result = this.postService.findPost(`${this.postId}`);
     if (result !== null) {
       result.subscribe((result) => {
+        if (result.id === 'none') {
+        }
+
         this.data = { ...result };
       });
     }

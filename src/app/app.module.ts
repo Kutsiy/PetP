@@ -1,20 +1,19 @@
 import {
-  APP_INITIALIZER,
   inject,
   isDevMode,
   NgModule,
-  OnInit,
   PLATFORM_ID,
   provideAppInitializer,
 } from '@angular/core';
 import {
   BrowserModule,
   provideClientHydration,
+  Title,
 } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, TitleStrategy } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GraphQLModule } from './graphql.module';
@@ -27,6 +26,7 @@ import * as AuthActions from './../shared/store/auth/auth.actions';
 import * as AuthSelectors from '../shared/store/auth/auth.selectors';
 import { EffectsModule } from '@ngrx/effects';
 import { isPlatformBrowser } from '@angular/common';
+import { CustomTitleStrategy } from './title.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -66,24 +66,16 @@ import { isPlatformBrowser } from '@angular/common';
     }),
     provideAppInitializer(() => {
       const store = inject(Store);
-      // const authService = inject(AuthService);
       const platformId = inject(PLATFORM_ID);
       if (isPlatformBrowser(platformId)) {
         store.dispatch(AuthActions.authGetUser());
-        // store.dispatch(AuthActions.authSetLoading({ value: true }));
-        // authService.getUser()?.subscribe((data: any) => {
-        //   const user = {
-        //     id: data.id,
-        //     email: data.email,
-        //     isActivated: data.isActivated,
-        //   };
-        //   store.dispatch(AuthActions.authSetAuthenticated({ value: true }));
-        //   if (data) {
-        //     store.dispatch(AuthActions.authSetUser({ user }));
-        //   }
-        // });
       }
     }),
+    {
+      provide: TitleStrategy,
+      useClass: CustomTitleStrategy,
+    },
+    Title,
     AuthService,
   ],
   bootstrap: [AppComponent],

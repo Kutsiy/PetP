@@ -7,7 +7,7 @@ const routes: Routes = [
     path: '',
     loadChildren: () =>
       import('../pages/home/home.module').then((m) => m.HomePageModule),
-    title: 'HomePage',
+    title: 'Home',
     data: { animation: 'HomePage' },
   },
   {
@@ -16,7 +16,7 @@ const routes: Routes = [
       import('../pages/articles/articles.module').then(
         (m) => m.ArticlesPageModule
       ),
-    title: 'ArticlesPage',
+    title: 'Articles',
     data: { animation: 'ArticlesPage' },
     canActivate: [NotAuthGuard],
   },
@@ -24,7 +24,7 @@ const routes: Routes = [
     path: 'article/:id',
     loadChildren: () =>
       import('../pages/post/post.module').then((m) => m.PostPageModule),
-    title: 'PostPage',
+    title: 'Post',
     data: { animation: 'SomePostPage' },
     canActivate: [NotAuthGuard],
   },
@@ -34,7 +34,7 @@ const routes: Routes = [
       import('../pages/account/account.module').then(
         (m) => m.AccountPageModule
       ),
-    title: 'AccountPage',
+    title: 'Account',
     data: { animation: 'AccountPage' },
     canActivate: [NotAuthGuard],
   },
@@ -42,7 +42,7 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () =>
       import('../pages/auth/auth.module').then((m) => m.AuthPageModule),
-    title: 'AuthenticationPage',
+    title: 'Authentication',
     data: { animation: 'AuthenticationPage' },
   },
   {
@@ -57,7 +57,7 @@ const routes: Routes = [
     path: '**',
     loadChildren: () =>
       import('../pages/not-found').then((m) => m.NotFoundPageModule),
-    title: 'PageNotFound',
+    title: 'NotFound',
     data: { animation: 'PageNotFound' },
   },
 ];
