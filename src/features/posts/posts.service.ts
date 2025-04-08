@@ -2,7 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { map, Subscription } from 'rxjs';
-import { CREATE_POST, GET_POST, GET_POSTS } from './schema';
+import { ADD_VIEW, CREATE_POST, GET_POST, GET_POSTS } from './schema';
 
 @Injectable({
   providedIn: 'root',
@@ -55,7 +55,6 @@ export class PostsService {
     description: string
   ) {
     if (isPlatformBrowser(this.platformId)) {
-      console.log(file);
       return this.apollo
         .mutate<any>({
           mutation: CREATE_POST,
@@ -68,6 +67,23 @@ export class PostsService {
           },
         })
         .pipe(map((data: any) => data.data.AddPost));
+    }
+    return null;
+  }
+
+  addView(id: string) {
+    if (isPlatformBrowser(this.platformId)) {
+      return this.apollo
+        .mutate<any>({
+          mutation: ADD_VIEW,
+          variables: { id },
+          context: {
+            fetchOptions: {
+              credentials: 'include',
+            },
+          },
+        })
+        .pipe(map((data: any) => data.data.AddView));
     }
     return null;
   }

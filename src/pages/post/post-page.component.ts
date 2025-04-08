@@ -5,7 +5,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PostsService } from '../../features/posts/posts.service';
 import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
 import { AfterViewInit } from '@angular/core';
@@ -53,21 +53,27 @@ export class PostPageComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    @Inject(PostsService) private postService: PostsService
+    @Inject(PostsService) private postService: PostsService,
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.postId = params.get('id');
     });
+    if (this.postId) {
+      this.postService.addView(this.postId)?.subscribe((result) => {});
+    }
     const result = this.postService.findPost(`${this.postId}`);
     if (result !== null) {
-      result.subscribe((result) => {
-        if (result.id === 'none') {
+      result.subscribe(
+        (result) => {
+          this.data = { ...result };
+        },
+        () => {
+          this.router.navigate(['/articles']);
         }
-
-        this.data = { ...result };
-      });
+      );
     }
   }
 

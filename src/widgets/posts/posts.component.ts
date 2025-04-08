@@ -135,7 +135,9 @@ export class PostsWidgetComponent implements OnInit, OnChanges {
           this.store.dispatch(PostsActions.postsSetLoading({ value: false }));
         },
         (error) => {
-          console.log(error);
+          this.isEmpty = true;
+          this.isLoading = false;
+          this.store.dispatch(PostsActions.postsSetLoading({ value: false }));
         }
       );
     }
