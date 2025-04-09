@@ -172,9 +172,25 @@
   }
 
   &__like > mat-icon:hover {
-    color: gray;
+    color: rgb(195, 195, 195);
     transition: 0.5s;
     transform: scale(0.9);
+  }
+
+  &__like > mat-icon:active {
+    color: rgba(72, 0, 255, 0.7);
+    transition: 0.3s;
+    transform: scale(1.01);
+  }
+
+  &__like > mat-icon:hover:active {
+    color: rgba(72, 0, 255, 0.7);
+    transition: none;
+    transform: scale(1.01);
+  }
+
+  &__like .active > mat-icon {
+    color: rgba(72, 0, 255, 0.7);
   }
 
   &__dislike {
@@ -188,9 +204,25 @@
   }
 
   &__dislike > mat-icon:hover {
-    color: gray;
+    color: rgb(195, 195, 195);
     transition: 0.5s;
     transform: scale(0.9);
+  }
+
+  &__dislike > mat-icon:active {
+    color: rgba(255, 30, 0, 0.7);
+    transition: 0.3s;
+    transform: scale(1.01);
+  }
+
+  &__dislike > mat-icon:hover:active {
+    color: rgba(255, 30, 0, 0.7);
+    transition: none;
+    transform: scale(1.01);
+  }
+
+  &__dislike.active > mat-icon {
+    color: rgba(255, 30, 0, 0.7);
   }
 
   &__views {

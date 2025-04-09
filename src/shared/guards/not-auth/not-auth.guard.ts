@@ -19,8 +19,7 @@ export class NotAuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> {
     return this.store.select(AuthSelectors.selectAuthState).pipe(
-      filter(({ isLoading }) => isLoading === false),
-      filter(({ isAuth }) => isAuth !== null),
+      filter(({ isLoading, isAuth }) => isLoading === false && isAuth !== null),
       take(1),
       tap(({ isAuth }) => {
         if (!isAuth) {
