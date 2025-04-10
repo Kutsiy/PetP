@@ -172,7 +172,6 @@
   }
 
   &__like mat-icon:hover {
-    color: rgb(195, 195, 195);
     transition: 0.5s;
     transform: scale(0.9);
   }
@@ -189,7 +188,7 @@
     transform: scale(1.01);
   }
 
-  &__like .active > mat-icon {
+  &__like.active mat-icon {
     color: rgba(72, 0, 255, 0.7);
   }
 
@@ -204,7 +203,6 @@
   }
 
   &__dislike mat-icon:hover {
-    color: rgb(195, 195, 195);
     transition: 0.5s;
     transform: scale(0.9);
   }

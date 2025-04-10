@@ -17,6 +17,10 @@ export const GET_POST = gql`
         createdAt
         commentCount
       }
+      rate {
+        userSetLike
+        userSetDislike
+      }
     }
   }
 `;

@@ -50,6 +50,8 @@ export class PostPageComponent implements OnInit {
       [{ align: [] }],
     ],
   };
+  liked: boolean = false;
+  disliked: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -70,6 +72,9 @@ export class PostPageComponent implements OnInit {
         (result) => {
           console.log(result);
           this.data = { ...result.post };
+          const { userSetLike, userSetDislike } = result.rate;
+          this.liked = userSetLike;
+          this.disliked = userSetDislike;
         },
         () => {
           this.router.navigate(['/articles']);
@@ -87,7 +92,18 @@ export class PostPageComponent implements OnInit {
   setLike() {
     if (this.postId) {
       this.postService.addLike(this.postId)?.subscribe((result) => {
-        console.log(result);
+        const {
+          currentLikeCount,
+          currentDislikeCount,
+          userSetLike,
+          userSetDislike,
+        } = result;
+        if (this.data) {
+          this.data.likes = currentLikeCount;
+          this.data.dislikes = currentDislikeCount;
+          this.liked = userSetLike;
+          this.disliked = userSetDislike;
+        }
       });
     }
   }
