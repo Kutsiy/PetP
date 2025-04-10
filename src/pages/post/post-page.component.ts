@@ -68,7 +68,8 @@ export class PostPageComponent implements OnInit {
     if (result !== null) {
       result.subscribe(
         (result) => {
-          this.data = { ...result };
+          console.log(result);
+          this.data = { ...result.post };
         },
         () => {
           this.router.navigate(['/articles']);
