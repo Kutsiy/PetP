@@ -84,7 +84,13 @@ export class PostPageComponent implements OnInit {
     this.quillText = converter.convert();
   }
 
-  setLike() {}
+  setLike() {
+    if (this.postId) {
+      this.postService.addLike(this.postId)?.subscribe((result) => {
+        console.log(result);
+      });
+    }
+  }
 
   setDislike() {}
 

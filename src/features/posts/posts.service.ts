@@ -2,7 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { map, Subscription } from 'rxjs';
-import { ADD_VIEW, CREATE_POST, GET_POST, GET_POSTS } from './schema';
+import { ADD_LIKE, ADD_VIEW, CREATE_POST, GET_POST, GET_POSTS } from './schema';
 
 @Injectable({
   providedIn: 'root',
@@ -84,6 +84,23 @@ export class PostsService {
           },
         })
         .pipe(map((data: any) => data.data.AddView));
+    }
+    return null;
+  }
+
+  addLike(id: string) {
+    if (isPlatformBrowser(this.platformId)) {
+      return this.apollo
+        .mutate<any>({
+          mutation: ADD_LIKE,
+          variables: { id },
+          context: {
+            fetchOptions: {
+              credentials: 'include',
+            },
+          },
+        })
+        .pipe(map((data: any) => data.data.AddLike));
     }
     return null;
   }

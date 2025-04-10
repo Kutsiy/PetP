@@ -166,24 +166,24 @@
     gap: 5px;
   }
 
-  &__like > mat-icon {
+  &__like mat-icon {
     transition: 0.5s;
     cursor: pointer;
   }
 
-  &__like > mat-icon:hover {
+  &__like mat-icon:hover {
     color: rgb(195, 195, 195);
     transition: 0.5s;
     transform: scale(0.9);
   }
 
-  &__like > mat-icon:active {
+  &__like mat-icon:active {
     color: rgba(72, 0, 255, 0.7);
     transition: 0.3s;
     transform: scale(1.01);
   }
 
-  &__like > mat-icon:hover:active {
+  &__like mat-icon:hover:active {
     color: rgba(72, 0, 255, 0.7);
     transition: none;
     transform: scale(1.01);
@@ -198,30 +198,30 @@
     gap: 5px;
   }
 
-  &__dislike > mat-icon {
+  &__dislike mat-icon {
     transition: 0.5s;
     cursor: pointer;
   }
 
-  &__dislike > mat-icon:hover {
+  &__dislike mat-icon:hover {
     color: rgb(195, 195, 195);
     transition: 0.5s;
     transform: scale(0.9);
   }
 
-  &__dislike > mat-icon:active {
+  &__dislike mat-icon:active {
     color: rgba(255, 30, 0, 0.7);
     transition: 0.3s;
     transform: scale(1.01);
   }
 
-  &__dislike > mat-icon:hover:active {
+  &__dislike mat-icon:hover:active {
     color: rgba(255, 30, 0, 0.7);
     transition: none;
     transform: scale(1.01);
   }
 
-  &__dislike.active > mat-icon {
+  &__dislike.active mat-icon {
     color: rgba(255, 30, 0, 0.7);
   }
 
