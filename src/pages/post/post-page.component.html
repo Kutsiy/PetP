@@ -30,7 +30,7 @@
         <div class="action-bar__like-count">{{ data?.likes }}</div>
       </div>
       <div class="action-bar__dislike" [class.active]="disliked">
-        <span><mat-icon>thumb_down </mat-icon></span>
+        <span (click)="setDislike()"><mat-icon>thumb_down </mat-icon></span>
         <div class="action-bar__dislike-count">{{ data?.dislikes }}</div>
       </div>
       <div class="action-bar__views">

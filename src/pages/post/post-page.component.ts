@@ -91,7 +91,7 @@ export class PostPageComponent implements OnInit {
 
   setLike() {
     if (this.postId) {
-      this.postService.addLike(this.postId)?.subscribe((result) => {
+      this.postService.addRate(this.postId, 'like')?.subscribe((result) => {
         const {
           currentLikeCount,
           currentDislikeCount,
@@ -108,7 +108,24 @@ export class PostPageComponent implements OnInit {
     }
   }
 
-  setDislike() {}
+  setDislike() {
+    if (this.postId) {
+      this.postService.addRate(this.postId, 'dislike')?.subscribe((result) => {
+        const {
+          currentLikeCount,
+          currentDislikeCount,
+          userSetLike,
+          userSetDislike,
+        } = result;
+        if (this.data) {
+          this.data.likes = currentLikeCount;
+          this.data.dislikes = currentDislikeCount;
+          this.liked = userSetLike;
+          this.disliked = userSetDislike;
+        }
+      });
+    }
+  }
 
   writeComment() {}
 
