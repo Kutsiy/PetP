@@ -30,6 +30,21 @@ type PostData = {
   createdAt: number;
   commentCount: number;
 };
+
+type UserCommentInfo = {
+  name: string;
+
+  avatarLink: string;
+};
+
+type Comment = {
+  authorId: UserCommentInfo;
+
+  text: string;
+
+  createdAt: number;
+};
+
 @Component({
   selector: 'app-post-page',
   templateUrl: './post-page.component.html',
@@ -52,6 +67,7 @@ export class PostPageComponent implements OnInit {
   };
   liked: boolean = false;
   disliked: boolean = false;
+  comments: Array<Comment> | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -72,6 +88,7 @@ export class PostPageComponent implements OnInit {
           const { userSetLike, userSetDislike } = result.rate;
           this.liked = userSetLike;
           this.disliked = userSetDislike;
+          this.comments = result.comments;
         },
         () => {
           this.router.navigate(['/articles']);
@@ -131,7 +148,16 @@ export class PostPageComponent implements OnInit {
     }
   }
 
-  writeComment() {}
+  writeComment = () => {
+    if (this.postId && this.quillText) {
+      this.postService
+        .addComment(this.postId, this.quillText)
+        ?.subscribe((result) => {
+          this.comments = result.comments;
+          if (this.data) this.data.commentCount = result.comments.length;
+        });
+    }
+  };
 
   addView() {}
 }

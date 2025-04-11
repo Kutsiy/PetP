@@ -161,6 +161,11 @@
   gap: 10px;
   box-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
 
+  & span {
+    display: flex;
+    align-items: center;
+  }
+
   &__like {
     display: flex;
     gap: 5px;

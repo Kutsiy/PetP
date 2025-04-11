@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-comment',
@@ -7,7 +7,14 @@ import { Component, Input } from '@angular/core';
   templateUrl: './comment.component.html',
   styleUrl: './comment.component.scss',
 })
-export class CommentUIComponent {
-  @Input() nick!: string;
-  @Input() avatar: string = 'unnamed.png';
+export class CommentUIComponent implements OnInit {
+  avatarLink: string | null = null;
+
+  ngOnInit(): void {
+    this.avatarLink = `http://localhost:3000${this.avatar}`;
+  }
+  @Input() name!: string;
+  @Input() avatar!: string;
+  @Input() text!: string;
+  @Input() data!: number;
 }

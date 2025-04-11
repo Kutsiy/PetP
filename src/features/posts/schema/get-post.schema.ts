@@ -17,6 +17,15 @@ export const GET_POST = gql`
         createdAt
         commentCount
       }
+      comments {
+        authorId {
+          name
+          avatarLink
+        }
+        postId
+        text
+        createdAt
+      }
       rate {
         userSetLike
         userSetDislike

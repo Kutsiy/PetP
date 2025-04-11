@@ -50,7 +50,9 @@
           [modules]="editorModules"
           (onContentChanged)="onContentChanged($event)"
         ></quill-editor>
-        <app-base-button>Send your comment</app-base-button>
+        <app-base-button [onClick]="writeComment"
+          >Send your comment</app-base-button
+        >
       </div>
       <div class="post-page__comments comments" #comments>
         <div class="comments__header">
@@ -63,8 +65,14 @@
           </div>
         </div>
         <div class="comments__container">
-          <app-comment [nick]="'nick'">Content </app-comment>
-          <app-comment [nick]="'bob'">Content BOB</app-comment>
+          @for (comment of this.comments; track comment) {
+          <app-comment
+            [text]="comment.text"
+            [avatar]="comment.authorId.avatarLink"
+            [name]="comment.authorId.name"
+            [data]="comment.createdAt"
+          ></app-comment>
+          }
         </div>
       </div>
     </div>

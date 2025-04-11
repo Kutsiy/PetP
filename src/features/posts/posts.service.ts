@@ -3,6 +3,7 @@ import { Inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
 import { map, Subscription } from 'rxjs';
 import {
+  ADD_COMMENT,
   ADD_DISLIKE,
   ADD_LIKE,
   ADD_VIEW,
@@ -113,6 +114,23 @@ export class PostsService {
             type === 'like' ? data.data.AddLike : data.data.AddDislike
           )
         );
+    }
+    return null;
+  }
+
+  addComment(id: string, text: string) {
+    if (isPlatformBrowser(this.platformId)) {
+      return this.apollo
+        .mutate<any>({
+          mutation: ADD_COMMENT,
+          variables: { id, text },
+          context: {
+            fetchOptions: {
+              credentials: 'include',
+            },
+          },
+        })
+        .pipe(map((data: any) => data.data.AddComment));
     }
     return null;
   }
