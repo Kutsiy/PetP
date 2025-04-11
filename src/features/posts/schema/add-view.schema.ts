@@ -5,6 +5,7 @@ export const ADD_VIEW = gql`
     AddView(id: $id) {
       result
       userExists
+      currentViewsCount
     }
   }
 `;

@@ -63,9 +63,6 @@ export class PostPageComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       this.postId = params.get('id');
     });
-    if (this.postId) {
-      this.postService.addView(this.postId)?.subscribe((result) => {});
-    }
     const result = this.postService.findPost(`${this.postId}`);
     if (result !== null) {
       result.subscribe(
@@ -80,6 +77,13 @@ export class PostPageComponent implements OnInit {
           this.router.navigate(['/articles']);
         }
       );
+    }
+    if (this.postId) {
+      this.postService.addView(this.postId)?.subscribe((result) => {
+        if (this.data) {
+          this.data.views = result.currentViewsCount;
+        }
+      });
     }
   }
 
