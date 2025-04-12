@@ -9,11 +9,13 @@ import { WriteArticleWidgetComponent } from '../../widgets/write-article/write-a
 import { LogOutWidgetModule, UserArticlesWidgetModule } from '../../widgets';
 import { ProfileWidgetModule } from '../../widgets/profile';
 import { UserArticlesWidgetComponent } from '../../widgets/user-articles/user-articles.component';
+import { AuthActivateGuard } from '../../shared/guards/activate/activate.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: AccountPageComponent,
+    canActivate: [AuthActivateGuard],
     children: [
       {
         path: 'profile',
@@ -52,6 +54,7 @@ const routes: Routes = [
     UserArticlesWidgetModule,
     ProfileWidgetModule,
   ],
+  providers: [AuthActivateGuard],
   exports: [AccountPageComponent],
 })
 export class AccountPageModule {}

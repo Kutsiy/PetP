@@ -8,7 +8,12 @@
         <div class="activate__title">
           You have registered but have not activated your account.
         </div>
-        <app-base-button>Send Mail</app-base-button>
+        @if(this.resultText) {
+        <div class="activate__result">
+          {{ this.resultText }}
+        </div>
+        }
+        <app-base-button [onClick]="sendMail">Send Mail</app-base-button>
       </div>
     </div>
   </div>

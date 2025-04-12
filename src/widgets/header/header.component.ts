@@ -9,6 +9,7 @@ import {
 import { GsapService } from '../../shared/animations/gsap.service';
 import { Store } from '@ngrx/store';
 import * as AuthSelectors from './../../shared/store/auth/auth.selectors';
+import { AuthServiceStore } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -25,12 +26,14 @@ export class HeaderWidgetComponent implements OnInit {
   themeModeForSite: string | null = null;
   isMobileAccountMenuOpen = false;
   isHaveAccount = false;
+  isActivated: any;
   constructor(
     @Inject(DOCUMENT) private document: Document,
     @Inject(PLATFORM_ID) private platformId: Object,
     private elementRef: ElementRef,
     @Inject(GsapService) private gsapService: GsapService,
-    private store: Store
+    private store: Store,
+    private readonly authServiceStore: AuthServiceStore
   ) {
     this.headerElement = this.elementRef.nativeElement.querySelector('.header');
     if (isPlatformBrowser(this.platformId)) {
@@ -50,6 +53,7 @@ export class HeaderWidgetComponent implements OnInit {
           this.isHaveAccount = true;
         } else this.isHaveAccount = false;
       });
+    this.isActivated = this.authServiceStore.getActivate();
   }
 
   themeToggle() {

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as AuthActions from './../../shared/store/auth/auth.actions';
 import { AuthServiceStore } from '../../shared/services/auth.service';
+import { AuthService } from '../../features';
 
 @Component({
   selector: 'app-activate-account',
@@ -13,8 +14,11 @@ import { AuthServiceStore } from '../../shared/services/auth.service';
 export class ActivateAccountWidgetComponent {
   constructor(
     private readonly store: Store,
-    private readonly authServiceStore: AuthServiceStore
+    private readonly authServiceStore: AuthServiceStore,
+    private readonly authService: AuthService
   ) {}
+
+  resultText: any;
 
   close() {
     this.store.dispatch(
@@ -22,4 +26,10 @@ export class ActivateAccountWidgetComponent {
     );
     this.authServiceStore.setPopUp(false);
   }
+
+  sendMail = () => {
+    this.authService.sendMail().subscribe((value) => {
+      this.resultText = value.result;
+    });
+  };
 }

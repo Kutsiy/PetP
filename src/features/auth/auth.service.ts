@@ -9,6 +9,7 @@ import {
   GETUSER,
   GETUSERINFO,
   UPLOADAVATAR,
+  SEND_MAIL,
 } from './schema';
 import { map, of } from 'rxjs';
 
@@ -123,5 +124,18 @@ export class AuthService {
         },
       })
       .pipe(map((data: any) => data.data.uploadAvatar));
+  }
+
+  sendMail() {
+    return this.apollo
+      .watchQuery<any>({
+        query: SEND_MAIL,
+        context: {
+          fetchOptions: {
+            credentials: 'include',
+          },
+        },
+      })
+      .valueChanges.pipe(map((data) => data.data.SendMail));
   }
 }

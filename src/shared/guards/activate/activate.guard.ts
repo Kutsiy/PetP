@@ -16,6 +16,7 @@ export class AuthActivateGuard implements CanActivate {
 
     if (isAuth && !isActivated) {
       this.authService.setPopUp(true);
+      this.router.navigate(['/']);
       return false;
     }
 

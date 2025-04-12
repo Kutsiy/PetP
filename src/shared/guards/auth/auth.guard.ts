@@ -2,15 +2,12 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
-  GuardResult,
-  MaybeAsync,
   Router,
   RouterStateSnapshot,
 } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as AuthSelectors from '../../store/auth/auth.selectors';
 import { filter, map, Observable, take, tap } from 'rxjs';
-import { Location } from '@angular/common';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
