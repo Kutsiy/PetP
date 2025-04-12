@@ -3,11 +3,13 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, exhaustMap, map, of } from 'rxjs';
 import { AuthService } from '../../../features';
 import * as AuthActions from './auth.actions';
+import { AuthServiceStore } from '../../services/auth.service';
 
 @Injectable()
 export class AuthEffects {
   private actions$ = inject(Actions);
   private authService = inject(AuthService);
+  private authServiceStore = inject(AuthServiceStore);
 
   loadUser$ = createEffect(() =>
     this.actions$.pipe(
@@ -26,6 +28,9 @@ export class AuthEffects {
               email: data.email,
               isActivated: data.isActivated,
             };
+            this.authServiceStore.setAuth(true);
+            this.authServiceStore.setActivate(data.isActivated);
+            this.authServiceStore.setPopUp(!data.isActivated);
 
             const settings = {
               avatar: `http://localhost:3000${data.avatarLink}`,
@@ -38,6 +43,9 @@ export class AuthEffects {
             });
           }),
           catchError(() => {
+            this.authServiceStore.setAuth(false);
+            this.authServiceStore.setPopUp(true);
+            this.authServiceStore.setActivate(false);
             return of(
               AuthActions.authSetUserAndAuthenticated({
                 user: {

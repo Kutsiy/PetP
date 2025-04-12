@@ -1,15 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { routeAnimation } from './route-animation';
-
+import { Store } from '@ngrx/store';
+import * as AuthActions from './../shared/store/auth/auth.actions';
+import * as AuthSelectors from './../shared/store/auth/auth.selectors';
+import { take } from 'rxjs';
+import { AuthServiceStore } from '../shared/services/auth.service';
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.scss',
-    animations: [routeAnimation],
-    standalone: false
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
+  animations: [routeAnimation],
+  standalone: false,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  constructor(
+    private readonly store: Store,
+    private readonly authServiceStore: AuthServiceStore
+  ) {}
+
+  showActivatePopUp: any;
+  userAuth: any;
   isAnimating = false;
   nameOfPage = null;
   prepareRoute(outlet: RouterOutlet) {
@@ -22,5 +33,19 @@ export class AppComponent {
 
   onDoneAnimation() {
     this.isAnimating = false;
+  }
+
+  ngOnInit(): void {
+    // this.store
+    //   .select(AuthSelectors.selectAuthActivated)
+    //   .pipe(take(1))
+    //   .subscribe((isActivated) => {
+    //     this.store.dispatch(
+    //       AuthActions.authSetActivateAccountPopUp({ value: !isActivated })
+    //     );
+    //     this.authServiceStore.setPopUp(!isActivated);
+    //   });
+    this.showActivatePopUp = this.authServiceStore.getPopUp();
+    this.userAuth = this.authServiceStore.getAuth();
   }
 }

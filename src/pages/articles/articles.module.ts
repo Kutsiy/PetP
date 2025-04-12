@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { PostsFeatModule, PostsService } from '../../features';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthServiceStore } from '../../shared/services/auth.service';
 
 const routes: Routes = [{ path: '', component: ArticlesPageComponent }];
 

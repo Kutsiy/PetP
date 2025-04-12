@@ -45,3 +45,8 @@ export const selectSignUpError = createSelector(
   selectAuth,
   (state: AuthStateType) => state.errors.signUp.message
 );
+
+export const selectShowActivateAccountPopUp = createSelector(
+  selectAuth,
+  (state: AuthStateType) => state.showActivatePopUp
+);

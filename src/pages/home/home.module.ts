@@ -8,6 +8,7 @@ import {
   MainWidgetModule,
   PopularArticlesWidgetModule,
 } from '../../widgets';
+import { AuthServiceStore } from '../../shared/services/auth.service';
 
 const routes: Routes = [{ path: '', component: HomePageComponent }];
 

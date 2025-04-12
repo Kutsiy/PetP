@@ -17,6 +17,7 @@ import { Store } from '@ngrx/store';
 import * as AuthSelectors from '../../../shared/store/auth/auth.selectors';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { AuthServiceStore } from '../../../shared/services/auth.service';
 
 interface FormType {
   email: FormControl<string>;
@@ -39,7 +40,8 @@ export class LoginFormWidgetComponent implements OnDestroy {
     private formBuilder: NonNullableFormBuilder,
     private authService: AuthService,
     private store: Store,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly authServiceStore: AuthServiceStore
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -86,6 +88,8 @@ export class LoginFormWidgetComponent implements OnDestroy {
               })
             );
           }
+          this.authServiceStore.setAuth(true);
+          this.authServiceStore.setActivate(data.user.isActivated);
           this.isSubmitted = false;
           this.router.navigate(['/']);
         },

@@ -35,3 +35,8 @@ export const authSetSignUpError = createAction(
   '[Auth] Set Sign Up Error',
   props<{ message: string | null }>()
 );
+
+export const authSetActivateAccountPopUp = createAction(
+  '[Auth] Set Activate Account Pop Up',
+  props<{ value: boolean }>()
+);

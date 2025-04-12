@@ -30,6 +30,13 @@
         >
           Write an article
         </div>
+        <div
+          class="sidebar__button"
+          [routerLink]="['/account/user-article']"
+          routerLinkActive="active"
+        >
+          Your articles
+        </div>
         <!-- <div class="sidebar__button">Admin Panel</div> -->
         <div class="sidebar__button" (click)="changeLogoutState()">Log Out</div>
       </div>

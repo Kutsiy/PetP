@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" [class.show-pop-up]="showActivatePopUp() && userAuth()">
   <app-header></app-header>
   <main
     [@routeAnimation]="prepareRoute(outlet)"
@@ -11,3 +11,6 @@
   <app-footer></app-footer>
   }
 </div>
+@if (this.showActivatePopUp() && this.userAuth()) {
+<app-activate-account></app-activate-account>
+}

@@ -17,16 +17,20 @@ import { RouterModule, TitleStrategy } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GraphQLModule } from './graphql.module';
-import { FooterWidgetModule, HeaderWidgetModule } from '../widgets';
+import {
+  ActivateAccountWidgetModule,
+  FooterWidgetModule,
+  HeaderWidgetModule,
+} from '../widgets';
 import { AppRoutingModule } from '../pages';
 import { provideStore, Store, StoreModule } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { AuthService } from '../features';
 import * as AuthActions from './../shared/store/auth/auth.actions';
-import * as AuthSelectors from '../shared/store/auth/auth.selectors';
 import { EffectsModule } from '@ngrx/effects';
 import { isPlatformBrowser } from '@angular/common';
 import { CustomTitleStrategy } from './title.service';
+import { AuthServiceStore } from '../shared/services/auth.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -51,6 +55,7 @@ import { CustomTitleStrategy } from './title.service';
       }
     ),
     EffectsModule.forRoot([]),
+    ActivateAccountWidgetModule,
   ],
   providers: [
     provideClientHydration(),
@@ -77,6 +82,7 @@ import { CustomTitleStrategy } from './title.service';
     },
     Title,
     AuthService,
+    AuthServiceStore,
   ],
   bootstrap: [AppComponent],
 })

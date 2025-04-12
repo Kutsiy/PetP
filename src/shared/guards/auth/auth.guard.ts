@@ -23,12 +23,7 @@ export class AuthGuard implements CanActivate {
       filter(({ isLoading }) => isLoading === false),
       filter(({ isAuth }) => isAuth !== null),
       take(1),
-      tap(({ isActive, isAuth }) => {
-        if (isAuth) {
-          this.router.navigate(['/']);
-        }
-      }),
-      map(({ isActive, isAuth, isLoading }) => {
+      map(({ isActive, isAuth }) => {
         if (isAuth) {
           return false;
         } else {

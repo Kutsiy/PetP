@@ -1,0 +1,15 @@
+<div class="activate__background" (click)="close()">
+  <div class="activate__container">
+    <div class="activate__pop-up" (click)="$event.stopPropagation()">
+      <div class="activate__header">
+        <span (click)="close()"><mat-icon>close</mat-icon></span>
+      </div>
+      <div class="activate__body">
+        <div class="activate__title">
+          You have registered but have not activated your account.
+        </div>
+        <app-base-button>Send Mail</app-base-button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -17,6 +17,7 @@ import { Store } from '@ngrx/store';
 import * as AuthActions from './../../../shared/store/auth/auth.actions';
 import * as AuthSelectors from '../../../shared/store/auth/auth.selectors';
 import { Router } from '@angular/router';
+import { AuthServiceStore } from '../../../shared/services/auth.service';
 
 interface FormType {
   userName: FormControl<string>;
@@ -42,7 +43,8 @@ export class SignUpFormWidgetComponent implements OnDestroy {
     private formBuilder: NonNullableFormBuilder,
     private authService: AuthService,
     private store: Store,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly authServiceStore: AuthServiceStore
   ) {
     this.signUpForm = this.formBuilder.group({
       userName: ['', [Validators.required, Validators.minLength(3)]],
@@ -102,6 +104,9 @@ export class SignUpFormWidgetComponent implements OnDestroy {
               })
             );
           }
+          this.authServiceStore.setAuth(true);
+          this.authServiceStore.setActivate(data.user.isActivated);
+
           this.isSubmitted = false;
 
           this.router.navigate(['/']);

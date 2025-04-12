@@ -6,8 +6,9 @@ import { ProfileWidgetComponent } from '../../widgets/profile/profile.component'
 import { NotificationsWidgetComponent } from '../../widgets/notifications/notifications.component';
 import { AccessibilityWidgetComponent } from '../../widgets/accessibility/accessibility.component';
 import { WriteArticleWidgetComponent } from '../../widgets/write-article/write-article.component';
-import { LogOutWidgetModule } from '../../widgets';
+import { LogOutWidgetModule, UserArticlesWidgetModule } from '../../widgets';
 import { ProfileWidgetModule } from '../../widgets/profile';
+import { UserArticlesWidgetComponent } from '../../widgets/user-articles/user-articles.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
         component: WriteArticleWidgetComponent,
       },
       {
+        path: 'user-article',
+        component: UserArticlesWidgetComponent,
+      },
+      {
         path: '**',
         redirectTo: '/account/profile',
       },
@@ -44,6 +49,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     RouterModule,
     LogOutWidgetModule,
+    UserArticlesWidgetModule,
     ProfileWidgetModule,
   ],
   exports: [AccountPageComponent],

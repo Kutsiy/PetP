@@ -1,0 +1,86 @@
+.activate {
+  &__background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(128, 128, 128, 0.3);
+    user-select: none;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    overflow: hidden;
+    backdrop-filter: blur(1px);
+    cursor: pointer;
+  }
+
+  &__container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__pop-up {
+    width: 600px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 5px black;
+    backdrop-filter: blur(2px);
+    border-radius: 25px;
+    cursor: default;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    padding-right: 8px;
+    padding-top: 4px;
+    box-sizing: border-box;
+
+    & > span {
+      cursor: pointer;
+      transition: 0.5s;
+    }
+
+    & > span:hover {
+      transition: 0.5s;
+      transform: scale(1.2);
+    }
+  }
+
+  &__body {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+  }
+
+  &__title {
+    font-size: 25px;
+    font-weight: 500;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.6);
+    text-align: center;
+  }
+}
+
+mat-icon {
+  width: 35px;
+  height: 35px;
+}
+
+.material-icons {
+  font-size: 35px;
+}
