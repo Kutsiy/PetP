@@ -13,9 +13,13 @@
         [(searchString)]="searchString"
         class="first-item"
         [filterDisplay]="message"
+        [category]="category"
+        [sortFilter]="sortFilter"
       ></app-posts>
       <app-side-menu
         (notify)="handleNotification($event)"
+        (categoryChange)="categoryChange($event)"
+        (sortFilterChange)="sortFilterChange($event)"
         class="second-item"
       ></app-side-menu>
     </div>

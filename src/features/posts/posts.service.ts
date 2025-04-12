@@ -23,7 +23,13 @@ export class PostsService {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
-  start(searchString: string = '', page: number, take: number) {
+  start(
+    searchString: string = '',
+    page: number,
+    take: number,
+    category: string,
+    sortFilter: string
+  ) {
     if (isPlatformBrowser(this.platformId)) {
       return this.apollo
         .watchQuery<any>({
@@ -32,6 +38,8 @@ export class PostsService {
             searchString,
             page,
             take,
+            category,
+            sortFilter,
           },
           fetchPolicy: 'no-cache',
         })

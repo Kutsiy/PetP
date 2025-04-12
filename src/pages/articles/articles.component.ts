@@ -16,12 +16,27 @@ export class ArticlesPageComponent {
 
   message: 'Vertically' | 'Horizontally' = 'Vertically';
 
+  category: any;
+
+  sortFilter: any;
+
   handleNotification(message: string) {
     if (message === 'Vertically' || message === 'Horizontally')
       this.message = message;
   }
 
   changeSearchString(event: string) {
+    console.log(event);
     this.searchString = event;
+  }
+
+  categoryChange(event: string) {
+    console.log(event);
+    this.category = event;
+  }
+
+  sortFilterChange(event: string) {
+    console.log(event);
+    this.sortFilter = event;
   }
 }

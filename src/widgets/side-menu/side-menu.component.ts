@@ -17,6 +17,9 @@ import { Subscription } from 'rxjs';
 })
 export class SideMenuWidgetComponent implements OnInit, OnDestroy {
   @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+  @Output() categoryChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() sortFilterChange: EventEmitter<string> = new EventEmitter<string>();
+
   private breakpointSubscription!: Subscription;
   isSmallScreen = false;
 
@@ -53,7 +56,16 @@ export class SideMenuWidgetComponent implements OnInit, OnDestroy {
     this.notify.emit(message);
   }
 
+  notifyCategory(message: string) {
+    this.categoryChange.emit(message);
+  }
+
+  notifySortFilter(message: string) {
+    this.sortFilterChange.emit(message);
+  }
+
   categories = [
+    { value: 'none', viewValue: null },
     { value: 'About me', viewValue: 'About me' },
     { value: 'News about programming', viewValue: 'News about programming' },
   ];
@@ -64,12 +76,29 @@ export class SideMenuWidgetComponent implements OnInit, OnDestroy {
   ];
 
   sortFilter = [
-    { value: 'Date', viewValue: 'Date' },
-    { value: 'Views', viewValue: 'Views' },
+    { value: 'none', viewValue: null },
+    { value: 'popular', viewValue: 'Popular' },
+    { value: 'newest', viewValue: 'Newest' },
+    { value: 'oldest', viewValue: 'Oldest' },
   ];
 
   selected: string = this.filterDisplay[0].value;
+
+  selectedCategory = this.categories[0].value;
+
+  selectedSortFilter = this.sortFilter[0].value;
+
   onSelectionChange(event: any): void {
     this.notifyParent(this.selected);
+  }
+  onCategoryChange(event: any): void {
+    if (this.selectedCategory) {
+      this.notifyCategory(this.selectedCategory);
+    }
+  }
+  onSortFilterChange(event: any): void {
+    if (this.selectedSortFilter) {
+      this.notifySortFilter(this.selectedSortFilter);
+    }
   }
 }

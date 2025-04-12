@@ -46,6 +46,28 @@ export class PostsWidgetComponent implements OnInit, OnChanges {
   rightNumber: number = 0;
   @Input() searchString: string | null = null;
   @Input() filterDisplay: 'Horizontally' | 'Vertically' = 'Vertically';
+  private _category = 'none';
+  private _sortFilter = 'none';
+  @Input()
+  set category(value: string) {
+    if (this._category !== value) {
+      this._category = value;
+      this.loadPosts(this.postService.getSearchString());
+    }
+  }
+  get category(): string {
+    return this._category;
+  }
+  @Input()
+  set sortFilter(value: string) {
+    if (this._sortFilter !== value) {
+      this._sortFilter = value;
+      this.loadPosts(this.postService.getSearchString());
+    }
+  }
+  get sortFilter(): string {
+    return this._sortFilter;
+  }
   @Output() searchStringChange = new EventEmitter<string | null>();
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -109,37 +131,39 @@ export class PostsWidgetComponent implements OnInit, OnChanges {
       this.isLoading = true;
       this.store.dispatch(PostsActions.postsSetLoading({ value: true }));
 
-      await this.postService.start(value, pageNumber, limit)?.subscribe(
-        (data: any) => {
-          if (data) {
-            this.data = data.posts;
-            this.totalCount = data.totalCount;
-            this.pageCount = data.pageCount;
-            this.isEmpty = data.isEmpty;
-            if (this.pageCount) {
-              this.pageCountArray = Array.from(
-                { length: this.pageCount },
-                (_, i) => i + 1
-              );
-              this.rangePage = this.setPaginationButtons(
-                this.pageCount,
-                pageNumber
-              );
-              if (this.rangePage !== null) {
-                this.leftNumber = this.rangePage.left;
-                this.rightNumber = this.rangePage.right;
+      await this.postService
+        .start(value, pageNumber, limit, this.category, this.sortFilter)
+        ?.subscribe(
+          (data: any) => {
+            if (data) {
+              this.data = data.posts;
+              this.totalCount = data.totalCount;
+              this.pageCount = data.pageCount;
+              this.isEmpty = data.isEmpty;
+              if (this.pageCount) {
+                this.pageCountArray = Array.from(
+                  { length: this.pageCount },
+                  (_, i) => i + 1
+                );
+                this.rangePage = this.setPaginationButtons(
+                  this.pageCount,
+                  pageNumber
+                );
+                if (this.rangePage !== null) {
+                  this.leftNumber = this.rangePage.left;
+                  this.rightNumber = this.rangePage.right;
+                }
               }
             }
+            this.isLoading = false;
+            this.store.dispatch(PostsActions.postsSetLoading({ value: false }));
+          },
+          (error) => {
+            this.isEmpty = true;
+            this.isLoading = false;
+            this.store.dispatch(PostsActions.postsSetLoading({ value: false }));
           }
-          this.isLoading = false;
-          this.store.dispatch(PostsActions.postsSetLoading({ value: false }));
-        },
-        (error) => {
-          this.isEmpty = true;
-          this.isLoading = false;
-          this.store.dispatch(PostsActions.postsSetLoading({ value: false }));
-        }
-      );
+        );
     }
   }
 
