@@ -149,7 +149,7 @@ export class PostPageComponent implements OnInit {
   }
 
   writeComment = () => {
-    if (this.postId && this.quillText) {
+    if (this.postId && this.quillText !== null && this.quillText !== '') {
       this.postService
         .addComment(this.postId, this.quillText)
         ?.subscribe((result) => {
