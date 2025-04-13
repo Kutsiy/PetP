@@ -1,8 +1,8 @@
 import { gql } from 'apollo-angular';
 
-export const ADD_COMMENT = gql`
-  mutation AddComment($id: String!, $text: String!) {
-    AddComment(id: $id, text: $text) {
+export const FIND_COMMENT_BY_USER_AND_DELETE = gql`
+  mutation FindCommentByUserAndDelete($id: String!, $commentId: String!) {
+    FindCommentByUserAndDelete(id: $id, commentId: $commentId) {
       comments {
         postIdString
         idString

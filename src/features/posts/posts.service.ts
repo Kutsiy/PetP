@@ -8,7 +8,9 @@ import {
   ADD_LIKE,
   ADD_VIEW,
   CREATE_POST,
+  FIND_COMMENT_BY_USER_AND_DELETE,
   FIND_POST_BY_USER_AND_DELETE,
+  GET_POPULAR_POST,
   GET_POST,
   GET_POST_BY_USER,
   GET_POSTS,
@@ -175,6 +177,40 @@ export class PostsService {
           },
         })
         .pipe(map((data: any) => data.data.FindPostByUserAndDelete));
+    }
+    return null;
+  }
+
+  findCommentByUserAndDelete(id: string, commentId: string) {
+    if (isPlatformBrowser(this.platformId)) {
+      return this.apollo
+        .mutate<any>({
+          mutation: FIND_COMMENT_BY_USER_AND_DELETE,
+          variables: { id, commentId },
+          context: {
+            fetchOptions: {
+              credentials: 'include',
+            },
+          },
+        })
+        .pipe(map((data: any) => data.data.FindCommentByUserAndDelete));
+    }
+    return null;
+  }
+
+  getPopularPost() {
+    if (isPlatformBrowser(this.platformId)) {
+      return this.apollo
+        .watchQuery<any>({
+          query: GET_POPULAR_POST,
+          fetchPolicy: 'no-cache',
+          context: {
+            fetchOptions: {
+              credentials: 'include',
+            },
+          },
+        })
+        .valueChanges.pipe(map((data) => data.data.GetPopularPost));
     }
     return null;
   }

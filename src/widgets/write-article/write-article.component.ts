@@ -16,6 +16,29 @@ export class WriteArticleWidgetComponent {
   categories = [
     { value: 'About me', viewValue: 'About me' },
     { value: 'News about programming', viewValue: 'News about programming' },
+    { value: 'Travel', viewValue: 'Travel' },
+    { value: 'Food & Cooking', viewValue: 'Food & Cooking' },
+    { value: 'Lifestyle', viewValue: 'Lifestyle' },
+    { value: 'Health & Fitness', viewValue: 'Health & Fitness' },
+    { value: 'Photography', viewValue: 'Photography' },
+    { value: 'Music', viewValue: 'Music' },
+    { value: 'Movies & TV', viewValue: 'Movies & TV' },
+    { value: 'Books & Literature', viewValue: 'Books & Literature' },
+    { value: 'Art & Design', viewValue: 'Art & Design' },
+    { value: 'Fashion', viewValue: 'Fashion' },
+    { value: 'Gaming', viewValue: 'Gaming' },
+    { value: 'Education', viewValue: 'Education' },
+    { value: 'Finance & Investing', viewValue: 'Finance & Investing' },
+    { value: 'Relationships', viewValue: 'Relationships' },
+    {
+      value: 'Spirituality & Mindfulness',
+      viewValue: 'Spirituality & Mindfulness',
+    },
+    { value: 'Home & Garden', viewValue: 'Home & Garden' },
+    { value: 'Parenting', viewValue: 'Parenting' },
+    { value: 'DIY & Crafts', viewValue: 'DIY & Crafts' },
+    { value: 'Science & Nature', viewValue: 'Science & Nature' },
+    { value: 'History & Culture', viewValue: 'History & Culture' },
   ];
   title: string | null = null;
   prevFile: File | null = null;
@@ -34,6 +57,8 @@ export class WriteArticleWidgetComponent {
       matchVisual: false,
     },
   };
+
+  created: any;
 
   imageUrl: string | null = null;
 
@@ -77,6 +102,7 @@ export class WriteArticleWidgetComponent {
       this.prevFile &&
       this.description
     ) {
+      this.created = true;
       this.postService
         .createPost(
           this.title,

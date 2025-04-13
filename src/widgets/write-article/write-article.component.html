@@ -52,6 +52,9 @@
       (onContentChanged)="onContentChanged($event)"
     ></quill-editor>
   </div>
+  @if (created) {
+  <div class="write__created">Post created</div>
+  }
   <div class="write__button">
     <app-base-button [onClick]="onSubmit">Create article</app-base-button>
   </div>

@@ -7,3 +7,5 @@ export * from './add-dislike.schema';
 export * from './add-comment.schema';
 export * from './get-post-by-user.schema';
 export * from './find-post-by-user-and-delete.schema';
+export * from './find-comment-by-user-and-delete.schema';
+export * from './get-popular-post.schema';

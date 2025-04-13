@@ -65,9 +65,32 @@ export class SideMenuWidgetComponent implements OnInit, OnDestroy {
   }
 
   categories = [
-    { value: 'none', viewValue: "ALL" },
+    { value: 'none', viewValue: 'ALL' },
     { value: 'About me', viewValue: 'About me' },
     { value: 'News about programming', viewValue: 'News about programming' },
+    { value: 'Travel', viewValue: 'Travel' },
+    { value: 'Food & Cooking', viewValue: 'Food & Cooking' },
+    { value: 'Lifestyle', viewValue: 'Lifestyle' },
+    { value: 'Health & Fitness', viewValue: 'Health & Fitness' },
+    { value: 'Photography', viewValue: 'Photography' },
+    { value: 'Music', viewValue: 'Music' },
+    { value: 'Movies & TV', viewValue: 'Movies & TV' },
+    { value: 'Books & Literature', viewValue: 'Books & Literature' },
+    { value: 'Art & Design', viewValue: 'Art & Design' },
+    { value: 'Fashion', viewValue: 'Fashion' },
+    { value: 'Gaming', viewValue: 'Gaming' },
+    { value: 'Education', viewValue: 'Education' },
+    { value: 'Finance & Investing', viewValue: 'Finance & Investing' },
+    { value: 'Relationships', viewValue: 'Relationships' },
+    {
+      value: 'Spirituality & Mindfulness',
+      viewValue: 'Spirituality & Mindfulness',
+    },
+    { value: 'Home & Garden', viewValue: 'Home & Garden' },
+    { value: 'Parenting', viewValue: 'Parenting' },
+    { value: 'DIY & Crafts', viewValue: 'DIY & Crafts' },
+    { value: 'Science & Nature', viewValue: 'Science & Nature' },
+    { value: 'History & Culture', viewValue: 'History & Culture' },
   ];
 
   filterDisplay = [
@@ -76,8 +99,7 @@ export class SideMenuWidgetComponent implements OnInit, OnDestroy {
   ];
 
   sortFilter = [
-    { value: 'none', viewValue: "ALL" },
-    { value: 'popular', viewValue: 'Popular' },
+    { value: 'none', viewValue: 'ALL' },
     { value: 'newest', viewValue: 'Newest' },
     { value: 'oldest', viewValue: 'Oldest' },
   ];

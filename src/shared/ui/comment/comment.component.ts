@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-comment',
@@ -17,6 +17,14 @@ export class CommentUIComponent implements OnInit {
   @Input() avatar!: string;
   @Input() text!: string;
   @Input() data!: number;
-  @Input() commentId!: string;
+  @Input() commentAuthorId!: string;
   @Input() userId!: string;
+  @Input() commentId!: string;
+
+  @Output() clicked = new EventEmitter<string>();
+
+  onClick() {
+    console.log(this.commentId);
+    this.clicked.emit(this.commentId);
+  }
 }

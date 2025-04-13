@@ -74,8 +74,10 @@
             [avatar]="comment.authorId.avatarLink"
             [name]="comment.authorId.name"
             [data]="comment.createdAt"
-            [commentId]="comment.authorId.id"
+            [commentAuthorId]="comment.authorId.id"
+            [commentId]="comment.idString"
             [userId]="userId"
+            (clicked)="deleteComment($event)"
           ></app-comment>
           } @empty {
           <div class="comments__empty">EMPTY</div>

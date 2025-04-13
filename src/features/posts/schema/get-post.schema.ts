@@ -18,6 +18,8 @@ export const GET_POST = gql`
         commentCount
       }
       comments {
+        postIdString
+        idString
         authorId {
           name
           avatarLink

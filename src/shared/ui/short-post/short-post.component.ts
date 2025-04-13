@@ -13,7 +13,8 @@ export class ShortPostUiComponent implements OnInit {
   @Input() data: any;
   img: any;
 
-  handleClick() {
+  handleClick(event: Event) {
+    event.stopPropagation();
     this.clicked.emit(this.id);
   }
 

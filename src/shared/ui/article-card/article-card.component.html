@@ -1,15 +1,17 @@
-<div class="article-card">
-  <img alt="article" class="article-card__thumbnail" src="unnamed.png" />
+<div class="article-card" [routerLink]="['/article', data.id]">
+  <img alt="article" class="article-card__thumbnail" [src]="image" />
   <div class="article-card__content">
-    <h3 class="article-card__title">
-      TITLE Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid aut
-      praesentium magni ex qui minima nam perferendis ad excepturi fuga, beatae
-      quam vel autem culpa unde libero nesciunt expedita cum!
-    </h3>
+    <h3 class="article-card__title">TITLE: {{ data.title }}</h3>
     <div class="article-card__meta">
-      <span class="article-card__author"><mat-icon>person</mat-icon>BOB</span>
-      <span class="article-card__views"><mat-icon>visibility</mat-icon>5k</span>
-      <span class="article-card__likes"><mat-icon>thumb_up</mat-icon>10k</span>
+      <span class="article-card__author"
+        ><mat-icon>person</mat-icon>{{ data.authorName }}</span
+      >
+      <span class="article-card__views"
+        ><mat-icon>visibility</mat-icon>{{ data.views }}</span
+      >
+      <span class="article-card__likes"
+        ><mat-icon>thumb_up</mat-icon>{{ data.likes }}</span
+      >
     </div>
   </div>
 </div>

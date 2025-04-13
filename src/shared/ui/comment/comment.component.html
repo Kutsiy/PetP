@@ -5,8 +5,8 @@
       <div class="comment__header-name">{{ name }}</div>
       <div class="comment__header-time">{{ data | dateToYYYYMMDD }}</div></span
     >
-    @if(userId === commentId) {
-    <div class="comment__header-delete-button">
+    @if(userId === commentAuthorId) {
+    <div class="comment__header-delete-button" (click)="onClick()">
       <mat-icon>delete</mat-icon>Delete
     </div>
     }

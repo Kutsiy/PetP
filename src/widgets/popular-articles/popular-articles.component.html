@@ -1,17 +1,23 @@
 <div class="popular-articles">
   <div class="popular-articles__container">
-    <div class="popular-articles__not-auth"></div>
-
     <div class="popular-articles__title">Popular Articles</div>
+    @if (isAuth$ | async) {
     <div class="popular-articles__block">
       <div class="popular-articles__block-box">
-        <app-article-card class="item"></app-article-card>
-        <app-article-card class="item"></app-article-card>
+        @for (item of firstGroup; track item) {
+        <app-article-card class="item" [data]="item"></app-article-card>
+        }
       </div>
       <div class="popular-articles__block-box">
-        <app-article-card class="item"></app-article-card>
-        <app-article-card class="item"></app-article-card>
+        @for (item of secondGroup; track item) {
+        <app-article-card class="item" [data]="item"></app-article-card>
+        }
       </div>
     </div>
+    } @else {
+    <div class="popular-articles__not-auth">
+      <div class="popular-articles__not-auth-text">Please Log In</div>
+    </div>
+    }
   </div>
 </div>

@@ -1,4 +1,4 @@
-<div class="short-post">
+<div class="short-post" [routerLink]="['/article', data.id]">
   <div class="short-post__header">
     <div class="short-post__img">
       <img [src]="img" alt="" width="200" height="200" />
@@ -14,7 +14,9 @@
       <div class="short-post__comments">Comments: {{ data.commentCount }}</div>
     </div>
     @if(id) {
-    <div class="short-post__delete-button" (click)="handleClick()">Delete</div>
+    <div class="short-post__delete-button" (click)="handleClick($event)">
+      Delete
+    </div>
     }
   </div>
 </div>

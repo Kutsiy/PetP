@@ -46,6 +46,10 @@ type Comment = {
   text: string;
 
   createdAt: number;
+
+  postIdString: string;
+
+  idString: string;
 };
 
 @Component({
@@ -169,5 +173,20 @@ export class PostPageComponent implements OnInit {
     }
   };
 
-  addView() {}
+  deleteComment(event: string) {
+    console.log(event);
+    if (this.comments) {
+      this.postService
+        .findCommentByUserAndDelete(this.comments[0].postIdString, event)
+        ?.subscribe((result) => {
+          if (result.comments) {
+            this.comments = result.comments;
+            if (this.data) this.data.commentCount = result.comments.length;
+          } else {
+            this.comments = [];
+            if (this.data) this.data.commentCount = 0;
+          }
+        });
+    }
+  }
 }
