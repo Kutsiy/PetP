@@ -21,6 +21,7 @@ export const GET_POST = gql`
         authorId {
           name
           avatarLink
+          id
         }
         postId
         text

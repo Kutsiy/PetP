@@ -21,6 +21,9 @@
         </div>
         <div class="post-page__title">{{ data?.title }}</div>
       </div>
+      <div class="post-page__image-box">
+        <img class="post-page__image" [src]="this.image" />
+      </div>
       <div class="post-page__body" [innerHTML]="data?.body"></div>
     </div>
 
@@ -54,7 +57,7 @@
           >Send your comment</app-base-button
         >
       </div>
-      <div class="post-page__comments comments" #comments>
+      <div class="post-page__comments comments">
         <div class="comments__header">
           <div class="comments__title">Comments:</div>
           <div class="comments__count">
@@ -71,7 +74,11 @@
             [avatar]="comment.authorId.avatarLink"
             [name]="comment.authorId.name"
             [data]="comment.createdAt"
+            [commentId]="comment.authorId.id"
+            [userId]="userId"
           ></app-comment>
+          } @empty {
+          <div class="comments__empty">EMPTY</div>
           }
         </div>
       </div>

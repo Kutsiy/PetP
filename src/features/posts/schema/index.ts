@@ -5,3 +5,5 @@ export * from './add-view.schema';
 export * from './add-like.schema';
 export * from './add-dislike.schema';
 export * from './add-comment.schema';
+export * from './get-post-by-user.schema';
+export * from './find-post-by-user-and-delete.schema';

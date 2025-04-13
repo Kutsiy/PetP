@@ -1,8 +1,15 @@
 <div class="comment">
   <div class="comment__header">
-    <img [src]="avatarLink" alt="" class="comment__header-avatar" />
-    <div class="comment__header-name">{{ name }}</div>
-    <div class="comment__header-time">{{ data | dateToYYYYMMDD }}</div>
+    <span
+      ><img [src]="avatarLink" alt="" class="comment__header-avatar" />
+      <div class="comment__header-name">{{ name }}</div>
+      <div class="comment__header-time">{{ data | dateToYYYYMMDD }}</div></span
+    >
+    @if(userId === commentId) {
+    <div class="comment__header-delete-button">
+      <mat-icon>delete</mat-icon>Delete
+    </div>
+    }
   </div>
   <div class="comment__body" [innerHTML]="text"></div>
 </div>

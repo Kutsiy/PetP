@@ -1,3 +1,11 @@
 <div class="user-artilcles">
-  <app-short-post></app-short-post>
+  @for (post of data; track post) {
+  <app-short-post
+    [id]="post.id"
+    [data]="post"
+    (clicked)="click($event)"
+  ></app-short-post>
+  } @empty {
+  <div class="user-artilcles__empty">EMPTY</div>
+  }
 </div>

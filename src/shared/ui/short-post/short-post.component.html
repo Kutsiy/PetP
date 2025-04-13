@@ -1,17 +1,20 @@
 <div class="short-post">
   <div class="short-post__header">
     <div class="short-post__img">
-      <img src="unnamed.png" alt="" width="200" height="200" />
+      <img [src]="img" alt="" width="200" height="200" />
     </div>
-    <div class="short-post__title">Title Lorem ipsum</div>
+    <div class="short-post__title">{{ data.title }}</div>
   </div>
   <div class="short-post__body">
     <div class="short-post__stats">Stats</div>
     <div class="short-post__column">
-      <div class="short-post__like">Likes: 10</div>
-      <div class="short-post__dislike">Dislikes: 10</div>
-      <div class="short-post__views">Views: 10</div>
-      <div class="short-post__comments">Comments: 10</div>
+      <div class="short-post__like">Likes: {{ data.likes }}</div>
+      <div class="short-post__dislike">Dislikes: {{ data.dislikes }}</div>
+      <div class="short-post__views">Views: {{ data.views }}</div>
+      <div class="short-post__comments">Comments: {{ data.commentCount }}</div>
     </div>
+    @if(id) {
+    <div class="short-post__delete-button" (click)="handleClick()">Delete</div>
+    }
   </div>
 </div>

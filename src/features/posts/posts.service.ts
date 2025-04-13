@@ -8,7 +8,9 @@ import {
   ADD_LIKE,
   ADD_VIEW,
   CREATE_POST,
+  FIND_POST_BY_USER_AND_DELETE,
   GET_POST,
+  GET_POST_BY_USER,
   GET_POSTS,
 } from './schema';
 
@@ -139,6 +141,40 @@ export class PostsService {
           },
         })
         .pipe(map((data: any) => data.data.AddComment));
+    }
+    return null;
+  }
+
+  getPostByUser() {
+    if (isPlatformBrowser(this.platformId)) {
+      return this.apollo
+        .watchQuery<any>({
+          query: GET_POST_BY_USER,
+          fetchPolicy: 'no-cache',
+          context: {
+            fetchOptions: {
+              credentials: 'include',
+            },
+          },
+        })
+        .valueChanges.pipe(map((data) => data.data.PostByUser));
+    }
+    return null;
+  }
+
+  findPostByUserAndDelete(id: string) {
+    if (isPlatformBrowser(this.platformId)) {
+      return this.apollo
+        .mutate<any>({
+          mutation: FIND_POST_BY_USER_AND_DELETE,
+          variables: { id },
+          context: {
+            fetchOptions: {
+              credentials: 'include',
+            },
+          },
+        })
+        .pipe(map((data: any) => data.data.FindPostByUserAndDelete));
     }
     return null;
   }

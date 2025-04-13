@@ -17,4 +17,6 @@ export class CommentUIComponent implements OnInit {
   @Input() avatar!: string;
   @Input() text!: string;
   @Input() data!: number;
+  @Input() commentId!: string;
+  @Input() userId!: string;
 }

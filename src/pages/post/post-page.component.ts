@@ -8,7 +8,8 @@ import {
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostsService } from '../../features/posts/posts.service';
 import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
-import { AfterViewInit } from '@angular/core';
+import * as AuthSelectors from './../../shared/store/auth/auth.selectors';
+import { Store } from '@ngrx/store';
 
 type PostData = {
   __typename: string;
@@ -35,6 +36,8 @@ type UserCommentInfo = {
   name: string;
 
   avatarLink: string;
+
+  id: string;
 };
 
 type Comment = {
@@ -68,11 +71,14 @@ export class PostPageComponent implements OnInit {
   liked: boolean = false;
   disliked: boolean = false;
   comments: Array<Comment> | null = null;
+  image: any;
+  userId: any;
 
   constructor(
     private route: ActivatedRoute,
     @Inject(PostsService) private postService: PostsService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly store: Store
   ) {}
 
   ngOnInit(): void {
@@ -83,12 +89,13 @@ export class PostPageComponent implements OnInit {
     if (result !== null) {
       result.subscribe(
         (result) => {
-          console.log(result);
           this.data = { ...result.post };
           const { userSetLike, userSetDislike } = result.rate;
           this.liked = userSetLike;
           this.disliked = userSetDislike;
           this.comments = result.comments;
+          console.log(this.comments);
+          this.image = `http://localhost:3000${result.post.imageUrl}`;
         },
         () => {
           this.router.navigate(['/articles']);
@@ -102,6 +109,9 @@ export class PostPageComponent implements OnInit {
         }
       });
     }
+    this.store.select(AuthSelectors.selectUser).subscribe((user) => {
+      this.userId = user?.id;
+    });
   }
 
   onContentChanged(event: any) {

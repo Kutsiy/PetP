@@ -35,13 +35,18 @@
 
   &__block {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    gap: 60px;
 
     &-box {
       display: flex;
-      flex-direction: column;
-      gap: 40px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    &-box:has(.item + .item) {
+      justify-content: space-between;
     }
   }
 

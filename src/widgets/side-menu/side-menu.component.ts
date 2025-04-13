@@ -65,7 +65,7 @@ export class SideMenuWidgetComponent implements OnInit, OnDestroy {
   }
 
   categories = [
-    { value: 'none', viewValue: null },
+    { value: 'none', viewValue: "ALL" },
     { value: 'About me', viewValue: 'About me' },
     { value: 'News about programming', viewValue: 'News about programming' },
   ];
@@ -76,7 +76,7 @@ export class SideMenuWidgetComponent implements OnInit, OnDestroy {
   ];
 
   sortFilter = [
-    { value: 'none', viewValue: null },
+    { value: 'none', viewValue: "ALL" },
     { value: 'popular', viewValue: 'Popular' },
     { value: 'newest', viewValue: 'Newest' },
     { value: 'oldest', viewValue: 'Oldest' },

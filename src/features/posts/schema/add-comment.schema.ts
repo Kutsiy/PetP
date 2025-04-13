@@ -7,6 +7,7 @@ export const ADD_COMMENT = gql`
         authorId {
           name
           avatarLink
+          id
         }
         text
         createdAt
