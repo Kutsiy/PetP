@@ -213,3 +213,17 @@
 .material-icons {
   font-size: 40px;
 }
+
+img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  filter: brightness(0.5) saturate(100%);
+  transition: 0.5s;
+}
+
+img:hover {
+  filter: brightness(1) saturate(100%);
+  transition: 0.5s;
+}

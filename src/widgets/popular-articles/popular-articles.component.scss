@@ -37,7 +37,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 60px;
+    gap: 50px;
 
     &-box {
       display: flex;
@@ -82,6 +82,25 @@
   }
 
   &__not-auth-text {
+    font-size: 70px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  &__empty {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 0 5px rgba(195, 0, 255, 0.5);
+    padding: 5px;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__empty-text {
     font-size: 70px;
     font-weight: 700;
     text-align: center;

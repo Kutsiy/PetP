@@ -11,6 +11,10 @@
       <div class="popular-articles__block-box">
         @for (item of secondGroup; track item) {
         <app-article-card class="item" [data]="item"></app-article-card>
+        } @empty {
+        <div class="popular-articles__empty">
+          <div class="popular-articles__empty-text">EMPTY</div>
+        </div>
         }
       </div>
     </div>

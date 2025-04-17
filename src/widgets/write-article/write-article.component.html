@@ -54,6 +54,8 @@
   </div>
   @if (created) {
   <div class="write__created">Post created</div>
+  } @if (error) {
+  <div class="write__error">Error, please fill in all fields.</div>
   }
   <div class="write__button">
     <app-base-button [onClick]="onSubmit">Create article</app-base-button>

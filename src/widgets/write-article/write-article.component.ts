@@ -60,6 +60,8 @@ export class WriteArticleWidgetComponent {
 
   created: any;
 
+  error: any;
+
   imageUrl: string | null = null;
 
   onInput(event: Event) {
@@ -102,6 +104,7 @@ export class WriteArticleWidgetComponent {
       this.prevFile &&
       this.description
     ) {
+      this.error = false;
       this.created = true;
       this.postService
         .createPost(
@@ -114,6 +117,8 @@ export class WriteArticleWidgetComponent {
         ?.subscribe((res) => {
           console.log(res);
         });
+    } else {
+      this.error = true;
     }
   };
 }

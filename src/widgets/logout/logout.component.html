@@ -4,8 +4,10 @@
   </div>
   <div class="logout__buttons">
     <app-base-button [onClick]="logOut">Yes</app-base-button>
-    <app-base-button [buttonType]="'warning'" [onClick]="change"
-      >No</app-base-button
-    >
+    <div (click)="change()" class="logout__close-button">
+      <app-base-button [buttonType]="'warning'" [onClick]="change"
+        >No</app-base-button
+      >
+    </div>
   </div>
 </div>

@@ -9,7 +9,7 @@ import { Component, OnInit, signal } from '@angular/core';
 export class AccountPageComponent {
   logoutState = signal(true);
 
-  changeLogoutState(): void {
+  changeLogoutState = () => {
     this.logoutState.update((state: boolean) => !state);
-  }
+  };
 }
