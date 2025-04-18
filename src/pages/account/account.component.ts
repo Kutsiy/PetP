@@ -23,4 +23,8 @@ export class AccountPageComponent {
     this.logoutState.update((state: boolean) => true);
     this.deleteAccountState.update((state: boolean) => true);
   }
+
+  deleteAccount() {
+    console.log('yes');
+  }
 }

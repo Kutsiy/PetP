@@ -56,10 +56,11 @@
         (onChange)="changeLogoutState()"
         >Are you sure you want to log out of your account?</app-logout
       >
-      <app-logout
+      <app-warning-card
         [class.delete]="this.deleteAccountState()"
         (onChange)="changeDeleteAccountState()"
-        >Do you want to permanently delete your account?</app-logout
+        (onFunction)="deleteAccount()"
+        >Do you want to permanently delete your account?</app-warning-card
       >
       <div class="main__inner">
         <router-outlet></router-outlet>

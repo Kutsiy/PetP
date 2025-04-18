@@ -13,9 +13,9 @@ export class WarningCardUiComponent {
 
   logOut = () => {};
 
-  func() {
+  func = () => {
     this.onFunction.emit();
-  }
+  };
 
   change = () => {
     this.onChange.emit();

@@ -10,6 +10,7 @@ import { LogOutWidgetModule, UserArticlesWidgetModule } from '../../widgets';
 import { ProfileWidgetModule } from '../../widgets/profile';
 import { UserArticlesWidgetComponent } from '../../widgets/user-articles/user-articles.component';
 import { AuthActivateGuard } from '../../shared/guards/activate/activate.guard';
+import { WarningCardUiModule } from '../../shared';
 
 const routes: Routes = [
   {
@@ -53,6 +54,7 @@ const routes: Routes = [
     LogOutWidgetModule,
     UserArticlesWidgetModule,
     ProfileWidgetModule,
+    WarningCardUiModule,
   ],
   providers: [AuthActivateGuard],
   exports: [AccountPageComponent],
