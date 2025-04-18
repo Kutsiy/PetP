@@ -32,8 +32,8 @@
   &__input {
     min-width: 320px;
     height: 30px;
-    padding: 3px;
-    padding-left: 5px;
+    padding: 5px;
+    padding-left: 8px;
     font-size: 20px;
     border-radius: 5px;
     border: 2px solid black;
@@ -51,6 +51,7 @@
     margin-top: 5px;
     cursor: pointer;
     background-color: var(--file-input);
+    transition: 0.5s;
   }
 
   &__quill-editor {

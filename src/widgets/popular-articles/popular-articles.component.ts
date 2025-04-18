@@ -15,6 +15,7 @@ export class PopularArticlesWidgetComponent implements OnInit {
   isAuth$ = new BehaviorSubject<boolean>(false);
   firstGroup: any;
   secondGroup: any;
+  isEmpty = true;
   constructor(
     private readonly store: Store,
     private readonly postService: PostsService
@@ -22,6 +23,9 @@ export class PopularArticlesWidgetComponent implements OnInit {
     this.postService.getPopularPost()?.subscribe((result) => {
       this.firstGroup = result.posts.slice(0, 2);
       this.secondGroup = result.posts.slice(2, 4);
+      if (this.firstGroup.length > 0) {
+        this.isEmpty = false;
+      }
     });
   }
   ngOnInit(): void {

@@ -1,0 +1,15 @@
+<div class="warning-card__wrapper" (click)="change()">
+  <div class="warning-card__text">
+    <ng-content></ng-content>
+  </div>
+  <div class="warning-card__buttons">
+    <div (click)="func()" class="warning-card__button">
+      <app-base-button [onClick]="func">Yes</app-base-button>
+    </div>
+    <div (click)="change()" class="warning-card__button">
+      <app-base-button [buttonType]="'warning'" [onClick]="change"
+        >No</app-base-button
+      >
+    </div>
+  </div>
+</div>

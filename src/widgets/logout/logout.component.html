@@ -1,6 +1,6 @@
 <div class="logout__wrapper" (click)="change()">
   <div class="logout__text">
-    Are you sure you want to log out of your account?
+    <ng-content></ng-content>
   </div>
   <div class="logout__buttons">
     <app-base-button [onClick]="logOut">Yes</app-base-button>

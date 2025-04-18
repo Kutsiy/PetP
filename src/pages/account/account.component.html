@@ -6,6 +6,7 @@
           class="sidebar__button"
           [routerLink]="['/account/profile']"
           routerLinkActive="active"
+          (click)="closeAll()"
         >
           Profile
         </div>
@@ -27,6 +28,7 @@
           class="sidebar__button"
           [routerLink]="['/account/write-article']"
           routerLinkActive="active"
+          (click)="closeAll()"
         >
           Write an article
         </div>
@@ -34,12 +36,16 @@
           class="sidebar__button"
           [routerLink]="['/account/user-article']"
           routerLinkActive="active"
+          (click)="closeAll()"
         >
           Your articles
         </div>
         <!-- <div class="sidebar__button">Admin Panel</div> -->
         <div class="sidebar__button" (click)="changeLogoutState()">Log Out</div>
-        <div class="sidebar__button warning" (click)="changeLogoutState()">
+        <div
+          class="sidebar__button warning"
+          (click)="changeDeleteAccountState()"
+        >
           Delete Account
         </div>
       </div>
@@ -48,7 +54,13 @@
       <app-logout
         [class.logout]="this.logoutState()"
         (onChange)="changeLogoutState()"
-      ></app-logout>
+        >Are you sure you want to log out of your account?</app-logout
+      >
+      <app-logout
+        [class.delete]="this.deleteAccountState()"
+        (onChange)="changeDeleteAccountState()"
+        >Do you want to permanently delete your account?</app-logout
+      >
       <div class="main__inner">
         <router-outlet></router-outlet>
       </div>

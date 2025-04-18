@@ -81,3 +81,24 @@
 .logout {
   display: none;
 }
+
+.delete {
+  display: none;
+}
+
+.warning {
+  background-color: rgba(255, 0, 0, 0.6);
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin: 0 5px;
+  display: flex;
+  align-items: center;
+  padding: 5px 0 !important;
+  justify-content: center;
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+
+  &:hover {
+    background-color: rgba(255, 0, 0, 0.8) !important;
+    box-shadow: 0 0 7px rgb(255, 0, 0);
+  }
+}
