@@ -23,23 +23,25 @@ export class AuthEffects {
             if (!data) {
               return AuthActions.authSetUser({ user: null, settings: null });
             }
-            const user = {
-              id: data.id,
-              email: data.email,
-              isActivated: data.isActivated,
-            };
+
+            console.log(data, 'DATA');
             this.authServiceStore.setAuth(true);
             this.authServiceStore.setActivate(data.isActivated);
             this.authServiceStore.setPopUp(!data.isActivated);
 
-            const settings = {
-              avatar: `http://localhost:3000${data.avatarLink}`,
-            };
-
             return AuthActions.authSetUserAndAuthenticated({
-              user,
+              user: {
+                id: data.id,
+                email: data.email,
+                isActivated: data.isActivated,
+              },
               value: true,
-              settings,
+              settings: {
+                avatar:
+                  data.avatarLink !== ''
+                    ? `http://localhost:3000${data.avatarLink}`
+                    : '',
+              },
             });
           }),
           catchError(() => {
@@ -49,8 +51,8 @@ export class AuthEffects {
             return of(
               AuthActions.authSetUserAndAuthenticated({
                 user: {
-                  id: null,
-                  email: null,
+                  id: '',
+                  email: '',
                   isActivated: false,
                 },
                 value: false,

@@ -36,15 +36,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.store
-    //   .select(AuthSelectors.selectAuthActivated)
-    //   .pipe(take(1))
-    //   .subscribe((isActivated) => {
-    //     this.store.dispatch(
-    //       AuthActions.authSetActivateAccountPopUp({ value: !isActivated })
-    //     );
-    //     this.authServiceStore.setPopUp(!isActivated);
-    //   });
     this.showActivatePopUp = this.authServiceStore.getPopUp();
     this.userAuth = this.authServiceStore.getAuth();
   }

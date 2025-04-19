@@ -75,21 +75,9 @@ export class LoginFormWidgetComponent implements OnDestroy {
       this.authService.login(email, password)?.subscribe(
         (data) => {
           this.loginForm.reset();
-          this.store.dispatch(
-            AuthActions.authSetAuthenticated({ value: true })
-          );
           if (data.user) {
-            this.store.dispatch(
-              AuthActions.authSetUser({
-                user: data.user,
-                settings: {
-                  avatar: `http://localhost:3000${data.user.avatarLink}`,
-                },
-              })
-            );
+            this.store.dispatch(AuthActions.authGetUser());
           }
-          this.authServiceStore.setAuth(true);
-          this.authServiceStore.setActivate(data.user.isActivated);
           this.isSubmitted = false;
           this.router.navigate(['/']);
         },

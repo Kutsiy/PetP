@@ -114,9 +114,7 @@ export class WriteArticleWidgetComponent {
           this.prevFile,
           this.description
         )
-        ?.subscribe((res) => {
-          console.log(res);
-        });
+        ?.subscribe((res) => {});
     } else {
       this.error = true;
     }

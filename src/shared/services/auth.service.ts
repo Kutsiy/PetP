@@ -21,12 +21,20 @@ export class AuthServiceStore {
     return this.userActivate;
   }
 
+  getActivateAsObservable() {
+    return toObservable(this.userActivate);
+  }
+
   setAuth(value: boolean) {
     this.userAuth.set(value);
   }
 
   getAuth() {
     return this.userAuth;
+  }
+
+  getAuthAsObservable() {
+    return toObservable(this.userAuth);
   }
 
   setPopUp(value: boolean) {

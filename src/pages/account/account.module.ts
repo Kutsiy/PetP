@@ -6,7 +6,7 @@ import { ProfileWidgetComponent } from '../../widgets/profile/profile.component'
 import { NotificationsWidgetComponent } from '../../widgets/notifications/notifications.component';
 import { AccessibilityWidgetComponent } from '../../widgets/accessibility/accessibility.component';
 import { WriteArticleWidgetComponent } from '../../widgets/write-article/write-article.component';
-import { LogOutWidgetModule, UserArticlesWidgetModule } from '../../widgets';
+import { UserArticlesWidgetModule } from '../../widgets';
 import { ProfileWidgetModule } from '../../widgets/profile';
 import { UserArticlesWidgetComponent } from '../../widgets/user-articles/user-articles.component';
 import { AuthActivateGuard } from '../../shared/guards/activate/activate.guard';
@@ -51,7 +51,6 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     RouterModule,
-    LogOutWidgetModule,
     UserArticlesWidgetModule,
     ProfileWidgetModule,
     WarningCardUiModule,

@@ -51,10 +51,11 @@
       </div>
     </div>
     <div class="account__main main">
-      <app-logout
+      <app-warning-card
         [class.logout]="this.logoutState()"
         (onChange)="changeLogoutState()"
-        >Are you sure you want to log out of your account?</app-logout
+        (onFunction)="logOut()"
+        >Are you sure you want to log out of your account?</app-warning-card
       >
       <app-warning-card
         [class.delete]="this.deleteAccountState()"

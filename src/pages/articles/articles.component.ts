@@ -26,17 +26,14 @@ export class ArticlesPageComponent {
   }
 
   changeSearchString(event: string) {
-    console.log(event);
     this.searchString = event;
   }
 
   categoryChange(event: string) {
-    console.log(event);
     this.category = event;
   }
 
   sortFilterChange(event: string) {
-    console.log(event);
     this.sortFilter = event;
   }
 }

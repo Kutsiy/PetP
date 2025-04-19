@@ -98,7 +98,6 @@ export class PostPageComponent implements OnInit {
           this.liked = userSetLike;
           this.disliked = userSetDislike;
           this.comments = result.comments;
-          console.log(this.comments);
           this.image = `http://localhost:3000${result.post.imageUrl}`;
         },
         () => {
@@ -174,7 +173,6 @@ export class PostPageComponent implements OnInit {
   };
 
   deleteComment(event: string) {
-    console.log(event);
     if (this.comments) {
       this.postService
         .findCommentByUserAndDelete(this.comments[0].postIdString, event)

@@ -24,7 +24,6 @@ export class CommentUIComponent implements OnInit {
   @Output() clicked = new EventEmitter<string>();
 
   onClick() {
-    console.log(this.commentId);
     this.clicked.emit(this.commentId);
   }
 }

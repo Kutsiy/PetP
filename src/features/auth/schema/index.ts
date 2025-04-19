@@ -6,3 +6,4 @@ export * from './get-user.schema';
 export * from './get-user-info.schema';
 export * from './upload-avatar.schema';
 export * from './send-mail.schema';
+export * from './delete-account.schema';

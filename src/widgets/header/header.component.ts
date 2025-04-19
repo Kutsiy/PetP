@@ -111,9 +111,4 @@ export class HeaderWidgetComponent implements OnInit {
       );
     mobileAccountMenu.classList.toggle('active');
   }
-
-  // log(event: any) {
-  //   event.stopPropagation();
-  //   console.log(event.target.textContent);
-  // }
 }

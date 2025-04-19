@@ -10,6 +10,7 @@ import {
   GETUSERINFO,
   UPLOADAVATAR,
   SEND_MAIL,
+  DELETE_ACCOUNT,
 } from './schema';
 import { map, of } from 'rxjs';
 
@@ -137,5 +138,18 @@ export class AuthService {
         },
       })
       .valueChanges.pipe(map((data) => data.data.SendMail));
+  }
+
+  deleteAccount() {
+    return this.apollo
+      .watchQuery<any>({
+        query: DELETE_ACCOUNT,
+        context: {
+          fetchOptions: {
+            credentials: 'include',
+          },
+        },
+      })
+      .valueChanges.pipe(map((data) => data.data.DeleteAccount));
   }
 }
