@@ -185,9 +185,9 @@ body[data-theme="dark"] {
   );
   --card-back: linear-gradient(
     100deg,
-    rgba(19, 4, 40, 1) 7%,
-    rgba(37, 16, 67, 1) 54%,
-    rgba(56, 18, 109, 1) 80%
+    rgba(19, 4, 40, 0.4) 7%,
+    rgba(37, 16, 67, 0.4) 54%,
+    rgba(56, 18, 109, 0.4) 80%
   );
   --card-shadow: rgb(149, 0, 255);
   --footer-gradient: linear-gradient(
@@ -197,11 +197,15 @@ body[data-theme="dark"] {
   );
   --account-bar-back: linear-gradient(
     100deg,
-    rgb(41, 3, 93) 6%,
-    rgb(60, 5, 136) 54%,
-    rgb(64, 4, 138) 80%
+    rgba(41, 3, 93, 0.2) 6%,
+    rgba(60, 5, 136, 0.2) 54%,
+    rgba(64, 4, 138, 0.2) 80%
   );
-  --plague-background: linear-gradient(to bottom, #1a1a40, #24246d);
+  --plague-background: linear-gradient(
+    to bottom,
+    rgba(47, 26, 64, 0.2),
+    rgba(74, 36, 109, 0.2)
+  );
 }
 
 body {

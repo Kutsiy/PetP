@@ -1,20 +1,38 @@
 .profile {
-  background: var(--account-bar-back);
-  border-radius: 5px;
+  padding: 8px;
+  padding-right: 0px;
   display: grid;
   grid-template-columns: 3fr 2fr;
+  background-color: rgba(160, 57, 188, 0.1);
+  box-sizing: border-box;
+  box-shadow: 0 0 5px rgba(160, 57, 188, 0.5);
+  border: 1px solid rgba(160, 57, 188, 0.3);
+  border-radius: 5px;
+  padding: 20px;
 
   &__subtititle {
     font-size: 35px;
     font-weight: 700;
     padding: 3px;
     padding-top: 0px;
+    background-color: rgba(164, 1, 209, 0.3);
+    border-radius: 5px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    box-sizing: border-box;
+    padding: 8px 0px 8px 15px;
     border-bottom: 2px solid rgb(164, 1, 209);
   }
 
   &__row {
     font-size: 30px;
     margin: 10px 0px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: rgba(160, 57, 188, 0.1);
+    border: 1px solid rgba(220, 105, 252, 0.2);
+    box-shadow: 0 0 5px rgba(220, 105, 252, 0.2);
+    padding: 8px 0px 8px 15px;
   }
 
   &__column-avatar {
@@ -22,6 +40,13 @@
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    box-sizing: border-box;
+    margin: 10px;
+    margin-top: 0px;
+    border-radius: 5px;
+    background-color: rgba(160, 57, 188, 0.1);
+    border: 1px solid rgba(220, 105, 252, 0.2);
+    box-shadow: 0 0 5px rgba(220, 105, 252, 0.2);
   }
 
   &__row-avatar {

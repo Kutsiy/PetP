@@ -18,6 +18,8 @@
 
   &__sidebar {
     background: var(--account-bar-back);
+    box-sizing: border-box;
+    box-shadow: 0 0 5px rgba(60, 5, 136, 0.8);
     border-radius: 5px;
     min-height: 500px;
 
@@ -30,20 +32,30 @@
     }
 
     .sidebar__button {
-      padding-left: 30px;
+      box-sizing: border-box;
+      margin: 0 5px;
+      border-radius: 5px;
+      padding: 5px 0;
+      padding-left: 20px;
       font-size: 1.2em;
       cursor: pointer;
       transition: 0.2s;
     }
 
     .sidebar__button:hover {
-      background: darkorchid;
-      transition: 0.2s;
+      background: rgba(153, 50, 204, 0.4);
+      border: 1px solid rgba(153, 50, 204, 0.6);
+      box-shadow: 0 0 5px rgba(153, 50, 204, 0.4);
+      margin: 0 3px;
+      transition: 0.4s;
     }
 
     .active {
-      background: darkorchid;
-      transition: 0.2s;
+      background: rgba(153, 50, 204, 0.4);
+      border: 1px solid rgba(153, 50, 204, 0.6);
+      box-shadow: 0 0 5px rgba(153, 50, 204, 0.4);
+      margin: 0 3px;
+      transition: 0.4s;
     }
   }
 
@@ -51,6 +63,8 @@
     background: var(--account-bar-back);
     border-radius: 5px;
     position: relative;
+    box-sizing: border-box;
+    box-shadow: 0 0 5px rgba(60, 5, 136, 0.8);
 
     .main__inner {
       box-sizing: border-box;
@@ -95,10 +109,11 @@
   align-items: center;
   padding: 5px 0 !important;
   justify-content: center;
-  box-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.7) !important;
 
   &:hover {
     background-color: rgba(255, 0, 0, 0.8) !important;
-    box-shadow: 0 0 7px rgb(255, 0, 0);
+    box-shadow: 0 0 7px rgb(255, 0, 0) !important;
+    margin: 0 !important;
   }
 }

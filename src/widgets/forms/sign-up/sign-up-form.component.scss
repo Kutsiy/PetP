@@ -35,7 +35,7 @@
     border: 2px solid rgb(34, 0, 65);
     border-radius: 30px;
     color: white;
-    background-color: rgb(89, 0, 168);
+    background-color: rgba(90, 0, 168, 0.5);
     box-shadow: inset 0 2px 10px rgb(0, 0, 0);
   }
 
@@ -81,12 +81,13 @@
 
   &__buttonBox > button {
     border: 2px solid rgb(84, 1, 122);
-    box-shadow: inset 0 5px 10px rgb(67, 0, 129), -2px 2px 3px black;
+    box-shadow: 0 0 5px rgb(102, 0, 198), inset 0 5px 10px rgb(67, 0, 129),
+      -2px 2px 3px black;
     width: 90px;
     height: 45px;
     font-size: 22px;
     border-radius: 15px;
-    background-color: rgb(133, 18, 210);
+    background-color: rgba(133, 18, 210, 0.5);
     color: white;
     font-weight: 500;
     transition: 0.5s;

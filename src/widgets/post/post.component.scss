@@ -1,5 +1,5 @@
 .post {
-  background-color: rgba(50, 15, 133, 0.8);
+  background-color: rgba(45, 0, 77, 0.2);
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -7,9 +7,9 @@
   padding: 20px 20px;
   gap: 8px;
   cursor: pointer;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5), 0 0 10px rgba(50, 15, 133, 0.8);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5), 0 0 10px rgba(84, 15, 133, 0.8);
   transition: transform 0.3s ease-in-out;
-  border: 2px solid rgba(61, 0, 184, 0.6);
+  border: 2px solid rgba(117, 0, 184, 0.6);
 
   &:hover {
     transform: scale(1.02);
@@ -28,10 +28,11 @@
     // height: 100%;
     width: 100%;
     border-radius: 10px;
-    padding: 10px 0;
+    padding: 10px 15px;
     object-fit: contain;
-    background-color: rgba(86, 33, 191, 0.4);
-    border: 2px solid rgba(70, 0, 209, 0.4);
+    box-sizing: border-box;
+    background-color: rgba(84, 15, 133, 0.4);
+    border: 2px solid rgba(117, 0, 184, 0.6);
   }
   &__title {
     font-size: 2rem;
@@ -69,7 +70,7 @@
   }
 
   &__about {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     color: rgba(255, 255, 255, 0.8);
     display: -webkit-box;
     -webkit-box-orient: vertical;

@@ -21,10 +21,16 @@
     width: 350px;
     // height: 450px;
     border-radius: 5px;
-    background: var(--account-bar-back);
+    background: linear-gradient(
+      100deg,
+      rgba(41, 3, 93, 0.2) 6%,
+      rgba(60, 5, 136, 0.2) 54%,
+      rgba(64, 4, 138, 0.2) 80%
+    );
     box-sizing: border-box;
-    border: 10px solid rgb(34, 0, 65);
-    box-shadow: inset 0 10px 30px 10px rgb(21, 0, 41);
+    border: 10px solid rgba(42, 0, 79, 0.5);
+    box-shadow: inset 0 10px 30px 10px rgba(50, 0, 97, 0.2),
+      0 0 10px rgba(132, 1, 179, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;

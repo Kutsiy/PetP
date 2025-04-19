@@ -1,6 +1,7 @@
 .card {
   height: 193px;
   background: var(--card-back);
+  backdrop-filter: blur(3px);
   border-radius: 15px;
   box-shadow: 0 -3px 2px var(--card-shadow);
   display: flex;

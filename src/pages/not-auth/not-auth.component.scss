@@ -22,8 +22,9 @@
     justify-content: space-around;
     align-items: center;
     background: var(--plague-background);
-    border: 2px solid #6a5acd;
-    box-shadow: 0 0 10px #6a5acd;
+    border: 2px solid rgba(111, 9, 170, 0.7);
+    box-shadow: 0 0 7px rgba(111, 9, 170, 0.7);
+    border-radius: 5px;
   }
   &__title {
     position: relative;

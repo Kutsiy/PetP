@@ -38,6 +38,12 @@
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-decoration-style: dotted;
+    box-sizing: border-box;
+    background-color: rgba(164, 1, 209, 0.1);
+    padding: 8px 0px 8px 15px;
+    box-shadow: 0 0 5px rgba(164, 1, 209, 0.5);
+    border: 1px solid rgba(164, 1, 209, 0.3);
+    border-radius: 5px;
   }
 
   &__cards {

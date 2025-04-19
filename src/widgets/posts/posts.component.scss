@@ -26,7 +26,8 @@
   &__loading {
     width: 100%;
     font-size: 60px;
-    background-color: rgba(50, 15, 133, 0.8);
+    background-color: rgba(50, 15, 133, 0.2);
+    box-shadow: 0 0 5px rgba(84, 15, 133, 0.8);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,7 +38,7 @@
     max-width: 100%;
     align-items: center;
     gap: 10px;
-    background-color: rgba(50, 15, 133, 0.8);
+    background-color: rgba(50, 15, 133, 0.2);
     padding: 5px;
     padding-left: 20px;
     height: 40px;
