@@ -23,8 +23,6 @@ export class AuthEffects {
             if (!data) {
               return AuthActions.authSetUser({ user: null, settings: null });
             }
-
-            console.log(data, 'DATA');
             this.authServiceStore.setAuth(true);
             this.authServiceStore.setActivate(data.isActivated);
             this.authServiceStore.setPopUp(!data.isActivated);

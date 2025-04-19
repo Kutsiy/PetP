@@ -21,9 +21,10 @@ export class PopularArticlesWidgetComponent implements OnInit {
     private readonly postService: PostsService
   ) {
     this.postService.getPopularPost()?.subscribe((result) => {
-      this.firstGroup = result.posts.slice(0, 2);
-      this.secondGroup = result.posts.slice(2, 4);
-      if (this.firstGroup.length > 0) {
+      if (result.posts) {
+        console.log('log');
+        this.firstGroup = result.posts.slice(0, 2);
+        this.secondGroup = result.posts.slice(2, 4);
         this.isEmpty = false;
       }
     });

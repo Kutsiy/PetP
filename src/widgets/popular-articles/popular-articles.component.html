@@ -2,7 +2,7 @@
   <div class="popular-articles__container">
     <div class="popular-articles__title">Popular Articles</div>
     @if (isAuth$ | async) {
-    <div class="popular-articles__block">
+    <div class="popular-articles__block" [ngClass]="{ ' gap ': this.isEmpty }">
       <div class="popular-articles__block-box">
         @for (item of firstGroup; track item) {
         <app-article-card class="item" [data]="item"></app-article-card>

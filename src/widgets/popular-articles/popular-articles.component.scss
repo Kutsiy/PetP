@@ -48,6 +48,10 @@
     &-box:has(.item + .item) {
       justify-content: space-between;
     }
+
+    &.gap {
+      gap: 0px;
+    }
   }
 
   @media (max-width: 1200px) {
