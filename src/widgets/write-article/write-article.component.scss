@@ -60,10 +60,11 @@
     font-size: 23px;
     padding: 5px 40px;
     border-radius: 5px;
-    box-shadow: 1px 1px 5px black;
+    box-shadow: 0px 0px 5px rgba(83, 13, 167, 0.7);
+    border: 1px solid rgba(83, 13, 167, 0.5);
     margin-top: 5px;
     cursor: pointer;
-    background-color: var(--file-input);
+    background-color: rgba(83, 13, 167, 0.4);
     transition: 0.5s;
   }
 
