@@ -22,7 +22,6 @@ export class PopularArticlesWidgetComponent implements OnInit {
   ) {
     this.postService.getPopularPost()?.subscribe((result) => {
       if (result.posts) {
-        console.log('log');
         this.firstGroup = result.posts.slice(0, 2);
         this.secondGroup = result.posts.slice(2, 4);
         this.isEmpty = false;
