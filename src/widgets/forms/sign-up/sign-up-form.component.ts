@@ -6,9 +6,11 @@ import {
   Output,
 } from '@angular/core';
 import {
+  AbstractControl,
   FormControl,
   FormGroup,
   NonNullableFormBuilder,
+  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../../features';
@@ -49,8 +51,22 @@ export class SignUpFormWidgetComponent implements OnDestroy {
     this.signUpForm = this.formBuilder.group({
       userName: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          this.strongPasswordValidator,
+        ],
+      ],
+      confirmPassword: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          this.strongPasswordValidator,
+        ],
+      ],
     });
 
     this.signUpForm.controls.password.valueChanges.subscribe(() => {
@@ -69,6 +85,24 @@ export class SignUpFormWidgetComponent implements OnDestroy {
 
   activate() {
     this.action.emit();
+  }
+
+  strongPasswordValidator(control: AbstractControl): ValidationErrors | null {
+    const value: string = control.value;
+
+    const hasUpperCase = /[A-ZА-ЯЁЇІЄҐ]/.test(value);
+    const hasLowerCase = /[a-zа-яёїієґ]/.test(value);
+    const hasNumber = /[0-9]/.test(value);
+    const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(value);
+
+    const errors: any = {};
+
+    if (!hasUpperCase) errors.hasUpperCase = true;
+    if (!hasLowerCase) errors.hasLowerCase = true;
+    if (!hasNumber) errors.hasNumber = true;
+    if (!hasSpecialChar) errors.hasSpecialChar = true;
+
+    return Object.keys(errors).length > 0 ? { strongPassword: errors } : null;
   }
 
   checkPasswordsMatch() {
@@ -121,6 +155,16 @@ export class SignUpFormWidgetComponent implements OnDestroy {
     return (
       control?.hasError(errorMassage) &&
       (control.dirty || control.touched || this.isSubmitted)
+    );
+  }
+
+  getStrongPasswordError(field: keyof FormType, key: string): boolean {
+    const control = this.signUpForm.get(field);
+    const error = control?.getError('strongPassword');
+    return (
+      error &&
+      error?.[key] === true &&
+      (control?.dirty || control?.touched || this.isSubmitted)
     );
   }
 }
