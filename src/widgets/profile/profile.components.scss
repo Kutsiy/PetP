@@ -33,6 +33,13 @@
     border: 1px solid rgba(220, 105, 252, 0.2);
     box-shadow: 0 0 5px rgba(220, 105, 252, 0.2);
     padding: 8px 0px 8px 15px;
+    transition: 0.5s;
+  }
+
+  &__row:hover {
+    transition: 0.5s;
+    box-shadow: 0 0 10px rgba(220, 105, 252, 0.2);
+    transform: scale(1.01);
   }
 
   &__column-avatar {
