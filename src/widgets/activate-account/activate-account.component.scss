@@ -30,8 +30,9 @@
     flex-direction: column;
     gap: 40px;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 5px black;
+    background-color: rgba(135, 135, 135, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(2px);
     border-radius: 25px;
     cursor: default;
