@@ -1,11 +1,12 @@
 .short-post {
-  background-color: rgb(50, 0, 111);
+  background-color: rgba(50, 0, 111, 0.5);
   box-sizing: border-box;
-  padding: 5px;
+  padding: 10px;
   display: flex;
   border-radius: 5px;
   gap: 15px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 5px rgba(115, 0, 255, 0.7);
+  border: 1px solid rgba(115, 0, 255, 0.7);
   transition: transform 0.2s ease-in-out;
   cursor: pointer;
 
@@ -26,7 +27,8 @@
   }
 
   &__title {
-    max-width: 200px;
+    max-width: 340px;
+    min-width: 200px;
     font-size: 1.2rem;
     text-align: center;
     white-space: nowrap;
@@ -83,4 +85,10 @@
     transform: scale(1.05);
     transition: 0.5s;
   }
+}
+
+img {
+  max-width: 350px;
+  min-width: 200px;
+  height: 200px;
 }
