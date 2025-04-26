@@ -1,11 +1,10 @@
 <div class="comment">
   <div class="comment__header">
-    <span
-      >
-      @if(avatarLink) {
-        <img [src]="avatarLink" alt="" class="comment__header-avatar" />
+    <span>
+      @if(avatar) {
+      <img [src]="avatarLink" alt="" class="comment__header-avatar" />
       } @else {
-        <div class="comment__header-non-avatar"></div>
+      <div class="comment__header-non-avatar"></div>
       }
       <div class="comment__header-name">{{ name }}</div>
       <div class="comment__header-time">{{ data | dateToYYYYMMDD }}</div></span
