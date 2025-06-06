@@ -19,7 +19,6 @@ const routes: Routes = [
       ),
     title: 'Articles',
     data: { animation: 'ArticlesPage' },
-    canActivate: [NotAuthGuard, AuthActivateGuard],
   },
   {
     path: 'article/:id',
@@ -27,7 +26,6 @@ const routes: Routes = [
       import('../pages/post/post.module').then((m) => m.PostPageModule),
     title: 'Post',
     data: { animation: 'SomePostPage' },
-    canActivate: [NotAuthGuard, AuthActivateGuard],
   },
   {
     path: 'account',
