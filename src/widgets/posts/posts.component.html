@@ -6,13 +6,17 @@
   }"
 >
   <div class="posts__container">
-    @if(isLoading) {
+    @defer { @if(isLoading) {
     <div class="posts__loading">Loading...</div>
     } @else { @if (isEmpty === true) {
     <div class="posts__loading">Empty</div>
     } @else { @for (item of data; track item.id) {
     <app-post [post]="item"></app-post>
-    } } @if(pageCountArray.length > 1) {
+    } } } } @loading {
+    <div class="posts__loading">Loading...</div>
+    } @placeholder {
+    <div class="posts__loading">Loading...</div>
+    } @if(!isEmpty && pageCountArray.length > 1) {
     <div class="posts__pagination">
       @if (rangePage?.firstPage) {
       <span
@@ -48,6 +52,6 @@
       >
       }
     </div>
-    }}
+    }
   </div>
 </div>
