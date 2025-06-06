@@ -1,7 +1,6 @@
 <div class="popular-articles">
   <div class="popular-articles__container">
     <div class="popular-articles__title">Popular Articles</div>
-    @if (isAuth$ | async) {
     <div class="popular-articles__block" [ngClass]="{ ' gap ': this.isEmpty }">
       <div class="popular-articles__block-box">
         @for (item of firstGroup; track item) {
@@ -18,10 +17,5 @@
         }
       </div>
     </div>
-    } @else {
-    <div class="popular-articles__not-auth">
-      <div class="popular-articles__not-auth-text">Please Sign Up</div>
-    </div>
-    }
   </div>
 </div>

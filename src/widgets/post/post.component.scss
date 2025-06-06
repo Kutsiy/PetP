@@ -72,11 +72,9 @@
   &__about {
     font-size: 1.8rem;
     color: rgba(255, 255, 255, 0.8);
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    -webkit-line-clamp: 3;
+    white-space: nowrap;
     line-height: 1.5em;
     max-height: calc(1.5em * 3);
     transition: 0.5s;
