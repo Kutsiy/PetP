@@ -40,3 +40,8 @@ export const authSetActivateAccountPopUp = createAction(
   '[Auth] Set Activate Account Pop Up',
   props<{ value: boolean }>()
 );
+
+export const authSetAttention = createAction(
+  '[Auth] Set Attention',
+  props<{ value: boolean }>()
+);

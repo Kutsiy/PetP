@@ -1,0 +1,14 @@
+<div class="attention__background" (click)="close()">
+  <div class="attention__container">
+    <div class="attention__pop-up" (click)="$event.stopPropagation()">
+      <div class="attention__header">
+        <span (click)="close()"><mat-icon>close</mat-icon></span>
+      </div>
+      <div class="attention__body">
+        <div class="attention__title">
+          <ng-content></ng-content>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

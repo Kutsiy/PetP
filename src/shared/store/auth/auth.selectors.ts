@@ -50,3 +50,7 @@ export const selectShowActivateAccountPopUp = createSelector(
   selectAuth,
   (state: AuthStateType) => state.showActivatePopUp
 );
+export const selectAttenton = createSelector(
+  selectAuth,
+  (state: AuthStateType) => state.attention
+);

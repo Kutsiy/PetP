@@ -22,6 +22,7 @@ export interface AuthStateType {
   isLoading: boolean;
   errors: FormsErrors;
   showActivatePopUp: boolean;
+  attention: boolean;
 }
 
 export const authState: AuthStateType = {
@@ -44,6 +45,7 @@ export const authState: AuthStateType = {
     },
   },
   showActivatePopUp: false,
+  attention: false,
 };
 
 export const authReducer = createReducer(
@@ -105,5 +107,9 @@ export const authReducer = createReducer(
   on(AuthAction.authSetActivateAccountPopUp, (state, { value }) => ({
     ...state,
     showActivatePopUp: value,
+  })),
+  on(AuthAction.authSetAttention, (state, { value }) => ({
+    ...state,
+    attention: value,
   }))
 );

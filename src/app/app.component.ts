@@ -14,15 +14,13 @@ import { AuthServiceStore } from '../shared/services/auth.service';
   standalone: false,
 })
 export class AppComponent implements OnInit {
-  constructor(
-    private readonly store: Store,
-    private readonly authServiceStore: AuthServiceStore
-  ) {}
+  constructor(private readonly authServiceStore: AuthServiceStore) {}
 
   showActivatePopUp: any;
   userAuth: any;
   isAnimating = false;
   nameOfPage = null;
+  isNotAuthorized: any;
   prepareRoute(outlet: RouterOutlet) {
     this.nameOfPage = outlet.activatedRouteData['animation'];
     return outlet.activatedRouteData && outlet.activatedRouteData['animation'];

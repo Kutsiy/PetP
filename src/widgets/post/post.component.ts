@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { join } from 'node:path';
 
 @Component({
   selector: 'app-post',

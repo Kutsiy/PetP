@@ -1,17 +1,20 @@
 import { Injectable, signal } from '@angular/core';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { Router } from '@angular/router';
-import { combineLatest } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as AuthSelectors from './../store/auth/auth.selectors';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthServiceStore {
-  constructor(private readonly router: Router) {}
+  constructor(private readonly router: Router, private readonly store: Store) {}
 
   showActivatePopUp = signal(false);
   userAuth = signal(false);
   userActivate = signal(false);
+  isAuthorized = signal(false);
 
   setActivate(value: boolean) {
     this.userActivate.set(value);
@@ -47,5 +50,21 @@ export class AuthServiceStore {
 
   getPopUpAsObservable() {
     return toObservable(this.showActivatePopUp);
+  }
+
+  getAuthorized() {
+    return this.isAuthorized;
+  }
+
+  setAuthorized(value: boolean) {
+    this.store.select(AuthSelectors.selectAuthAuthenticated).pipe(
+      map((auth) => {
+        if (auth) {
+          this.isAuthorized.set(false);
+        } else {
+          this.isAuthorized.set(value);
+        }
+      })
+    );
   }
 }

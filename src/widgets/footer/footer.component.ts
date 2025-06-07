@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 
@@ -11,15 +12,15 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class FooterWidgetComponent implements OnInit {
   showScrollUp = true;
 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+
   scrollUp() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   ngOnInit() {
-    if (document.body.scrollHeight < 1000) {
-      this.showScrollUp = false;
-    } else {
-      this.showScrollUp = true;
+    if (isPlatformBrowser(this.platformId)) {
+      this.showScrollUp = document.body.scrollHeight >= 1000;
     }
   }
 }

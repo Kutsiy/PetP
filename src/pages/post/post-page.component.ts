@@ -10,6 +10,7 @@ import { PostsService } from '../../features/posts/posts.service';
 import { QuillDeltaToHtmlConverter } from 'quill-delta-to-html';
 import * as AuthSelectors from './../../shared/store/auth/auth.selectors';
 import { Store } from '@ngrx/store';
+import { AuthServiceStore } from '../../shared/services/auth.service';
 
 type PostData = {
   __typename: string;
@@ -82,7 +83,8 @@ export class PostPageComponent implements OnInit {
     private route: ActivatedRoute,
     @Inject(PostsService) private postService: PostsService,
     private readonly router: Router,
-    private readonly store: Store
+    private readonly store: Store,
+    private readonly authServiceStore: AuthServiceStore
   ) {}
 
   ngOnInit(): void {
